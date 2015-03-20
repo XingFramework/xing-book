@@ -1,3 +1,4 @@
+# Chapter 1
 
 ## Promises and testing
 
@@ -19,6 +20,7 @@
         //
         screenerOptions = values;          // (for easy use in tests below)
 
+
       }).then((resolved) => { done(); },   // this makes sure that, no matter
               (rejected) => { done(); });  //   if this all works or not, we call done() at the end.
 
@@ -30,3 +32,5 @@ Notice how this makes clear that we do a series of small steps with
 the callbacks - there's a continual march of time down the page - as
 opposed to if we nest the callbacks (or the promise resolves), where
 the march of time is sorta-to-the-right and sorta-down.
+
+Promises are tricky. We should include a diagram of the happy/sad swimlanes.
