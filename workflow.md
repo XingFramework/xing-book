@@ -1,6 +1,6 @@
 # The Xing Work Flow
 
-This is a general guide to creating a feature in Xing from the Backend to the Frontend. 
+This is a general guide to creating a feature in Xing from the Backend to the Frontend (coming soon). 
 
 In this example, we will be creating feature that allows a user to read or write Dogs.
 
@@ -47,6 +47,7 @@ Let's first consider the resource that you are trying to build for the Frontend 
   },
   data: {
     name: "Buddy",
+    age: 3,
     breed: "Some kind of large rat"
   }
 }
@@ -73,6 +74,7 @@ describe "dogs#show", :type => :request do
       expect(response).to be_success
       expect(response.body).to have_json_path('links/self')
       expect(response.body).to have_json_path('data/name')
+      expect(response.body).to have_json_path('data/age')
       expect(response.body).to have_json_path('data/breed')
     end
   end
@@ -162,4 +164,34 @@ class DogsController < JsonController
 You will find that all the controllers follow almost exactly the same pattern. If you find yourself straying from this pattern or adding methods here, you should consult your team leader.
 
 #### Model Specs/Model/Factory
+
+You'll need to create these as well. This part is pretty much the same as you've done in Rails.
+
+#### Serializer Spec
+###### backend/spec/serializers/dog_serializer_spec.rb
+
+Serializers are where we construct our outgoing resources. 
+
+```
+
+```
+
+#### Serializer
+###### backend/serializers/dog_serializer.rb
+
+Note that the serializer descends from BaseSerializer. 
+```
+class DogSerializer < BaseSerializer
+  attributes :name, :age, :breed
+  
+  def age
+    return "Just a baby" if object.age < 5
+    object.age
+  end
+
+  def links
+    { :self => routes.dog_path(object) }
+  end
+end
+```
 
