@@ -7,7 +7,7 @@ In this example, we will be creating feature that allows a user to read or write
 ## Setting up the Backend resource
 
 #### Outgoing
-* [Request Spec](#request_spec)
+* [Request Spec](#requestspec)
 * Model Spec
 * Model
 * Factory
@@ -46,7 +46,7 @@ Let's first consider the resource that you are trying to build for the Frontend 
 }
 ```
 
-#### <a name="request_spec"></a>Request Spec
+#### <a name="requestspec"></a>Request Spec
 
 Now that we know what we'd like to receive when we're trying to get information on a particular dog, we should write a request spec where we can test that when we hit "/dogs/:id" we will get a response that matches the show resource we imagined above.
 ```
