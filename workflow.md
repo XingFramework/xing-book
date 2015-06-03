@@ -6,8 +6,8 @@ In this example, we will be creating feature that allows a user to read or write
 
 ## Setting up the Backend resource
 
-#### Outgoing
-* API Doc
+#### GET (Outgoing)
+* [API Doc](#apidoc)
 * Request Spec
 * Routing Spec
 * Routes
@@ -20,7 +20,7 @@ In this example, we will be creating feature that allows a user to read or write
 * Serializer
 
 
-#### Incoming
+#### POST/PUT (Incoming)
 * API Doc
 * Request Spec
 * Model Spec
@@ -35,7 +35,7 @@ In this example, we will be creating feature that allows a user to read or write
 * Mapper Spec
 * Mapper
 
-#### API Doc
+#### <a name="apidoc"></a>API Doc
 ###### API_DOC/dog
 
 Let's first consider the resource that you are trying to build for the Frontend to consume. For a show resource, it would look something like this:
