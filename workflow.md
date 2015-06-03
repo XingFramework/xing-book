@@ -445,9 +445,9 @@ end
 ```
 
 #### <a name="ocontroller"></a>Controller
-Note that our controller descends from JsonController. 
+An update controller is probably about as complicated of a controller as you will write. 
 
-For outgoing resources, the controller will render JSON that is output by its serializer (DogSerializer). We'll be looking at those shortly.
+It uses Mapper to process the JSON and params to update the record. If it is a successful update, it then uses a Serializer to respond with the updated record in JSON format.
 ```
 class DogsController < JsonController
 
@@ -456,64 +456,26 @@ class DogsController < JsonController
     dog = Dog.find(params[:id])
     render :json => DogSerializer.new(dog)
   end
-```
-
-You will find that all the controllers follow almost exactly the same pattern. If you find yourself straying from this pattern or adding methods here, you should consult your team leader.
-
-#### <a name="omodelspec, omodel,ofactory "></a>Model Specs/Model/Factory
-
-You'll need to create these as well. This part is pretty much the same as you've done in Rails.
-
-#### <a name="oserializerspec"></a>Serializer Spec
-###### backend/spec/serializers/dog_serializer_spec.rb
-
-Serializers are where we construct our outgoing resources. It will take AR models and build JSON according to the instructions we write!
-
-```
-require 'spec_helper'
-
-describe DogSerializer, :type => :serializer do
-  let :dog do
-    FactoryGirl.create(:dog, :age => 1
-    )
-  end
-
-  describe 'as_json' do
-    let :json do
-      DogSerializer.new(dog).to_json
-    end
-
-    it "should have the correct structure" do
-      expect(json).to have_json_path('links/self')
-      expect(json).to have_json_path('data/name')
-      expect(json).to have_json_path('data/age')
-      expect(json).to have_json_path('data/breed')
-    end
-    
-    it "should have correct string for age if under 5" do
-    expect(json).to be_json_eql("Just a baby")at_path('data/age')
-    end
-  end
-end
-```
-
-#### <a name="oserializer"></a>Serializer
-###### backend/serializers/dog_serializer.rb
-
-Note that the serializer descends from BaseSerializer. 
-```
-class DogSerializer < BaseSerializer
-  attributes :name, :age, :breed
   
-  def age
-    return "Just a baby" if object.age < 5
-    object.age
+  #PUT /dogs/:id
+  def update
+    mapper = DogMapper.new(json_body, params[:id])
+    
+    if mapper.save
+      render :json => DogSerializer.new(mapper.dog)
+    else
+      failed_to_process(mapper.errors)
+    end
   end
-
-  def links
-    { :self => routes.dog_path(object) }
-  end
+  
 end
 ```
+
+Again, you will find that all the controllers follow almost exactly the same pattern. If you find yourself straying from this pattern or adding methods here, you should consult your team leader.
+
+#### <a name="omodelspec, omodel,ofactory "></a>Model Spec/Model/Factory/Serializer Spec/Serializer
+
+If you had already created a show resource, You have all these things already! If not, see the code above regarding [Serializers](#oserializers) and [Serializer Specs](#oserializerspec).
+
 
 
