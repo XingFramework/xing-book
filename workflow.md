@@ -12,28 +12,28 @@ In this example, we will be creating feature that allows a user to read or write
 * [Routing Spec](#oroutingspec)
 * [Routes](#oroutes)
 * [Controller Spec](#ocontrollerspec)
-* Controller
-* Model Spec
-* Model
-* Factory
-* Serializer Spec
-* Serializer
+* [Controller](#ocontroller)
+* [Model Spec](#omodelspec)
+* [Model](#omodel)
+* [Factory](#ofactory)
+* [Serializer Spec](#oserializerspec)
+* [Serializer](#oserializer)
 
 
 #### POST/PUT (Incoming)
-* API Doc
-* Request Spec
-* Model Spec
-* Model
-* Factory
-* Routing Spec
-* routes.rb
-* Controller Spec
-* Controller
-* Serializer Spec
-* Serializer
-* Mapper Spec
-* Mapper
+* [API Doc](#iapidoc)
+* [Request Spec](#irequestspec)
+* [Routing Spec](#iroutingspec)
+* [Routes](#iroutes)
+* [Controller Spec](#icontrollerspec)
+* [Controller](#icontroller)
+* [Model Spec](#imodelspec)
+* [Model](#imodel)
+* [Factory](#ifactory)
+* [Serializer Spec](#iserializerspec)
+* [Serializer](#iserializer)
+* [Mapper Spec](#imapperspec)
+* [Mapper](#imapper)
 
 #### <a name="apidoc"></a>API Doc
 ###### API_DOC/dog
