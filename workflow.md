@@ -420,10 +420,9 @@ end
 
     it "should update with dog mapper and pass the JSON to it" do
       expect(DogMapper).to receive(:new).with(json, dog.id).and_return(mock_mapper)
-      expect(mock_organization_mapper).to receive(:save).and_return(true)
-      expect(mock_organization_mapper).to receive(:organization).exactly(2).times.and_return(organization)
-      expect(controller).to receive(:authorize!).and_return(true)
-      expect(OrganizationSerializer).to receive(:new).with(organization).and_return(serializer)
+      expect(mock_mapper).to receive(:save).and_return(true)
+      expect(mock_mapper).to receive(:dog).and_return(dog)
+      expect(DogSerializer).to receive(:new).with(dog).and_return(serializer)
 
       controller.should_receive(:render).
         with(:json => serializer).
@@ -434,17 +433,15 @@ end
     end
 
     it "should render status 422 if not updated" do
-      expect(OrganizationMapper).to receive(:new).with(json, organization.id).and_return(mock_organization_mapper)
-      expect(mock_organization_mapper).to receive(:organization).and_return(organization)
-      expect(controller).to receive(:authorize!).and_return(true)
-      expect(mock_organization_mapper).to receive(:save).and_return(false)
-      expect(mock_organization_mapper).to receive(:errors).and_return(mock_errors)
+      expect(DogMapper).to receive(:new).with(json, dog.id).and_return(mock_mapper)
+      expect(mock_mapper).to receive(:dogn).and_return(dog)
+      expect(mock_mapper).to receive(:save).and_return(false)
+      expect(mock_mapper).to receive(:errors).and_return(mock_errors)
       expect(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
 
       post :update, json, { :id => 123 }
 
       expect(response).to reject_as_unprocessable
-    end
 ```
 
 #### <a name="ocontroller"></a>Controller
