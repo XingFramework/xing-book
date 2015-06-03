@@ -170,10 +170,34 @@ You'll need to create these as well. This part is pretty much the same as you've
 #### Serializer Spec
 ###### backend/spec/serializers/dog_serializer_spec.rb
 
-Serializers are where we construct our outgoing resources. 
+Serializers are where we construct our outgoing resources. It will take AR models and build JSON according to the instructions we write!
 
 ```
+require 'spec_helper'
 
+describe DogSerializer, :type => :serializer do
+  let :dog do
+    FactoryGirl.create(:dog, :age => 1
+    )
+  end
+
+  describe 'as_json' do
+    let :json do
+      DogSerializer.new(dog).to_json
+    end
+
+    it "should have the correct structure" do
+      expect(json).to have_json_path('links/self')
+      expect(json).to have_json_path('data/name')
+      expect(json).to have_json_path('data/age')
+      expect(json).to have_json_path('data/breed')
+    end
+    
+    it "should have correct string for age if under 5" do
+    expect(json).to be_json_eql("Just a baby")at_path('data/age')
+    end
+  end
+end
 ```
 
 #### Serializer
@@ -194,4 +218,5 @@ class DogSerializer < BaseSerializer
   end
 end
 ```
+
 
