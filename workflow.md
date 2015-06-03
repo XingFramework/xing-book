@@ -10,7 +10,9 @@ There are basically two types of resource:
 1. [GET:](#get) Resources that are being consumed by the Frontend
 2. [POST/PUT:](#postput) Resources that are being received from the Frontend
 
-Outlined here are the files that you would need to touch to produce a Backend Resource. We generally tend to write files in this order.
+---
+
+Outlined here are the files that you would need to touch to produce an outgoing Backend Resource. We generally tend to write files in this order.
 
 
 #### <a name="get"></a>GET (Outgoing)
@@ -183,10 +185,6 @@ describe DogSerializer, :type => :serializer do
       expect(json).to have_json_path('data/age')
       expect(json).to have_json_path('data/breed')
     end
-    
-    it "should have correct string for age if under 5" do
-    expect(json).to be_json_eql("Just a baby")at_path('data/age')
-    end
   end
 end
 ```
@@ -198,11 +196,6 @@ Note that the serializer descends from BaseSerializer.
 ```
 class DogSerializer < BaseSerializer
   attributes :name, :age, :breed
-  
-  def age
-    return "Just a baby" if object.age < 5
-    object.age
-  end
 
   def links
     { :self => routes.dog_path(object) }
@@ -210,7 +203,11 @@ class DogSerializer < BaseSerializer
 end
 ```
 
+High Five! We should now be able to hit the /dogs/:id resource and GET correctly formatted JSON.
 
+---
+
+Outlined here are the files that you would need to touch to **receive** JSON and write that data to the DB. We generally tend to write files in this order.
 
 #### <a name="postput"></a>POST/PUT (Incoming)
 * [API Doc](#iapidoc)
@@ -230,9 +227,10 @@ end
 #### <a name="oapidoc"></a>API Doc
 ###### API_DOC/dog
 
-Let's first consider the resource that you are trying to build for the Frontend to consume. For a show resource, it would look something like this:
+Create/Update resources will have a similar structure to the show:
 
 ```
+# GET /dogs/:id
 {
   links: {
     self: "/dogs/1"
@@ -243,31 +241,106 @@ Let's first consider the resource that you are trying to build for the Frontend 
     breed: "Some kind of large rat"
   }
 }
+
+# POST /dogs
+{
+  links: {
+  },
+  data: {
+    name: "Pooh Bear",
+    age: 3,
+    breed: "Snorting Spinner"
+  }
+}
+
+# PUT /dogs/:id
+{
+  links: {
+    self: "/dogs/1"
+  },
+  data: {
+    name: "Buddy McLovin",
+    age: 3,
+    breed: "Some kind of large rat"
+  }
+}
 ```
+Note that the POST resource does not require a self link, but a PUT does require a self link to know which record to update.
+
+For the rest of the example, we will be working with a PUT resource.
 
 #### <a name="orequestspec"></a> Request Spec 
-###### backend/spec/requests/dog_show_spec.rb
+###### backend/spec/requests/dog_update_spec.rb
 
-Now that we know what we'd like to receive when we're trying to get information on a specific dog, we should write a request spec. The request spec tests that when we hit "/dogs/:id" we will get a response that matches the show resource we imagined above.
+Now that we know what we are receiving from the Frontend, we should write a request spec. The request spec tests that when we hit "/dogs/:id" with a JSON body, we will either successfully update a record or process a failed update correctly.
 
 
 ```
 require 'spec_helper'
 
-describe "dogs#show", :type => :request do
-  let :dog do
-    FactoryGirl.create(:dog)
+describe "dogs#update", :type => :request do
+  let! :dog do
+    FactoryGirl.create(:dog
+    )
   end
 
-  describe "GET dogs/:id" do
-    it "shows page as json" do
-      json_get "dogs/#{dog.id}"
+  let :json_body do
+    {
+      links: {
+        self: "/dogs/1"
+      },
+      data: {
+        name: "Buddy McLovin"
+      }
+    }.to_json
+  end
 
-      expect(response).to be_success
-      expect(response.body).to have_json_path('links/self')
-      expect(response.body).to have_json_path('data/name')
-      expect(response.body).to have_json_path('data/age')
-      expect(response.body).to have_json_path('data/breed')
+  describe "Successful update"do
+    describe "PUT dogs/:id" do
+      it "is a 200 success including the serialized object" do
+
+        json_put "dogs/#{dog.id}", json_body
+
+        expect(response).to be_success
+        expect(response.body).to have_json_path('links/self')
+        expect(response.body).to have_json_path('data/name')
+        expect(response.body).to have_json_path('data/age')
+        expect(response.body).to have_json_path('data/breed')
+
+        expect(response.body).to be_json_eql("\"#{routes.dog_path(dog)}\"").at_path('links/self')
+        expect(response.body).to be_json_eql("\"Buddy McLovin\"").at_path("data/name")
+
+      end
+
+      it "should update information" do
+        expect do
+          json_put "dogs/#{dog.id}", json_body
+        end.to change { dog.reload.name }.to("Buddy McLovin")
+      end
+    end
+  end
+
+  describe "failing update" do
+    describe 'required information omitted' do
+      let :invalid_json do
+        {
+          links: {
+            self: "/dogs/1"
+          },
+          data: {
+            name: nil
+          }
+        }.to_json
+      end
+
+      describe "PUT organizations/:id" do
+        it "is a 422 with an error in response body" do
+          authenticated_json_put admin, "organizations/#{organization.id}", invalid_json
+
+          expect(response.status).to be(422)
+          expect(response.body).to be_json_eql("\"can't be blank\"").at_path("data/name/message")
+        end
+      end
     end
   end
 end
