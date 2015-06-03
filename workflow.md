@@ -9,9 +9,9 @@ In this example, we will be creating feature that allows a user to read or write
 #### GET (Outgoing)
 * [API Doc](#oapidoc)
 * [Request Spec](#orequestspec)
-* Routing Spec
-* Routes
-* Controller Spec
+* [Routing Spec](#oroutingspec)
+* [Routes](#oroutes)
+* [Controller Spec](#ocontrollerspec)
 * Controller
 * Model Spec
 * Model
@@ -81,7 +81,7 @@ describe "dogs#show", :type => :request do
 end
 ```
 
-#### Routing Spec
+#### <a name="oroutingspec"></a>Routing Spec
 ###### backend/spec/routing/dogs_routing_spec.rb
 
 ```
@@ -96,7 +96,7 @@ end
 
 ```
 
-#### Routes
+#### <a name="oroutes"></a>Routes
 ###### backend/config/routes.rb
 
 Add the following line to your routes file:
@@ -104,7 +104,7 @@ Add the following line to your routes file:
 resources :dogs, :only => [:show]
 ```
 
-#### Controller Specs
+#### <a name="ocontrollerspec"></a>Controller Spec
 ###### backend/spec/controllers/dogs_controller.rb
 
 ```
