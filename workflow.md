@@ -478,6 +478,7 @@ Again, you will find that all the controllers follow almost exactly the same pat
 If you had already created a show resource, You have all these things already! If not, see the code above regarding [Serializers](#oserializers) and [Serializer Specs](#oserializerspec).
 
 #### <a name="imapperspec"></a>Mapper Spec
+###### /backend/spec/mappers/dog_mapper_spec.rb
 
 Here we test that our Mapper does what it is meant to do, which is to: 
 * take JSON
@@ -506,9 +507,6 @@ describe DogMapper, :type => :mapper do
 
   let :valid_data do
     {
-      links: {
-        self: "/dogs/1"
-      },
       data: {
         name: "Buddy McLovin"
       }
@@ -516,7 +514,8 @@ describe DogMapper, :type => :mapper do
   end
 
   let :invalid_data do
-    { data: {
+    { 
+      data: {
         name: nil
       }
     }
@@ -562,4 +561,31 @@ describe DogMapper, :type => :mapper do
 end
 ```
 
+#### <a name="imapper"></a>Mapper
+###### /backend/mappers/dog_mapper.rb
+
+Note that the Mapper descends from HypermediaJSONMapper. HJM has quite a few methods in it and it would be beneficial to give it some study to figure out how it works. 
+
+The Mapper is often the most difficult part of a Backend Resource, especially if the resource has nested models and complicated validations. Don't be afraid to ask for help here!
+```
+class DogMapper < HypermediaJSONMapper
+  alias dog record
+  alias dog= record=
+
+  def record_class
+    Dog
+  end
+
+  def assign_values(data_hash)
+    @dog_data = data_hash
+
+    super
+  end
+
+  def update_record
+    dog.assign_attributes(@dog_data)
+  end
+
+end
+```
 
