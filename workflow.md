@@ -167,7 +167,7 @@ You will find that all the controllers follow almost exactly the same pattern. I
 
 You'll need to create these as well. This part is pretty much the same as you've done in Rails.
 
-#### Serializer Spec
+#### <a name="oserializerspec"></a>Serializer Spec
 ###### backend/spec/serializers/dog_serializer_spec.rb
 
 Serializers are where we construct our outgoing resources. It will take AR models and build JSON according to the instructions we write!
@@ -200,7 +200,7 @@ describe DogSerializer, :type => :serializer do
 end
 ```
 
-#### Serializer
+#### <a name="oserializer"></a>Serializer
 ###### backend/serializers/dog_serializer.rb
 
 Note that the serializer descends from BaseSerializer. 
