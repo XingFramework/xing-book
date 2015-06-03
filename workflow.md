@@ -349,6 +349,8 @@ end
 #### <a name="oroutingspec"></a>Routing Spec
 ###### backend/spec/routing/dogs_routing_spec.rb
 
+Add the update route to the Routing Spec.
+
 ```
 require 'spec_helper'
 
@@ -357,6 +359,10 @@ describe DogsController do
     it "recognizes and generates #show" do
       expect({ :get => "/dogs/1" }).to route_to(:controller => "dogs", :action => "show", :id => "1")
     end
+    
+    it "recognizes and generates #update" do
+      expect({ :put => "/dogs/1" }).to route_to(:controller => "dogs", :action => "update", :id => "1")
+    end
 end
 
 ```
@@ -364,9 +370,9 @@ end
 #### <a name="oroutes"></a>Routes
 ###### backend/config/routes.rb
 
-Add the following line to your routes file:
+Add update to the dogs route:
 ```
-resources :dogs, :only => [:show]
+resources :dogs, :only => [:show, :update]
 ```
 
 #### <a name="ocontrollerspec"></a>Controller Spec
