@@ -147,7 +147,7 @@ end
 
 ```
 
-#### Controller
+#### <a name="ocontroller"></a>Controller
 Note that our controller descends from JsonController. 
 
 For outgoing resources, the controller will render JSON that is output by its serializer (DogSerializer). We'll be looking at those shortly.
@@ -163,7 +163,7 @@ class DogsController < JsonController
 
 You will find that all the controllers follow almost exactly the same pattern. If you find yourself straying from this pattern or adding methods here, you should consult your team leader.
 
-#### Model Specs/Model/Factory
+#### <a name="omodelspec, omodel,ofactory "></a>Model Specs/Model/Factory
 
 You'll need to create these as well. This part is pretty much the same as you've done in Rails.
 
