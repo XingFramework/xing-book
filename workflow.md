@@ -589,3 +589,4 @@ class DogMapper < HypermediaJSONMapper
 end
 ```
 
+(∩`-´)⊃━☆ﾟ.*･｡ﾟ DONE!
