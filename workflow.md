@@ -378,6 +378,8 @@ resources :dogs, :only => [:show, :update]
 #### <a name="ocontrollerspec"></a>Controller Spec
 ###### backend/spec/controllers/dogs_controller.rb
 
+Test the update method in your controller spec. Notice that we use plenty of mocks, and that we now require a Mapper!
+
 ```
 require 'spec_helper'
 
@@ -393,6 +395,10 @@ describe DogsController do
 
   let :json do
     { stuff: "like this", more: "like that" }.to_json
+  end
+  
+  let :mock_mapper do 
+    double(DogMapper)
   end
 
   let :mock_errors do
@@ -416,6 +422,38 @@ describe DogsController do
   end
 end
 
+  ########################################################################################
+  #                                      PUT UPDATE
+  ########################################################################################
+  describe "responding to PUT update" do
+
+    it "should update with dog mapper and pass the JSON to it" do
+      expect(DogMapper).to receive(:new).with(json, dog.id).and_return(mock_mapper)
+      expect(mock_organization_mapper).to receive(:save).and_return(true)
+      expect(mock_organization_mapper).to receive(:organization).exactly(2).times.and_return(organization)
+      expect(controller).to receive(:authorize!).and_return(true)
+      expect(OrganizationSerializer).to receive(:new).with(organization).and_return(serializer)
+
+      controller.should_receive(:render).
+        with(:json => serializer).
+        and_call_original
+
+      put :update, json, { :id => 123 }
+
+    end
+
+    it "should render status 422 if not updated" do
+      expect(OrganizationMapper).to receive(:new).with(json, organization.id).and_return(mock_organization_mapper)
+      expect(mock_organization_mapper).to receive(:organization).and_return(organization)
+      expect(controller).to receive(:authorize!).and_return(true)
+      expect(mock_organization_mapper).to receive(:save).and_return(false)
+      expect(mock_organization_mapper).to receive(:errors).and_return(mock_errors)
+      expect(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
+
+      post :update, json, { :id => 123 }
+
+      expect(response).to reject_as_unprocessable
+    end
 ```
 
 #### <a name="ocontroller"></a>Controller
