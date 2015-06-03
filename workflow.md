@@ -35,7 +35,7 @@ In this example, we will be creating feature that allows a user to read or write
 * [Mapper Spec](#imapperspec)
 * [Mapper](#imapper)
 
-#### <a name="apidoc"></a>API Doc
+#### <a name="oapidoc"></a>API Doc
 ###### API_DOC/dog
 
 Let's first consider the resource that you are trying to build for the Frontend to consume. For a show resource, it would look something like this:
