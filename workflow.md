@@ -566,7 +566,7 @@ end
 
 Note that the Mapper descends from HypermediaJSONMapper. HJM has quite a few methods in it and it would be beneficial to give it some study to figure out how it works. 
 
-The Mapper is often the most difficult part of a Backend Resource, especially if the resource has nested models and complicated validations. Don't be afraid to ask for help here!
+The following example is a deceptively simple case. The Mapper is often the most difficult part of a Backend Resource, especially if the resource has nested models and complicated validations. Don't be afraid to ask for help here!
 ```
 class DogMapper < HypermediaJSONMapper
   alias dog record
