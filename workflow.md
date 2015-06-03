@@ -113,15 +113,6 @@ describe DogsController do
     double(DogSerializer)
   end
 
-  let :json do
-    { stuff: "like this", more: "like that" }.to_json
-  end
-
-  let :mock_errors do
-    { data: { stuff: "Is required" }}
-  end
-
-
   ########################################################################################
   #                                      GET SHOW
   ########################################################################################
