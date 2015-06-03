@@ -215,7 +215,7 @@ Outlined here are the files that you would need to touch to **receive** JSON and
 * [Mapper Spec](#imapperspec)
 * [Mapper](#imapper)
 
-#### <a name="oapidoc"></a>API Doc
+#### <a name="iapidoc"></a>API Doc
 ###### API_DOC/dog
 
 Create/Update resources will have a similar structure to the show:
@@ -260,7 +260,7 @@ Note that the POST resource does not require a self link, but a PUT does require
 
 For the rest of the example, we will be working with a PUT resource.
 
-#### <a name="orequestspec"></a> Request Spec 
+#### <a name="irequestspec"></a> Request Spec 
 ###### backend/spec/requests/dog_update_spec.rb
 
 Now that we know what we are receiving from the Frontend, we should write a request spec. The request spec tests that when we hit "/dogs/:id" with a JSON body, we will either successfully update a record or process a failed update correctly.
@@ -337,7 +337,7 @@ describe "dogs#update", :type => :request do
 end
 ```
 
-#### <a name="oroutingspec"></a>Routing Spec
+#### <a name="iroutingspec"></a>Routing Spec
 ###### backend/spec/routing/dogs_routing_spec.rb
 
 Add the update route to the Routing Spec.
@@ -358,7 +358,7 @@ end
 
 ```
 
-#### <a name="oroutes"></a>Routes
+#### <a name="iroutes"></a>Routes
 ###### backend/config/routes.rb
 
 Add update to the dogs route:
@@ -366,7 +366,7 @@ Add update to the dogs route:
 resources :dogs, :only => [:show, :update]
 ```
 
-#### <a name="ocontrollerspec"></a>Controller Spec
+#### <a name="icontrollerspec"></a>Controller Spec
 ###### backend/spec/controllers/dogs_controller.rb
 
 Test the update method in your controller spec. Notice that we use plenty of mocks, and that we now require a Mapper!
@@ -444,7 +444,7 @@ end
       expect(response).to reject_as_unprocessable
 ```
 
-#### <a name="ocontroller"></a>Controller
+#### <a name="icontroller"></a>Controller
 An update controller is probably about as complicated of a controller as you will write. 
 
 It uses Mapper to process the JSON and params to update the record. If it is a successful update, it then uses a Serializer to respond with the updated record in JSON format.
@@ -473,9 +473,93 @@ end
 
 Again, you will find that all the controllers follow almost exactly the same pattern. If you find yourself straying from this pattern or adding methods here, you should consult your team leader.
 
-#### <a name="omodelspec, omodel,ofactory "></a>Model Spec/Model/Factory/Serializer Spec/Serializer
+#### <a name="imodelspec, imodel, ifactory, iserializer, iserializerspec "></a>Model Spec/Model/Factory/Serializer Spec/Serializer
 
 If you had already created a show resource, You have all these things already! If not, see the code above regarding [Serializers](#oserializers) and [Serializer Specs](#oserializerspec).
 
+#### <a name="imapperspec"></a>Mapper Spec
+
+Here we test that our Mapper does what it is meant to do, which is to: 
+* take JSON
+* break it down
+* map it to the corresponding Active Record Model(s)
+* check for errors
+* save the record(s)
+
+or
+* send meaningful error messages to the Frontend
+
+OK! 
+
+```
+require 'spec_helper'
+
+describe DogMapper, :type => :mapper do
+
+  let! :dog do
+    FactoryGirl.create(:dog, :name => "Fluffy FooFoo")
+  end
+
+  let :mapper do
+    DogMapper.new(json, dog.id)
+  end
+
+  let :valid_data do
+    {
+      links: {
+        self: "/dogs/1"
+      },
+      data: {
+        name: "Buddy McLovin"
+      }
+    }
+  end
+
+  let :invalid_data do
+    { data: {
+        name: nil
+      }
+    }
+  end
+
+  describe 'updating content' do
+
+    describe "valid data" do
+
+      let :json do
+        valid_data
+      end
+
+      it "should save the dog" do
+        expect do
+          mapper.save
+        end.to change{ dog.reload.name }.to("Buddy McLovin")
+      end
+
+      it "should be able to return dog" do
+        mapper.save
+        expect(mapper.dog).to be_a(Dog)
+        expect(mapper.dog).to be_persisted
+      end
+    end
+
+    describe "invalid data" do
+      let :json do
+        invalid_data.to_json
+      end
+
+      it "should insert an error into the errors hash without saving anything" do
+        expect do
+          mapper.save
+        end.not_to change{ dog.reload.name }
+        expect(mapper.errors).to eq(
+          {:data=>{:name=>{:type=>"required", :message=>"can't be blank"}}}
+        )
+      end
+    end
+  end
+
+end
+```
 
 
