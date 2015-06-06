@@ -7,15 +7,14 @@ In this example, we will be creating feature that allows a user to read or write
 ## Setting up the Backend resource
 
 There are basically two types of resource:
-1. [GET:](#get) Resources that are being consumed by the Frontend
-2. [POST/PUT:](#postput) Resources that are being received from the Frontend
+1. [OUTGOING:](#outgoing) Resources that are being consumed by the Frontend
+2. [INCOMING:](#incoming) Resources that are being received from the Frontend
 
 ---
+### <a name="outgoing"></a>OUTGOING
 
 Outlined here are the files that you would need to touch to produce an outgoing Backend Resource. We generally tend to write files in this order.
 
-
-#### <a name="get"></a>GET (Outgoing)
 * [API Doc](#oapidoc)
 * [Request Spec](#orequestspec)
 * [Routing Spec](#oroutingspec)
@@ -119,9 +118,9 @@ describe DogsController do
   describe "responding to GET show" do
 
     it "should find the dog and pass it to a serializer" do
-      Dog.should_receive(:find).with(dog.id).and_return(dog)
-      DogSerializer.should_receive(:new).with(dog).and_return(serializer)
-      controller.should_receive(:render).
+      expect(Dog).to receive(:find).with(dog.id).and_return(dog)
+      expect(DogSerializer).to receive(:new).with(dog).and_return(serializer)
+      expect(controller).to receive(:render).
         with(:json => serializer).
         and_call_original
       get :show, :id => 123
@@ -197,10 +196,10 @@ end
 High Five! We should now be able to hit the /dogs/:id resource and GET correctly formatted JSON.
 
 ---
+### <a name="incoming"></a>INCOMING
 
 Outlined here are the files that you would need to touch to **receive** JSON and write that data to the DB. We generally tend to write files in this order.
 
-#### <a name="postput"></a>POST/PUT (Incoming)
 * [API Doc](#iapidoc)
 * [Request Spec](#irequestspec)
 * [Routing Spec](#iroutingspec)
@@ -302,12 +301,6 @@ describe "dogs#update", :type => :request do
         expect(response.body).to be_json_eql("\"Buddy McLovin\"").at_path("data/name")
 
       end
-
-      it "should update information" do
-        expect do
-          json_put "dogs/#{dog.id}", json_body
-        end.to change { dog.reload.name }.to("Buddy McLovin")
-      end
     end
   end
 
@@ -403,9 +396,9 @@ describe DogsController do
   describe "responding to GET show" do
 
     it "should find the dog and pass it to a serializer" do
-      Dog.should_receive(:find).with(dog.id).and_return(dog)
-      DogSerializer.should_receive(:new).with(dog).and_return(serializer)
-      controller.should_receive(:render).
+      expect(Dog).to receive(:find).with(dog.id).and_return(dog)
+      expect(DogSerializer).to receive(:new).with(dog).and_return(serializer)
+      expect(controller).to receive(:render).
         with(:json => serializer).
         and_call_original
       get :show, :id => 123
@@ -434,7 +427,7 @@ end
 
     it "should render status 422 if not updated" do
       expect(DogMapper).to receive(:new).with(json, dog.id).and_return(mock_mapper)
-      expect(mock_mapper).to receive(:dogn).and_return(dog)
+      expect(mock_mapper).to receive(:dog).and_return(dog)
       expect(mock_mapper).to receive(:save).and_return(false)
       expect(mock_mapper).to receive(:errors).and_return(mock_errors)
       expect(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
