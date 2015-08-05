@@ -23,18 +23,18 @@ We all do TDD, right? This is obviously where you should be starting.
 
 Just as the request spec is the integration test for the Rails backend API, the feature spec is the integration test for the frontend. Yes, it lives in the backend with the backend specs. Get over it.
 
-```
+```ruby
 require 'spec_helper'
 
-// We are using `steps` rather than `describe` for feature specs. 
+# We are using `steps` rather than `describe` for feature specs.
 steps "User sees Dog show page", :js => true, :size => :desktop, :type => :feature do 
   before :all do
-    // Remember to use an instance variable, not a let block for a feature spec
+    # Remember to use an instance variable, not a let block for a feature spec
     @user = FactoryGirl.create(:user)
     @dog = FactoryGirl.create(:dog)
   end
   
-  // from spec/support/session_helpers.rb. It signs in @user.
+  # From spec/support/session_helpers.rb. It signs in @user.
   perform_steps "sign in with"
   
   it "has the dog's information" do 
