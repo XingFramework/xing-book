@@ -28,7 +28,8 @@ Just as the request spec is the integration test for the Rails backend API, the 
 require 'spec_helper'
 
 # We are using `steps` rather than `describe` for feature specs.
-steps "User sees Dog show page", :js => true, :size => :desktop, :type => :feature do 
+steps "User sees Dog show page", :js => true, :size => :desktop, :type => :feature do
+
   before :all do
     # Remember to use an instance variable, not a let block for a feature spec
     @user = FactoryGirl.create(:user)
@@ -50,4 +51,6 @@ end
 ### <a name="directory"></a>Create a Directory
 ###### frontend/src/app/
 
-Oh my god, where IS everything? If you haven't noticed yet, things are organized much differently in the frontend than you might be used to in Rails. 
+Oh my god, where IS everything? 
+
+If you haven't noticed yet, things are organized much differently in the frontend than you might be used to in Rails. 
