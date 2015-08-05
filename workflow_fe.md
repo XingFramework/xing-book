@@ -11,14 +11,14 @@ Some things to consider:
 ## Setting up the Frontend
 
 1. [Feature Spec](#feature_spec)
-2. [Directory](#directory)
+2. [Create a Directory](#directory)
 3. Module
 5. Controller
 6. State
 7. Resource
 
 ### <a name="feature_spec"></a>Feature Spec
-###### backend/spec/feature/user_can_see_dog_info.rb
+###### backend/spec/features/user_can_see_dog_info.rb
 
 We all do TDD, right? This is obviously where you should be starting.
 
@@ -47,5 +47,7 @@ steps "User sees Dog show page", :js => true, :size => :desktop, :type => :featu
 end
 ```
 
-### <a name="directory"></a>Directory
+### <a name="directory"></a>Create a Directory
+###### frontend/src/app/
 
+Oh my god, where IS everything? If you haven't noticed yet, things are organized much differently in the frontend than you might be used to in Rails. 
