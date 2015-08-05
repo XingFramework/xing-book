@@ -6,7 +6,7 @@ In this example, we will be creating feature that allows a user to read or write
 
 Some things to consider:
 * The frontend is its own MVC situation. We will have to set up a frontend resource to consume the backend API.
-* We have a divergence of code bases for Xing between MindSwarms and Yoric. So we will be describing the old style (MSW) and new style (Yoric) for Xing.
+* We have a divergence of code bases for Xing between MindSwarms and Yoric. We will be describing the old style (MSW) and new style (Yoric) for Xing.
 
 ## Setting up the Frontend
 
