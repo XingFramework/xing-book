@@ -11,7 +11,7 @@ Some things to consider:
 ## Setting up the Frontend
 
 1. [Feature Spec](#feature_spec)
-2. Directory
+2. [Directory](#directory)
 3. Module
 5. Controller
 6. State
@@ -45,4 +45,6 @@ steps "User sees Dog show page", :js => true, :size => :desktop, :type => :featu
   end
 end
 ```
+
+### <a name="directory"></a>Directory
 
