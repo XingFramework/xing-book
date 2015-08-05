@@ -10,7 +10,7 @@ Some things to consider:
 
 ## Setting up the Frontend
 
-1. Feature Spec(#feature_spec)
+1. [Feature Spec](#feature_spec)
 2. Directory
 3. Module
 5. Controller
