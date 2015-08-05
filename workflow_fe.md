@@ -18,6 +18,7 @@ Some things to consider:
 7. Resource
 
 ### <a name="feature_spec"></a>Feature Spec
+###### backend/spec/feature/user_can_see_dog_info.rb
 
 We all do TDD, right? This is obviously where you should be starting.
 
