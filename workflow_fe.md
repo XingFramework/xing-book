@@ -10,14 +10,14 @@ Some things to consider:
 
 ## Setting up the Frontend
 
-1. Feature Spec
+1. Feature Spec(#feature_spec)
 2. Directory
 3. Module
 5. Controller
 6. State
 7. Resource
 
-### Feature Spec
+### <a name="feature_spec"></a>Feature Spec
 
 We all do TDD, right? This is obviously where you should be starting.
 
