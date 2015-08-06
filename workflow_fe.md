@@ -6,24 +6,25 @@ In this example, we will be creating feature that allows a user to read or write
 
 Some things to consider:
 * The frontend is its own MVC situation. We will have to set up a frontend resource to consume the backend API.
-* We have a divergence of code bases for Xing between MindSwarms and Yoric. We will be describing the old style (MSW) and new style (Yoric) for Xing.
+* We have a divergence of code bases for Xing between different projects. For documentation purposes, we will be describing the most recent syntax and structure.
 
 ## Setting up the Frontend
 
 1. [Feature Spec](#feature_spec)
 2. [Create a Directory](#directory)
-3. Module
-5. Controller
-6. State
+3. [Create a Module](#module)
+5. [State](#state)
+6. [Controller](#controller)
 7. Resource
+8. Template
 
 ### <a name="feature_spec"></a>Feature Spec
-###### backend/spec/features/user_can_see_dog_info.rb
 
 We all do TDD, right? This is obviously where you should be starting.
 
 Just as the request spec is the integration test for the Rails backend API, the feature spec is the integration test for the frontend. Yes, it lives in the backend with the backend specs. Get over it.
 
+###### backend/spec/features/user_can_see_dog_info.rb
 ```ruby
 require 'spec_helper'
 
@@ -49,7 +50,6 @@ end
 ```
 
 ### <a name="directory"></a>Create a Directory
-###### frontend/src/app
 
 Oh my god, where IS everything? 
 
@@ -57,18 +57,42 @@ Things are organized differently in the Xing frontend directory than in Rails. H
 
 *Remember that in the frontend, the file and variable naming convention is lowerCamelCase rather than snake_case.*
 
+###### frontend/src/app
+
 ```javascript
-frontend/src/app/dog
+frontend/src/app/dogs
 ```
 
 Let's also make the test directory.
 
 ```javascript
-frontent/test/dog
+frontent/test/dogs
 ```
 
+###<a name="module"></a>Create a Module
 
+We'll need to create a Dog module. It will include all the files needed for the Dog component of our application. For the moment, we will be setting up the empty module and exporting it.
 
+###### frontend/src/app/dogs/dogs.js
+```javascript
+import {Module} from "a1atscript";
+
+var dogs = new Module('dog', []);
+
+export default dogs;
+```
+
+###<a name="state"></a>State
+
+States are mildly analogous to routes in the backend. We're going to need tests!
+
+###### frontend/test/dogs/dogsStates.js
+```javascript
+import {DogState} from '../../src/app/dogs/dogsStates.js';
+
+```
+
+###### frontend/src/app/dogs/dogsStates.js
 
 
 
