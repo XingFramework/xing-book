@@ -49,8 +49,28 @@ end
 ```
 
 ### <a name="directory"></a>Create a Directory
-###### frontend/src/app/
+###### frontend/src/app
 
 Oh my god, where IS everything? 
 
-If you haven't noticed yet, things are organized much differently in the frontend than you might be used to in Rails. 
+Things are organized differently in the Xing frontend directory than in Rails. Here, files are grouped by feature or component. In our example, all the Dog files will be in the same directory.
+
+*Remember that in the frontend, the file and variable naming convention is lowerCamelCase rather than snake_case.*
+
+```javascript
+frontend/src/app/dog
+```
+
+Let's also make the test directory.
+
+```javascript
+frontent/test/dog
+```
+
+
+
+
+
+
+
+
