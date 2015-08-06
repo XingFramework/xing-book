@@ -86,11 +86,67 @@ export default dogs;
 
 States are mildly analogous to routes in the backend. It's in the States that we make resources available to 
 
-Firstly, we're going to need tests!
+Firstly, we're going to need tests! You can learn more about testing in Jasmine [here](http://jasmine.github.io/2.0/introduction.html).
 
 ###### frontend/test/dogs/dogsStates.js
 ```javascript
-import {DogState} from '../../src/app/dogs/dogsStates.js';
+import {DogsState} from '../../src/app/dogs/dogsStates.js';
+
+describe("DogsState", function() {
+ var dogsState, mockResources, mockDog, mockStateParams, resolvedDog;
+
+  beforeEach(function() {
+    mockDog = "Buddy";
+    mockResources = {
+      dogs(params) {
+        return {
+          load() {
+            if (params.id == 2) {
+              return Promise.resolve(mockDog);
+            } else {
+              return Promise.reject("mistake");
+            }
+          }
+        };
+      }
+    }
+    mockStateParams = {
+      id: 2
+    }
+
+    dogsState = new DogsState();
+  });
+
+  describe("state config", function() {
+    it("should have a url of /dogs/:id", function() {
+      expect(dogsState.url).toEqual("^/dogs/:id");
+    });
+
+    it("should have an empty template with a ui-view", function () {
+      expect(dogsState.template).toEqual("<ui-view></ui-view>");
+    });
+
+    it("should be an abstract state", function() {
+      expect(dogsState.abstract).toEqual(true);
+    });
+
+  });
+
+
+  describe("dog", function() {
+    beforeEach(function(done) {
+      dogsState.dog(mockResources, mockStateParams).then((dog) => {
+        resolvedDog = dog;
+        done();
+      })
+    });
+
+    it("should resolve dog from the resources and stateParams", function () {
+      expect(resolvedDog).toEqual(mockDog);
+    });
+  });
+
+});
 
 ```
 
@@ -124,6 +180,22 @@ export class DogsShowState {
   }
 }
 ```
+
+Add the new states to the module file! 
+
+###### frontend/src/app/dogs/dogs.js
+```javascript
+import {Module} from "a1atscript";
+import * as States from './dogsStates.js';
+
+var dogs = new Module('dog', [
+  States
+]);
+
+export default dogs;
+```
+
+Using `import * as States` brings in all the classes exported by `dogsStates.js`.
 
 
 
