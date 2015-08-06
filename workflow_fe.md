@@ -13,7 +13,7 @@ Some things to consider:
 1. [Feature Spec](#feature_spec)
 2. [Create a Directory](#directory)
 3. [Create a Module](#module)
-5. [State](#state)
+5. [States](#states)
 6. [Controller](#controller)
 7. [Template](#template)
 8. [Resource](#resource)
@@ -82,7 +82,7 @@ var dogs = new Module('dog', []);
 export default dogs;
 ```
 
-###<a name="state"></a>State
+###<a name="states"></a>States
 
 States are mildly analogous to routes in the backend. It's in the States that we make resources available to 
 
