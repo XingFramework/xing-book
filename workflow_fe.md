@@ -15,8 +15,8 @@ Some things to consider:
 3. [Create a Module](#module)
 5. [State](#state)
 6. [Controller](#controller)
-7. Resource
-8. Template
+7. [Template](#template)
+8. [Resource](#resource)
 
 ### <a name="feature_spec"></a>Feature Spec
 
@@ -84,7 +84,9 @@ export default dogs;
 
 ###<a name="state"></a>State
 
-States are mildly analogous to routes in the backend. We're going to need tests!
+States are mildly analogous to routes in the backend. It's in the States that we make resources available to 
+
+Firstly, we're going to need tests!
 
 ###### frontend/test/dogs/dogsStates.js
 ```javascript
@@ -93,6 +95,35 @@ import {DogState} from '../../src/app/dogs/dogsStates.js';
 ```
 
 ###### frontend/src/app/dogs/dogsStates.js
+```javascript
+import {State, Resolve} from 'stateInjector';
+
+@State('root.inner.dogs')
+export class DogsState {
+  constructor() {
+    super();
+    this.url = "^/dogs";
+    this.template = "<ui-view lrd-state-attrs></ui-view>";
+    this.abstract = true;
+  }
+}
+
+@State('root.inner.dogs.show')
+export class DogsShowState {
+  constructor() {
+    super();
+    this.url = "/:id"
+    this.controller = "DogShowCtrl";
+    this.controllerAs = "dogShow";
+    this.templateUrl = "dogs/dogs-show.tpl.html";
+  }
+  
+  @Resolve('resources', '$stateParams')
+  dog(resources, $stateParams) {
+    return resources.dogs({id: $stateParams.id}).load();
+  }
+}
+```
 
 
 
