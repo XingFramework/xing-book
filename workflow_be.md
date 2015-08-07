@@ -396,8 +396,8 @@ describe DogsController do
   describe "responding to GET show" do
 
     it "should find the dog and pass it to a serializer" do
-      expect(Dog).to receive(:find).with(dog.id).and_return(dog)
-      expect(DogSerializer).to receive(:new).with(dog).and_return(serializer)
+      allow(Dog).to receive(:find).with(dog.id).and_return(dog)
+      allow(DogSerializer).to receive(:new).with(dog).and_return(serializer)
       expect(controller).to receive(:render).
         with(:json => serializer).
         and_call_original
@@ -412,12 +412,12 @@ end
   describe "responding to PUT update" do
 
     it "should update with dog mapper and pass the JSON to it" do
-      expect(DogMapper).to receive(:new).with(json, dog.id).and_return(mock_mapper)
-      expect(mock_mapper).to receive(:save).and_return(true)
-      expect(mock_mapper).to receive(:dog).and_return(dog)
-      expect(DogSerializer).to receive(:new).with(dog).and_return(serializer)
+      allow(DogMapper).to receive(:new).with(json, dog.id).and_return(mock_mapper)
+      allow(mock_mapper).to receive(:save).and_return(true)
+      allow(mock_mapper).to receive(:dog).and_return(dog)
+      allow(DogSerializer).to receive(:new).with(dog).and_return(serializer)
 
-      controller.should_receive(:render).
+      expect(controller).to receive(:render).
         with(:json => serializer).
         and_call_original
 
@@ -426,11 +426,11 @@ end
     end
 
     it "should render status 422 if not updated" do
-      expect(DogMapper).to receive(:new).with(json, dog.id).and_return(mock_mapper)
-      expect(mock_mapper).to receive(:dog).and_return(dog)
-      expect(mock_mapper).to receive(:save).and_return(false)
-      expect(mock_mapper).to receive(:errors).and_return(mock_errors)
-      expect(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
+      allow(DogMapper).to receive(:new).with(json, dog.id).and_return(mock_mapper)
+      allow(mock_mapper).to receive(:dog).and_return(dog)
+      allow(mock_mapper).to receive(:save).and_return(false)
+      allow(mock_mapper).to receive(:errors).and_return(mock_errors)
+      allow(controller).to receive(:failed_to_process).with(mock_errors).and_call_original
 
       post :update, json, { :id => 123 }
 
