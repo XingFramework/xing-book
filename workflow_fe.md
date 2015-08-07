@@ -195,9 +195,10 @@ export class DogsState {
 @State('root.inner.dogs.show')
 export class DogsShowState {
   constructor() {
-    // watch out for url collisions.
+    // watch out for url collisions
     this.url = "/:id"
     this.controller = "DogShowCtrl";
+    // this replaces $scope
     this.controllerAs = "dogShow";
     this.templateUrl = "dogs/dogs-show.tpl.html";
   }
@@ -208,7 +209,6 @@ export class DogsShowState {
   }
 }
 ```
-
 
 Add the new states to the module file! 
 
