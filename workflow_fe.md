@@ -272,7 +272,7 @@ export class DogCtrl {
   
   // what happens when this function gets called?
   edit() {
-    $state.go('root.inner.dogs.edit');
+    this.$state.go('root.inner.dogs.edit');
   }
 }
 ```
