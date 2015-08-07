@@ -200,7 +200,7 @@ export class DogsShowState {
   constructor() {
     // watch out for url collisions
     this.url = "/:id"
-    this.controller = "DogShowCtrl";
+    this.controller = "DogCtrl";
     // this replaces $scope
     this.controllerAs = "dogShow";
     this.templateUrl = "dogs/dogs-show.tpl.html";
@@ -235,10 +235,45 @@ Controllers contain business logic behind the application to decorate the contro
 
 TDD!
 
+###### frontend/test/dogs/dogsControllers.js
 ```javascript
-// linux users beware of case sensitivity in the file path!!!!
-import {DogShowCtrl} from "../../src/app/dogs/dogsControllers.js"
+// beware of case sensitivity in the file path!!!! 
+// yes, you need to add .js to the file name
+import {DogCtrl} from "../../src/app/dogs/dogsControllers.js"
 
-describe(
+describe("DogCtrl", function() {
+  var dogCtrl, mockState, mockDog
+  
+  beforeEach(function() {
+    mockState = jasmine.createSpyObj('mockState', ["go"]);
+    mockDog = "mockBuddy";
+    
+    dogCtrl = new dogCtrl(mockState, mockDog);
+  });
+  
+  it("should assign dog on the scope", function() {
+    expect(dogCtrl.dog).toEqual("mockBuddy");
+  });
+  
+  it("should go to dogs edit state", function() {
+    dogCtrl.edit();
+    expect(mockState).toHaveBeenCalledWith('root.inner.dogs.edit');
+  });
+});
+```
+###### frontend/src/app/dogs/dogsControllers.js
+```javascript
+@Controller("DogCtrl", ['$state', 'dog'])
+export class DogCtrl {
+  constructor($state, dog) {
+    this.$state = $state;
+    this.dog = dog;
+  }
+  
+  // what happens when this function gets called?
+  edit() {
+    $state.go('root.inner.dogs.edit');
+  }
+}
 ```
 
