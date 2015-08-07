@@ -156,6 +156,22 @@ describe("DogsState", function() {
       expect(resolvedDog).toEqual(mockDog);
     });
   });
+  
+  describe("failed dog", function() {
+    beforeEach(function(done) {
+      badStateParams = {
+        id: undefined
+      }
+      dogsState.dog(mockResources, badStateParams).then((dog) => {
+        resolvedDog = dog;
+        done();
+      })
+    });
+
+    it("should resolve dog from the resources and stateParams", function () {
+      expect(resolvedDog).toEqual("mistake");
+    });
+  });
 
 });
 
@@ -163,6 +179,7 @@ describe("DogsState", function() {
 
 ###### frontend/src/app/dogs/dogsStates.js
 ```javascript
+// stateInjector is another awesome a1atscript import
 import {State, Resolve} from 'stateInjector';
 
 @State('root.inner.dogs')
