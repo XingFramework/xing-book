@@ -2,7 +2,7 @@
 
 This is a general guide to creating a feature in Xing in the frontend.
 
-In this example, we will be creating feature that allows a user to read or write Dogs to correspond with the API resource for Dogs we built in "The Xing Work Flow - Backend".
+In this example, we will be creating a feature that allows a user to read or write Dogs to correspond with the API resource for Dogs we built in "The Xing Work Flow - Backend".
 
 Some things to consider:
 * The frontend is its own MVC situation. We will have to set up a frontend resource to consume the backend API.
@@ -13,10 +13,13 @@ Some things to consider:
 1. [Feature Spec](#feature_spec)
 2. [Create a Directory](#directory)
 3. [Create a Module](#module)
-5. [States](#states)
-6. [Controller](#controller)
-7. [Template](#template)
-8. [Resource](#resource)
+4. [States](#states)
+5. [Controller](#controller)
+6. [Template](#template)
+7. [Resource](#resource)
+8. [Assets](#assets)
+9. [Styling](#styling)
+
 
 ### <a name="feature_spec"></a>Feature Spec
 
@@ -75,6 +78,8 @@ We'll need to create a Dog module. It will include all the files needed for the 
 
 ###### frontend/src/app/dogs/dogs.js
 ```javascript
+// a1atscript is a polyfill that Hannah wrote so that 
+// we can use more ES6/Angular2.-like syntax. It's awesome.
 import {Module} from "a1atscript";
 
 var dogs = new Module('dog', []);
