@@ -185,7 +185,6 @@ import {State, Resolve} from 'stateInjector';
 @State('root.inner.dogs')
 export class DogsState {
   constructor() {
-    super();
     this.url = "^/dogs";
     this.template = "<ui-view lrd-state-attrs></ui-view>";
     this.abstract = true;
@@ -195,7 +194,7 @@ export class DogsState {
 @State('root.inner.dogs.show')
 export class DogsShowState {
   constructor() {
-    super();
+    // watch out for url collisions.
     this.url = "/:id"
     this.controller = "DogShowCtrl";
     this.controllerAs = "dogShow";
@@ -208,6 +207,7 @@ export class DogsShowState {
   }
 }
 ```
+
 
 Add the new states to the module file! 
 
