@@ -32,7 +32,7 @@ Outlined here are the files that you would need to touch to produce an outgoing 
 
 Let's first consider the resource that you are trying to build for the Frontend to consume. For a show resource, it would look something like this:
 
-```
+```ruby
 {
   links: {
     self: "/dogs/1"
@@ -51,7 +51,7 @@ Let's first consider the resource that you are trying to build for the Frontend 
 Now that we know what we'd like to receive when we're trying to get information on a specific dog, we should write a request spec. The request spec tests that when we hit "/dogs/:id" we will get a response that matches the show resource we imagined above.
 
 
-```
+```ruby
 require 'spec_helper'
 
 describe "dogs#show", :type => :request do
@@ -76,7 +76,7 @@ end
 #### <a name="oroutingspec"></a>Routing Spec
 ###### backend/spec/routing/dogs_routing_spec.rb
 
-```
+```ruby
 require 'spec_helper'
 
 describe DogsController do
@@ -92,14 +92,14 @@ end
 ###### backend/config/routes.rb
 
 Add the following line to your routes file:
-```
+```ruby 
 resources :dogs, :only => [:show]
 ```
 
 #### <a name="ocontrollerspec"></a>Controller Spec
 ###### backend/spec/controllers/dogs_controller.rb
 
-```
+```ruby
 require 'spec_helper'
 
 describe DogsController do
