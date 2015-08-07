@@ -277,7 +277,7 @@ export class DogCtrl {
 }
 ```
 ### <a name="template"></a>Template
-Templates handle all normal Angular directives, as well as any custom directives and components you make. Please, for the love of ʕ •ᴥ•ʔ, structure your crazy Angular html so that it's readable. 
+Templates handle all normal Angular directives, as well as any custom directives and components you make. Please, for the love of ʕ •ᴥ•ʔ, format your crazy Angular html so that it's readable. 
 
 Note that you will need to use `ui-sref` rather than `href` to create links to a state within the application.
 ###### frontend/src/app/dogs/dogs-show.tpl.html
