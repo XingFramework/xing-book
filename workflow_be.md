@@ -134,7 +134,7 @@ end
 Note that our controller descends from JsonController. 
 
 For outgoing resources, the controller will render JSON that is output by its serializer (DogSerializer). We'll be looking at those shortly.
-```
+```ruby
 class DogsController < JsonController
 
   # GET /dogs/:id
@@ -155,7 +155,7 @@ You'll need to create these as well. This part is pretty much the same as you've
 
 Serializers are where we construct our outgoing resources. It will take AR models and build JSON according to the instructions we write!
 
-```
+```ruby
 require 'spec_helper'
 
 describe DogSerializer, :type => :serializer do
@@ -183,7 +183,7 @@ end
 ###### backend/serializers/dog_serializer.rb
 
 Note that the serializer descends from BaseSerializer. 
-```
+```ruby
 class DogSerializer < BaseSerializer
   attributes :name, :age, :breed
 
@@ -219,7 +219,7 @@ Outlined here are the files that you would need to touch to **receive** JSON and
 
 Create/Update resources will have a similar structure to the show:
 
-```
+```ruby
 # GET /dogs/:id
 {
   links: {
@@ -265,7 +265,7 @@ For the rest of the example, we will be working with a PUT resource.
 Now that we know what we are receiving from the Frontend, we should write a request spec. The request spec tests that when we hit "/dogs/:id" with a JSON body, we will either successfully update a record or process a failed update correctly.
 
 
-```
+```ruby
 require 'spec_helper'
 
 describe "dogs#update", :type => :request do
@@ -335,7 +335,7 @@ end
 
 Add the update route to the Routing Spec.
 
-```
+```ruby
 require 'spec_helper'
 
 describe DogsController do
@@ -355,7 +355,7 @@ end
 ###### backend/config/routes.rb
 
 Add update to the dogs route:
-```
+```ruby
 resources :dogs, :only => [:show, :update]
 ```
 
@@ -364,7 +364,7 @@ resources :dogs, :only => [:show, :update]
 
 Test the update method in your controller spec. Notice that we use plenty of mocks, and that we now require a Mapper!
 
-```
+```ruby
 require 'spec_helper'
 
 describe DogsController do
@@ -485,7 +485,7 @@ or
 
 OK! 
 
-```
+```ruby
 require 'spec_helper'
 
 describe DogMapper, :type => :mapper do
@@ -560,7 +560,7 @@ end
 Note that the Mapper descends from HypermediaJSONMapper. HJM has quite a few methods in it and it would be beneficial to give it some study to figure out how it works. 
 
 The following example is a deceptively simple case. The Mapper is often the most difficult part of a Backend Resource, especially if the resource has nested models and complicated validations. Don't be afraid to ask for help here!
-```
+```ruby
 class DogMapper < HypermediaJSONMapper
   alias dog record
   alias dog= record=
