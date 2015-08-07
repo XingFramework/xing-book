@@ -1,4 +1,11 @@
-# The Xing Work Flow - Tools
+# The Xing Work Flow - Setup
+
+This is a general guide to some of the tools and commands that Xing utilizes, as well as some tips and tricks to developing in Xing.
+
+## Getting Started
+1. [Redis](#redis)
+2. [Bundle](#bundle)
+3. [rake-develop
 
 command line
 redis
