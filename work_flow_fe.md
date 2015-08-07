@@ -8,7 +8,7 @@ Some things to consider:
 * The frontend is its own MVC situation. We will have to set up a frontend resource to consume the backend API.
 * We have a divergence of code bases for Xing between different projects. For documentation purposes, we will be describing the most recent syntax and structure.
 
-## Setting up the Frontend
+## Building a Frontend Feature
 
 1. [Feature Spec](#feature_spec)
 2. [Resource](#resource)
