@@ -86,10 +86,11 @@ var dogs = new Module('dog', []);
 
 export default dogs;
 ```
+Checkout a1atscript [here](https://github.com/hannahhoward/a1atscript).
 
 ###<a name="states"></a>States
 
-States are mildly analogous to routes in the backend. It's in the States that we make set up our user urls and make resources available to the component.
+States are mildly analogous to routes in the backend. It's in the States that we set up our user urls and make resources available to the component.
 
 Firstly, we're going to need tests! You can learn more about testing in Jasmine [here](http://jasmine.github.io/2.0/introduction.html).
 
