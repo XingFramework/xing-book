@@ -82,9 +82,9 @@ We'll need to create a Dog module. It will include all the files needed for the 
 // we can use more ES6/Angular2.-like syntax. It's awesome.
 import {Module} from "a1atscript";
 
-var dogs = new Module('dog', []);
+var Dogs = new Module('dog', []);
 
-export default dogs;
+export default Dogs;
 ```
 Checkout a1atscript [here](https://github.com/hannahhoward/a1atscript).
 
@@ -217,11 +217,11 @@ Add the new states to the module file!
 import {Module} from "a1atscript";
 import * as States from './dogsStates.js';
 
-var dogs = new Module('dog', [
+var Dogs = new Module('dog', [
   States
 ]);
 
-export default dogs;
+export default Dogs;
 ```
 
 Using `import * as States` brings in all the classes exported by `dogsStates.js`.
