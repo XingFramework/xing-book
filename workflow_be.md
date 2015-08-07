@@ -118,8 +118,8 @@ describe DogsController do
   describe "responding to GET show" do
 
     it "should find the dog and pass it to a serializer" do
-      expect(Dog).to receive(:find).with(dog.id).and_return(dog)
-      expect(DogSerializer).to receive(:new).with(dog).and_return(serializer)
+      allow(Dog).to receive(:find).with(dog.id).and_return(dog)
+      allow(DogSerializer).to receive(:new).with(dog).and_return(serializer)
       expect(controller).to receive(:render).
         with(:json => serializer).
         and_call_original
