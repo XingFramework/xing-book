@@ -289,7 +289,7 @@ Assets go in this following dir. Please try and keep these organized.
 ###### frontend/src/assets
 
 ### <a name="styling"></a>Styling
-Your .sass files are stored here. Please, for more love of ʕ •ᴥ•ʔ, keep these sense-making. There are framework, partial, and state dirs. We will eventually complete a separate doc on how we should be structuring our .css files so they are less of a pain to work with.
+Your .sass files are stored here. Please, for more love of ʕ •ᴥ•ʔ, keep these sense-making. There are framework, partial, and state dirs. We will eventually complete a separate doc on how we should be structuring our CSS so they are less of a pain to work with.
 
 Also, Don't touch framework. Just. don't.
 ###### frontend/src/styles
