@@ -87,12 +87,12 @@ function setupResources(relayerProvider) {
 }
 
 // setup an a1atscript module
-var dogAppResourceLayer = new Module('dogAppRL', [RL, setupResources])
+var DogAppResourceLayer = new Module('DogAppRL', [RL, setupResources])
 
-export default dogAppResourceLayer;
+export default DogAppResourceLayer;
 ```
 
-
+You then add this file to your [app.js](#app) file. Chances are, it's already been done for you, you lucky dog, you.
 
 ### <a name="directory"></a>Create a Directory
 
@@ -129,6 +129,22 @@ var Dogs = new Module('dog', []);
 export default Dogs;
 ```
 Checkout a1atscript [here](https://github.com/hannahhoward/a1atscript).
+###<a name="app"></a>App.js
+You will need to add your new module to App.js for it to register in the application.
+```javascript
+import {appName} from 'config';\
+import DogAppRL from 'common/resources/Dog.js';
+...
+// add your import to the end of the list of existing imports
+import Dogs from './dogs/dogs.js';
+
+var app = new Module(appName, [
+  ...
+  DogAppRL,
+  // add your module name here
+  Dogs
+])
+```
 
 ###<a name="states"></a>States
 
