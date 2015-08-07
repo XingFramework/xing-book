@@ -14,11 +14,12 @@ Some things to consider:
 2. [Resource](#resource)
 3. [Create a Directory](#directory)
 4. [Create a Module](#module)
-5. [States](#states)
-6. [Controllers](#controllers)
-7. [Template](#template)
-8. [Assets](#assets)
-9. [Styling](#styling)
+5. [App.js](#app)
+6. [States](#states)
+7. [Controllers](#controllers)
+8. [Template](#template)
+9. [Assets](#assets)
+10. [Styling](#styling)
 
 
 ### <a name="feature_spec"></a>Feature Spec
@@ -53,6 +54,44 @@ end
 ```
 
 ### <a name="resource"></a>Create a Resource
+We will be looking at how to create a resource using [Relayer](https://github.com/LRDesign/relayer). This is the frontend resource object that talks to our backend API. 
+###### frontend/common/resources/Dog.js
+```javascript
+import RL from "relayer";
+import {Module, Config} from 'a1atscript';
+
+class Dog extends RL.Resource {
+}
+
+RL.Describe(Dog, (desc) => {
+  desc.property("name", "");
+  desc.property("breed", "");
+  desc.property("age", "");
+  // remember the lowerCamelCase!
+  desc.property("favoriteToy", "");
+});
+
+class Resources extends RL.Resource {
+
+}
+
+RL.Describe(Resources, (desc) => {
+  var dogs = desc.hasList("dogs", Dog, []);
+  dogs.linkTemplate = "dogs";
+  dogs.canCreate = true;
+})
+
+@Config('relayerProvider')
+function setupResources(relayerProvider) {
+  relayerProvider.createApi("resources", Resources, "http://www.example.com/resources")
+}
+
+// setup an a1atscript module
+var dogAppResourceLayer = new Module('dogAppRL', [RL, setupResources])
+
+export default dogAppResourceLayer;
+```
+
 
 
 ### <a name="directory"></a>Create a Directory
