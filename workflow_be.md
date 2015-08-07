@@ -441,7 +441,7 @@ end
 An update controller is probably about as complicated of a controller as you will write. 
 
 It uses Mapper to process the JSON and params to update the record. If it is a successful update, it then uses a Serializer to respond with the updated record in JSON format.
-```
+```ruby
 class DogsController < JsonController
 
   # GET /dogs/:id
