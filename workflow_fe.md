@@ -11,12 +11,12 @@ Some things to consider:
 ## Setting up the Frontend
 
 1. [Feature Spec](#feature_spec)
-2. [Create a Directory](#directory)
-3. [Create a Module](#module)
-4. [States](#states)
-5. [Controller](#controller)
-6. [Template](#template)
-7. [Resource](#resource)
+2. [Resource](#resource)
+3. [Create a Directory](#directory)
+4. [Create a Module](#module)
+5. [States](#states)
+6. [Controllers](#controllers)
+7. [Template](#template)
 8. [Assets](#assets)
 9. [Styling](#styling)
 
@@ -51,6 +51,9 @@ steps "User sees Dog show page", :js => true, :size => :desktop, :type => :featu
   end
 end
 ```
+
+### <a name="resource"></a>Create a Resource
+
 
 ### <a name="directory"></a>Create a Directory
 
@@ -227,6 +230,15 @@ export default Dogs;
 Using `import * as States` brings in all the classes exported by `dogsStates.js`.
 
 
+### <a name="controllers"></a>Controllers
+Controllers contain business logic behind the application to decorate the controllerAs object with functions and values.
 
+TDD!
 
+```javascript
+// linux users beware of case sensitivity in the file path!!!!
+import {DogShowCtrl} from "../../src/app/dogs/dogsControllers.js"
+
+describe(
+```
 
