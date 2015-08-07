@@ -90,7 +90,12 @@ Checkout a1atscript [here](https://github.com/hannahhoward/a1atscript).
 
 ###<a name="states"></a>States
 
-States are mildly analogous to routes in the backend. It's in the States that we set up our user urls and make resources available to the component.
+States are mildly analogous to routes in the backend. According to  [ui-router](#https://github.com/angular-ui/ui-router/wiki):
+* A state corresponds to a "place" in the application in terms of the overall UI and navigation.
+* A state describes (via the controller / template / view properties) what the UI looks like and does at that place.
+* States often have things in common, and the primary way of factoring out these commonalities in this model is via the state hierarchy, i.e. parent/child states aka nested states.
+
+It's in the States that we set up our user urls and make resources available to the component.
 
 Firstly, we're going to need tests! You can learn more about testing in Jasmine [here](http://jasmine.github.io/2.0/introduction.html).
 
