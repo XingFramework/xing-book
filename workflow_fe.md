@@ -281,3 +281,4 @@ Templates handle all normal Angular directives, as well as any custom directives
 
 Note that you will need to use `ui-sref` rather than `href` to create links to a state within the application.
 ###### frontend/src/app/dogs/dogs-show.tpl.html
+ʕ •ᴥ•ʔ 
