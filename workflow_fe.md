@@ -277,8 +277,19 @@ export class DogCtrl {
 }
 ```
 ### <a name="template"></a>Template
-Templates handle all normal Angular directives, as well as any custom directives and components you make. Please, for the love of 
+Templates handle all normal Angular directives, as well as any custom directives and components you make. Please, for the love of ʕ •ᴥ•ʔ, structure your crazy Angular html so that it's readable. 
 
 Note that you will need to use `ui-sref` rather than `href` to create links to a state within the application.
 ###### frontend/src/app/dogs/dogs-show.tpl.html
-ʕ •ᴥ•ʔ 
+```javascript
+seriously. not going to include a template example.
+```
+### <a name="assets"></a>Assets
+Assets go in this following dir. Please try and keep these organized.
+###### frontend/src/assets
+
+### <a name="styling"></a>Styling
+Your .sass files are stored here. Please, for more love of ʕ •ᴥ•ʔ, keep these sense-making. There are framework, partial, and state dirs. We will eventually complete a separate doc on how we should be structuring our .css files so they are less of a pain to work with.
+
+Also, Don't touch framework. Just. don't.
+###### frontend/src/styles
