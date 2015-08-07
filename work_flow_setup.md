@@ -1,18 +1,36 @@
 # The Xing Work Flow - Setup
+Welcome to Xing!! We hope you enjoy your visit.
 
-This is a general guide to some of the tools and commands that Xing utilizes, as well as some tips and tricks to developing in Xing.
+This is a general guide to getting a Xing project up and running, as well as some tips and tricks for using Xing.
 
-## Getting Started
+## Let's Get Started
 1. [Redis](#redis)
-2. [Bundle](#bundle)
-3. [rake-develop
+2. [tmux](#tmux)
+3. [Initial Setup](#setup)
+4. [rake-develop](#rake)
 
-command line
-redis
-http://redis.io/topics/quickstart
-redis-server
-auto-start
-bundle EVERYWHERE!!! (still necessary?)
+### <a name="redis"></a>Redis
+You will need [redis](http://redis.io/) to use Xing.
+If you don't already have it installed:
+* If you use homebrew ```brew install redis```.
+* If not, refer here ... http://redis.io/topics/quickstart
+
+If you do not setup redis to auto-start, you will have to make sure you have redis running, using ```redis-server``` whenever you want to run a Xing project. 
+
+### <a name="tmux"></a>tmux
+You will also need [tmux](https://tmux.github.io/).
+If you don't already have it installed:
+* If you use homebrew ```brew install tmux```.
+* If not, refer here ... https://tmux.github.io/
+
+### <a name="setup"></a>Initial Setup
+Once you have redis and tmux installed, time to clone the project.
+After you clone the project, you will probably need to:
+* Copy yml.example files
+* Then bundle at the root of the project, in the frontend directory and in the backend directory.
+* From the backend, do the typical rails setup, i.e. run rake db:create, db:migrate, seeds and sample data.
+
+
 rake develop
 Evan wrote a dependency checker
 karma test runner, auto-runs tests
