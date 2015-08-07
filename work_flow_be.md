@@ -1,4 +1,4 @@
-# The Xing Work Flow
+# The Xing Work Flow - Backend
 
 This is a general guide to creating a feature in Xing from the Backend to the Frontend (coming soon). 
 
