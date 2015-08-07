@@ -176,7 +176,7 @@ describe("DogsState", function() {
 });
 
 ```
-
+You are seriously going to need to read the [ui-router wiki](https://github.com/angular-ui/ui-router/wiki). It will explain the constructor properties and resolves used below. Our syntax is different (and better) than the syntax you will see in the ui-router wiki, but you will be able to draw the correct similitudes.
 ###### frontend/src/app/dogs/dogsStates.js
 ```javascript
 // stateInjector is another awesome a1atscript import
@@ -186,7 +186,8 @@ import {State, Resolve} from 'stateInjector';
 export class DogsState {
   constructor() {
     this.url = "^/dogs";
-    this.template = "<ui-view lrd-state-attrs></ui-view>";
+    // lrd-state-attrs is a Xing directive that will help you with styling. 
+    this.template = "<ui-view lrd-state-attrs></ui-view>"; 
     this.abstract = true;
   }
 }
