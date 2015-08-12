@@ -56,6 +56,7 @@ end
 ### <a name="resource"></a>Create a Resource
 We will be looking at how to create a resource using [Relayer](https://github.com/LRDesign/relayer). This is the frontend resource object that talks to our backend API. 
 ###### frontend/common/resources/Dog.js
+This file defines the resource for a single dog.
 ```javascript
 import RL from "relayer";
 import {Module, Config} from 'a1atscript';
@@ -73,6 +74,7 @@ RL.Describe(Dog, (desc) => {
 ```
 
 ###### frontend/common/resources/MyApp.js
+This file defines the root-level "resources" array for the whole application. Every Xing app must define a root level resource list of all resources.
 ```javascript
 class Resources extends RL.Resource {
 
