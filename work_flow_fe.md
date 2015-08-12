@@ -28,7 +28,7 @@ We all do TDD, right? This is obviously where you should be starting.
 
 Just as the request spec is the integration test for the Rails backend API, the feature spec is the integration test for the frontend. Yes, it lives in the backend with the backend specs. Get over it.
 
-###### backend/spec/features/user_can_see_dog_info_spec.rb
+###### backend/spec/features/user_can_see_dog_info.rb
 ```ruby
 require 'spec_helper'
 
@@ -54,9 +54,8 @@ end
 ```
 
 ### <a name="resource"></a>Create a Resource
-We will be looking at how to create a resource using [Relayer](https://github.com/LRDesign/relayer). This is the frontend resource object that talks to our backend API. 
+We will be looking at how to create a resource using Relayer [https://github.com/LRDesign/relayer](https://github.com/LRDesign/relayer). This is the frontend resource object that talks to our backend API. 
 ###### frontend/common/resources/Dog.js
-This file defines the resource for a single dog.
 ```javascript
 import RL from "relayer";
 import {Module, Config} from 'a1atscript';
@@ -71,11 +70,7 @@ RL.Describe(Dog, (desc) => {
   // remember the lowerCamelCase!
   desc.property("favoriteToy", "");
 });
-```
 
-###### frontend/common/resources/MyApp.js
-This file defines the root-level "resources" array for the whole application. Every Xing app must define a root level resource list of all resources.
-```javascript
 class Resources extends RL.Resource {
 
 }
@@ -133,7 +128,8 @@ var Dogs = new Module('dog', []);
 
 export default Dogs;
 ```
-Checkout a1atscript [here](https://github.com/hannahhoward/a1atscript).
+Checkout a1atscript [https://github.com/hannahhoward/a1atscript](https://github.com/hannahhoward/a1atscript).
+
 ###<a name="app"></a>App.js
 You will need to add your new module to App.js for it to register in the application.
 ```javascript
@@ -153,14 +149,14 @@ var app = new Module(appName, [
 
 ###<a name="states"></a>States
 
-States are mildly analogous to routes in the backend. According to  [ui-router](#https://github.com/angular-ui/ui-router/wiki):
+States are mildly analogous to routes in the backend. According to ui-router  [https://github.com/angular-ui/ui-router/wiki](https://github.com/angular-ui/ui-router/wiki):
 * A state corresponds to a "place" in the application in terms of the overall UI and navigation.
 * A state describes (via the controller / template / view properties) what the UI looks like and does at that place.
 * States often have things in common, and the primary way of factoring out these commonalities in this model is via the state hierarchy, i.e. parent/child states aka nested states.
 
 It's in the States that we set up our user urls and make resources available to the component.
 
-Firstly, we're going to need tests! You can learn more about testing in Jasmine [here](http://jasmine.github.io/2.0/introduction.html).
+Firstly, we're going to need tests! You can learn more about testing in Jasmine [http://jasmine.github.io/2.0/introduction.html](http://jasmine.github.io/2.0/introduction.html).
 
 ###### frontend/test/dogs/dogsStates.js
 ```javascript
@@ -239,7 +235,7 @@ describe("DogsState", function() {
 });
 
 ```
-You are seriously going to need to read the [ui-router wiki](https://github.com/angular-ui/ui-router/wiki). It will explain the constructor properties and resolves used below. Our syntax is different (and better) than the syntax you will see in the ui-router wiki, but you will be able to draw the correct similitudes.
+You are seriously going to need to read the ui-router wiki [https://github.com/angular-ui/ui-router/wiki](https://github.com/angular-ui/ui-router/wiki). It will explain the constructor properties and resolves used below. Our syntax is different (and better) than the syntax you will see in the ui-router wiki, but you will be able to draw the correct similitudes.
 ###### frontend/src/app/dogs/dogsStates.js
 ```javascript
 // stateInjector is another awesome a1atscript import
