@@ -28,7 +28,7 @@ We all do TDD, right? This is obviously where you should be starting.
 
 Just as the request spec is the integration test for the Rails backend API, the feature spec is the integration test for the frontend. Yes, it lives in the backend with the backend specs. Get over it.
 
-###### backend/spec/features/user_can_see_dog_info.rb
+###### backend/spec/features/user_can_see_dog_info_spec.rb
 ```ruby
 require 'spec_helper'
 
