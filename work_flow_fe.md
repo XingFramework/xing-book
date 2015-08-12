@@ -304,7 +304,7 @@ describe("DogCtrl", function() {
     mockState = jasmine.createSpyObj('mockState', ["go"]);
     mockDog = "mockBuddy";
     
-    dogCtrl = new dogCtrl(mockState, mockDog);
+    dogCtrl = new DogCtrl(mockState, mockDog);
   });
   
   it("should assign dog on the scope", function() {
