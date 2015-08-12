@@ -70,7 +70,10 @@ RL.Describe(Dog, (desc) => {
   // remember the lowerCamelCase!
   desc.property("favoriteToy", "");
 });
+```
 
+###### frontend/common/resources/MyApp.js
+```javascript
 class Resources extends RL.Resource {
 
 }
