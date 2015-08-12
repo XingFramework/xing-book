@@ -238,7 +238,6 @@ describe("DogsState", function() {
 You are seriously going to need to read the ui-router wiki [https://github.com/angular-ui/ui-router/wiki](https://github.com/angular-ui/ui-router/wiki). It will explain the constructor properties and resolves used below. Our syntax is different (and better) than the syntax you will see in the ui-router wiki, but you will be able to draw the correct similitudes.
 ###### frontend/src/app/dogs/dogsStates.js
 ```javascript
-// stateInjector is another awesome a1atscript import
 import {State, Resolve} from 'stateInjector';
 
 @State('root.inner.dogs')
