@@ -1,10 +1,6 @@
-# Chapter 1
-
-## Promises and testing
+# Promises and testing
 
 ```javascript
-
-
       // JDL: this promise setup has been refactored to a smoother pattern for
       // setting up promises for tests and working with Promises in general
       demoQuestion.complete.then((question) => {
@@ -20,9 +16,12 @@
         //
         screenerOptions = values;          // (for easy use in tests below)
 
-
-      }).then((resolved) => { done(); },   // this makes sure that, no matter
-              (rejected) => { done(); });  //   if this all works or not, we call done() at the end.
+      // this makes sure that, no matter
+      //   if this all works or not, we call done() at the end.
+      }).then((resolved) => { done(); },
+              (rejected) => {
+                expect(rejected).toBe(NaN); //if there's an error, it'll be printed
+                done(); });
 
 ```
 
