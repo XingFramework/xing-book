@@ -132,6 +132,8 @@ Checkout a1atscript [https://github.com/hannahhoward/a1atscript](https://github.
 
 ###<a name="app"></a>App.js
 You will need to add your new module to App.js for it to register in the application.
+
+###### frontend/src/app/app.js
 ```javascript
 import {appName} from 'config';\
 import DogAppRL from 'common/resources/Dog.js';
