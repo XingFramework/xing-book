@@ -307,9 +307,9 @@ describe "dogs#update", :type => :request do
         }.to_json
       end
 
-      describe "PUT organizations/:id" do
+      describe "PUT dogs/:id" do
         it "is a 422 with an error in response body" do
-          authenticated_json_put admin, "organizations/#{organization.id}", invalid_json
+          json_put "dogs/#{dog.id}", invalid_json
 
           expect(response.status).to be(422)
           expect(response.body).to be_json_eql("\"can't be blank\"").at_path("data/name/message")
