@@ -17,7 +17,6 @@ Outlined here are the files that you would need to touch to produce an outgoing 
 
 * [API Doc](#oapidoc)
 * [Request Spec](#orequestspec)
-* [Routing Spec](#oroutingspec)
 * [Routes](#oroutes)
 * [Controller Spec](#ocontrollerspec)
 * [Controller](#ocontroller)
@@ -73,21 +72,6 @@ describe "dogs#show", :type => :request do
 end
 ```
 
-#### <a name="oroutingspec"></a>Routing Spec
-###### backend/spec/routing/dogs_routing_spec.rb
-
-```ruby
-require 'spec_helper'
-
-describe DogsController do
-  describe "routing" do
-    it "recognizes and generates #show" do
-      expect({ :get => "/dogs/1" }).to route_to(:controller => "dogs", :action => "show", :id => "1")
-    end
-end
-
-```
-
 #### <a name="oroutes"></a>Routes
 ###### backend/config/routes.rb
 
@@ -131,11 +115,11 @@ end
 ```
 
 #### <a name="ocontroller"></a>Controller
-Note that our controller descends from JsonController. 
+Note that our controller descends from Xing::Controllers::Base. This comes from the xing-backend gem that we should be including in our Gemfile. Check out the code at [https://github.com/LRDesign/xing-backend](https://github.com/LRDesign/xing-backend). 
 
 For outgoing resources, the controller will render JSON that is output by its serializer (DogSerializer). We'll be looking at those shortly.
 ```ruby
-class DogsController < JsonController
+class DogsController < Xing::Controllers::Base
 
   # GET /dogs/:id
   def show
@@ -182,7 +166,14 @@ end
 #### <a name="oserializer"></a>Serializer
 ###### backend/serializers/dog_serializer.rb
 
-Note that the serializer descends from BaseSerializer. 
+Note that the serializer descends from Xing::Serializers::Base. Again, this comes from the xing-backend gem. [https://github.com/LRDesign/xing-backend](https://github.com/LRDesign/xing-backend)
+
+When you find that you need to nest serializers, the following classes will come in handy:
+* Xing::Serializers::List
+* Xing::Serializers::PagedList
+
+Serializing and mapping nested resources are another article entirely, but know that these classes exist. 
+
 ```ruby
 class DogSerializer < BaseSerializer
   attributes :name, :age, :breed
@@ -202,7 +193,6 @@ Outlined here are the files that you would need to touch to **receive** JSON and
 
 * [API Doc](#iapidoc)
 * [Request Spec](#irequestspec)
-* [Routing Spec](#iroutingspec)
 * [Routes](#iroutes)
 * [Controller Spec](#icontrollerspec)
 * [Controller](#icontroller)
@@ -330,27 +320,6 @@ describe "dogs#update", :type => :request do
 end
 ```
 
-#### <a name="iroutingspec"></a>Routing Spec
-###### backend/spec/routing/dogs_routing_spec.rb
-
-Add the update route to the Routing Spec.
-
-```ruby
-require 'spec_helper'
-
-describe DogsController do
-  describe "routing" do
-    it "recognizes and generates #show" do
-      expect({ :get => "/dogs/1" }).to route_to(:controller => "dogs", :action => "show", :id => "1")
-    end
-    
-    it "recognizes and generates #update" do
-      expect({ :put => "/dogs/1" }).to route_to(:controller => "dogs", :action => "update", :id => "1")
-    end
-end
-
-```
-
 #### <a name="iroutes"></a>Routes
 ###### backend/config/routes.rb
 
@@ -442,7 +411,7 @@ An update controller is probably about as complicated of a controller as you wil
 
 It uses Mapper to process the JSON and params to update the record. If it is a successful update, it then uses a Serializer to respond with the updated record in JSON format.
 ```ruby
-class DogsController < JsonController
+class DogsController < Xing::Controllers::Base
 
   # GET /dogs/:id
   def show
@@ -557,11 +526,17 @@ end
 #### <a name="imapper"></a>Mapper
 ###### /backend/mappers/dog_mapper.rb
 
-Note that the Mapper descends from HypermediaJSONMapper. HJM has quite a few methods in it and it would be beneficial to give it some study to figure out how it works. 
+Note that the Mapper descends from Xing::Mappers::Base. Xing::Mappers::Base has quite a few methods in it and it would be beneficial to give it some study to figure out how it works. 
 
-The following example is a deceptively simple case. The Mapper is often the most difficult part of a Backend Resource, especially if the resource has nested models and complicated validations. Don't be afraid to ask for help here!
+The following example is a deceptively simple case. The Mapper is often the most difficult part of a Backend Resource, especially if the resource has nested models and complicated validations. 
+
+If you find yourself needing to map lists back to the database, the following classes will come in handy:
+* Xing::Builders::ListBuilder
+* Xing::Builders::OrderedListBuilder
+
+One day, we'll get around to writing docs on serializing and mapping nested resources. Until then, don't be afraid to ask for help!
 ```ruby
-class DogMapper < HypermediaJSONMapper
+class DogMapper < Xing::Mappers::Base
   alias dog record
   alias dog= record=
 
