@@ -175,7 +175,7 @@ When you find that you need to nest serializers, the following classes will come
 Serializing and mapping nested resources are another article entirely, but know that these classes exist. 
 
 ```ruby
-class DogSerializer < BaseSerializer
+class DogSerializer < Xing::Serializers::Base
   attributes :name, :age, :breed
 
   def links
