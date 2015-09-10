@@ -16,8 +16,10 @@ Run `rake develop` in the root dir, and `npm shrinkwrap --save-dev` in the front
 
 You may or may not have to do a forced reload `cmd+shift+r`. I've certainly had to, for reasons I don't totally understand.
 
-## Example
+## Example (for angular modules)
 Let's say you're trying to install the imaginary npm package lrdAwesomeFortOffice. You go to npmjs.com and see that the registered name is lrd-awesome-fort-office. 
+
+This example is for installing an angular module kind of node package. If you're installing a different sort of node package, please add another example and expand our docs!
 
 In the console:
 
