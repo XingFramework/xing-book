@@ -5,15 +5,66 @@ So you want to install an npm package? If you've checked with your project lead 
 While in the frontend dir, run the following commands:
 * `npm prune`
 * `npm cache clean`
-* `npm install <package name>`
+* `npm install <package name> --save-dev`
 
 Then do these:
-* Add file path to build.config.js (for both js and css files as needed)
 * Add module to app.js
-* Add to frontend/package.json
+* Add file path to build.config.js (for both js and css files as needed)
+
 
 Run `rake develop` in the root dir, and `npm shrinkwrap --save-dev` in the frontend dir.
 
 You may or may not have to do a forced reload `cmd+shift+r`. I've certainly had to, for reasons I don't totally understand.
 
+## Example
+Let's say you're trying to install the imaginary npm package lrdAwesomeFortOffice. You go to npmjs.com and see that the registered name is lrd-awesome-fort-office. 
 
+In the console:
+
+```
+npm prune
+npm cache clean
+npm lrd-awesome-fort-office --save-dev
+```
+
+Go check frontend/package.json, you should see the package listed in the devDependencies. 
+
+Go to the frontend/node_modules dir and find the lrd-awesome-fort-office dir. There should be a file named lrd-awesome-fort-office.js where you can find the module name. Something like:
+
+```
+angular
+  .module('lrdAwesomeFortOffice', [])
+```
+
+Go to frontend/app.js. You will want to include the lrdAwesomeFortOffice module in the application. You'll need to put it in quotes. 
+
+```
+var app = new Module(appName, [
+'lrdAwesomeFortOffice'
+]
+```
+
+Next, go to build.config.js. In the vendor files section, add the js, css, and asset files you need. 
+
+```
+vendor_files: {
+    js: [
+      'node_modules/lrd-awesome-fort-office/lrd-awesome-fort-office.js'
+    ],
+    css: [
+      'node_modules/lrd-awesome-fort-office/lrd-awesome-fort-office.css'
+    ],
+    assets: []
+  },
+};
+```
+
+Go back to the console. Run:
+```
+rake develop
+```
+When that's done, run:
+```
+npm shrinkwrap --save-dev
+```
+Bam.
