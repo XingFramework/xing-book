@@ -12,7 +12,7 @@ Then do these:
 * Add file path to build.config.js (for both js and css files as needed)
 
 
-Run `rake develop` in the root dir, and `npm shrinkwrap --save-dev` in the frontend dir.
+Run `npm shrinkwrap --dev` in the frontend dir, and `rake develop` in the root dir. (In that order)
 
 You may or may not have to do a forced reload `cmd+shift+r`. I've certainly had to, for reasons I don't totally understand.
 
@@ -61,12 +61,12 @@ vendor_files: {
 };
 ```
 
-Go back to the console. Run:
+Go back to the console. In frontend dir, run:
+```
+npm shrinkwrap --dev
+```
+When that's done, in root dir run:
 ```
 rake develop
-```
-When that's done, run:
-```
-npm shrinkwrap --save-dev
 ```
 Bam.
