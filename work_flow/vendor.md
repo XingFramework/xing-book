@@ -1,6 +1,8 @@
 # The Xing Work Flow - Adding Vendor Files
 So you want to install an npm package? If you've checked with your project lead and got the green light, this is the general list of steps to take when installing an npm package in a Xing project.
 
+If you are running an npm install for the first time, these commands are not what you're looking for. You should check out the WorkFlow - Setup section.
+
 ## Steps
 While in the frontend dir, run the following commands:
 * `npm prune`
