@@ -5,6 +5,7 @@
   * [Fundamentals](concepts/fundamentals.md)
     * [REST](concepts/fundamentals/rest.md)
     * [HTTP](concepts/fundamentals/http.md)
+  * [Other Resources](other_resources.md)
   * [Backend](concepts/backend.md)
     * [Serializers](concepts/backend/serializers.md)
     * [Mappers](concepts/backend/mappers.md)
