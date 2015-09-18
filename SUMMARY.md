@@ -17,5 +17,6 @@
   * [Work Flow - Setup](work_flow/setup.md)
   * [Work Flow - Backend](work_flow/be.md)
   * [Work Flow - Frontend](work_flow/fe.md)
+  * [Work Flow - Add Vendor Files](work_flow/vendor.md)
 * [Pragmatic Advice](pragmatism.md)
   * [Debugging Tricky Javascript](pragmatism/js_debugging.md)
