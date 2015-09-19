@@ -20,3 +20,4 @@
   * [Work Flow - Add Vendor Files](work_flow/vendor.md)
 * [Pragmatic Advice](pragmatism.md)
   * [Debugging Tricky Javascript](pragmatism/js_debugging.md)
+  * [Outstanding Questions](pragmatism/outstanding_questions.md)
