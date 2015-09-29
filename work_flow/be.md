@@ -1,6 +1,6 @@
 # The Xing Work Flow - Backend
 
-This is a general guide to creating a feature in Xing from the Backend to the Frontend (coming soon). 
+This is a general guide to creating a feature in Xing from the Backend to the Frontend (coming soon).
 
 In this example, we will be creating feature that allows a user to read or write Dogs.
 
@@ -44,7 +44,7 @@ Let's first consider the resource that you are trying to build for the Frontend 
 }
 ```
 
-#### <a name="orequestspec"></a> Request Spec 
+#### <a name="orequestspec"></a> Request Spec
 ###### backend/spec/requests/dog_show_spec.rb
 
 Now that we know what we'd like to receive when we're trying to get information on a specific dog, we should write a request spec. The request spec tests that when we hit "/dogs/:id" we will get a response that matches the show resource we imagined above.
@@ -62,7 +62,7 @@ describe "dogs#show", :type => :request do
     it "shows page as json" do
       json_get "dogs/#{dog.id}"
 
-      expect(response).to be_success
+      expect(response.status).to eq(200)
       expect(response.body).to have_json_path('links/self')
       expect(response.body).to have_json_path('data/name')
       expect(response.body).to have_json_path('data/age')
@@ -76,7 +76,7 @@ end
 ###### backend/config/routes.rb
 
 Add the following line to your routes file:
-```ruby 
+```ruby
 resources :dogs, :only => [:show]
 ```
 
@@ -115,7 +115,7 @@ end
 ```
 
 #### <a name="ocontroller"></a>Controller
-Note that our controller descends from Xing::Controllers::Base. This comes from the xing-backend gem that we should be including in our Gemfile. Check out the code at [https://github.com/LRDesign/xing-backend](https://github.com/LRDesign/xing-backend). 
+Note that our controller descends from Xing::Controllers::Base. This comes from the xing-backend gem that we should be including in our Gemfile. Check out the code at [https://github.com/LRDesign/xing-backend](https://github.com/LRDesign/xing-backend).
 
 For outgoing resources, the controller will render JSON that is output by its serializer (DogSerializer). We'll be looking at those shortly.
 ```ruby
@@ -172,7 +172,7 @@ When you find that you need to nest serializers, the following classes will come
 * Xing::Serializers::List
 * Xing::Serializers::PagedList
 
-Serializing and mapping nested resources are another article entirely, but know that these classes exist. 
+Serializing and mapping nested resources are another article entirely, but know that these classes exist.
 
 ```ruby
 class DogSerializer < Xing::Serializers::Base
@@ -249,7 +249,7 @@ Note that the POST resource does not require a self link, but a PUT does require
 
 For the rest of the example, we will be working with a PUT resource.
 
-#### <a name="irequestspec"></a> Request Spec 
+#### <a name="irequestspec"></a> Request Spec
 ###### backend/spec/requests/dog_update_spec.rb
 
 Now that we know what we are receiving from the Frontend, we should write a request spec. The request spec tests that when we hit "/dogs/:id" with a JSON body, we will either successfully update a record or process a failed update correctly.
@@ -349,8 +349,8 @@ describe DogsController do
   let :json do
     { stuff: "like this", more: "like that" }.to_json
   end
-  
-  let :mock_mapper do 
+
+  let :mock_mapper do
     double(DogMapper)
   end
 
@@ -407,7 +407,7 @@ end
 ```
 
 #### <a name="icontroller"></a>Controller
-An update controller is probably about as complicated of a controller as you will write. 
+An update controller is probably about as complicated of a controller as you will write.
 
 It uses Mapper to process the JSON and params to update the record. If it is a successful update, it then uses a Serializer to respond with the updated record in JSON format.
 ```ruby
@@ -418,18 +418,18 @@ class DogsController < Xing::Controllers::Base
     dog = Dog.find(params[:id])
     render :json => DogSerializer.new(dog)
   end
-  
+
   #PUT /dogs/:id
   def update
     mapper = DogMapper.new(json_body, params[:id])
-    
+
     if mapper.save
       render :json => DogSerializer.new(mapper.dog)
     else
       failed_to_process(mapper.errors)
     end
   end
-  
+
 end
 ```
 
@@ -442,7 +442,7 @@ If you had already created a show resource, You have all these things already! I
 #### <a name="imapperspec"></a>Mapper Spec
 ###### /backend/spec/mappers/dog_mapper_spec.rb
 
-Here we test that our Mapper does what it is meant to do, which is to: 
+Here we test that our Mapper does what it is meant to do, which is to:
 * take JSON
 * break it down
 * map it to the corresponding Active Record Model(s)
@@ -452,7 +452,7 @@ Here we test that our Mapper does what it is meant to do, which is to:
 or
 * send meaningful error messages to the Frontend
 
-OK! 
+OK!
 
 ```ruby
 require 'spec_helper'
@@ -476,7 +476,7 @@ describe DogMapper, :type => :mapper do
   end
 
   let :invalid_data do
-    { 
+    {
       data: {
         name: nil
       }
@@ -526,9 +526,9 @@ end
 #### <a name="imapper"></a>Mapper
 ###### /backend/mappers/dog_mapper.rb
 
-Note that the Mapper descends from Xing::Mappers::Base. Xing::Mappers::Base has quite a few methods in it and it would be beneficial to give it some study to figure out how it works. 
+Note that the Mapper descends from Xing::Mappers::Base. Xing::Mappers::Base has quite a few methods in it and it would be beneficial to give it some study to figure out how it works.
 
-The following example is a deceptively simple case. The Mapper is often the most difficult part of a Backend Resource, especially if the resource has nested models and complicated validations. 
+The following example is a deceptively simple case. The Mapper is often the most difficult part of a Backend Resource, especially if the resource has nested models and complicated validations.
 
 If you find yourself needing to map lists back to the database, the following classes will come in handy:
 * Xing::Builders::ListBuilder
