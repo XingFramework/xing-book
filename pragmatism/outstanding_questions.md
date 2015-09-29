@@ -28,3 +28,7 @@ Maybe some of these become part of a FAQ? They'll certainly get links to the app
   recursive directives?  Examples:  `NavBar` and `LocationList`
 * In general, a list of all a1atscript annotations and their functionality,
   particularly as they relate to each other.
+* What rules do we use to arrange the frontend files? How does that interact
+  with the module loading configuration? Why must we repeat naming in the
+  frontend? e.g. Why is there src/app/consumers/signup/consumerSignupStates.js
+  as opposed to src/app/consumers/signup/states.js ?
