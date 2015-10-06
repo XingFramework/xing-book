@@ -59,5 +59,4 @@ Maybe some of these become part of a FAQ? They'll certainly get links to the app
 
 * Code coupling:  Validation ENUMs (for ```<select>``` options, e.g.) must be repeated in FE and BE, and must be kept in sync.
 * Code coupling: Strings in UX must be repeated in FE (templates) and feature specs.  Minor changes to labels, buttons, links etc. will break feature specs.
-
-
+* Karma attached browser frequently disconnects, requiring reload to get tests/builds working again. Also, tests often stall if the browser window is in the background so must frequently be manually focussed.
