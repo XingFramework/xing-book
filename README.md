@@ -1,7 +1,5 @@
-Logical Reality Design complete web app development toolkit and framework, with
-AngularJS front-end, Rails back-end, and creamy hypermedia JSON middle.
+# Welcome!
 
-It's really cool y'all, and everyone should use it. I think so, anyway.
+We're so excited you decided to try the Xing framework. In this book, we'll introduce you to the key concepts of Xing and give you a tour of the framework. We'll also layout the practical workflow for building features in a Xing application.
 
-This documentation is a group effort, and to date no really effort has been
-made to give it a unified "voice." So far, we kind of like it that way.
+The goal of Xing is simple: to make advanced web development as easy as possible. Are you ready to get started?
