@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+   * The Xing Origin Story
 * [Concepts](concepts.md)
    * [Fundamentals](concepts/fundamentals.md)
        * [REST](concepts/fundamentals/rest.md)
