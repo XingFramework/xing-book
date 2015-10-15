@@ -1,7 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-   * Welcome
 * [Concepts](concepts.md)
    * [Fundamentals](concepts/fundamentals.md)
        * [REST](concepts/fundamentals/rest.md)
