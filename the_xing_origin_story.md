@@ -1,7 +1,5 @@
 # Introduction: The Xing Origin Story
 
-The goal of Xing is simple: to make advanced web development as easy as possible. Like most web technologies, it has a story behind it that illuminates the choices you'll see in the framework.
-
 All the creators of Xing work (or have worked) at Logical Reality Design, a small web development agency. Our company is scrappy, quirky, and full of people who are passionate about the art of coding. We've been doing web development for seventeen years, and we used Ruby on Rails as our primary tool for the last seven. Two years ago, our toolset for building server-side Ruby on Rails applications had become very mature. But we could see that massive change was on the horizon. For the web to truly succeed, developers must embrace the browser as the web's application platform. As a company, we decided to dive in to this challenge head first.
 
 As it turned out, our plan to build a javascript based client that talked to an API only server was a bit more difficult than we'd planned. We'd chosen what we thought were the best tools for the job. But we discovered quickly tools that worked well in isolation did not always work together. The complexity of development seemed to increase exponentially. We found ourselves re-solving problems whose solutions we'd taken for granted for years. And we weren't alone. As we went to meetups, we found other experienced developers were struggling to figure things out. And new developers were completely lost; the barrier to entry that Rails helped lower raised right back up.
