@@ -24,6 +24,7 @@ I'd like feedback on all this.
 
 Evan
 On the array errors:  my instinct would be a nil-padded array, (i.e. [ nil, nil { type: '', message: ''} ] though i recognize that's also problematic.  But if the goal is to have the error structure mirror the data structure so they can be processed by the same code, replacing an array with an object strikes me as likely to be a longer ongoing headache.
+
 But I don't care enough about that to be an advocate for the position beyond that statement.
 the 2nd issue (error in both child and parent) I'm not following from the description.
 

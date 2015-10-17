@@ -1,11 +1,8 @@
 # Mappers
 
-The job of a mapper is to take an incoming request (e.g. the body of a PUT) and
-transform the data therein to changes in the application (usually records in
-the database.)
+The job of a mapper is to take an incoming request (e.g. the body of a PUT) and transform the data therein to changes in the application (usually records in the database.)
 
-Generally, you'll have (at least) one mapper per REST resource. Those mappers
-will be descendants of Xing::Mappers::Base.
+Generally, you'll have (at least) one mapper per REST resource. Those mappers will be descendants of Xing::Mappers::Base.
 
 ### Subclasses must define:
 
@@ -31,8 +28,7 @@ map_nested_models |
 build_errors         | if simply copying AR errors is insufficient
 save                 | if they need to save more than 1 AR record
 
-When updating records, pass the locator (e.g. DB id, url_slug, or other
-unique resource extracted from the resource path) as the second argument.
+When updating records, pass the locator (e.g. DB id, url_slug, or other unique resource extracted from the resource path) as the second argument.
 
 
 ```ruby

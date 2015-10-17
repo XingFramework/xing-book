@@ -15,7 +15,7 @@ If you don't already have it installed:
 * If you use homebrew ```brew install redis```.
 * If not, refer here ... http://redis.io/topics/quickstart
 
-If you do not setup redis to auto-start, you will have to make sure you have redis running, using ```redis-server``` whenever you want to run a Xing project. 
+If you do not setup redis to auto-start, you will have to make sure you have redis running, using ```redis-server``` whenever you want to run a Xing project.
 
 ### <a name="tmux"></a>tmux
 You will also need [tmux](https://tmux.github.io/).
@@ -24,13 +24,13 @@ If you don't already have it installed:
 * If not, refer here ... https://tmux.github.io/
 
 ### <a name="setup"></a>Initial Setup
-Once you have redis and tmux installed, time to clone the project.
-After you clone the project, you will probably need to:
+Once you have redis and tmux installed, time to clone the project.  After you clone the project, you will probably need to:
 * Copy yml.example files
 * Then bundle at the root of the project, in the frontend directory and in the backend directory.
 * From the backend, do the typical rails setup, i.e. run rake db:create, db:migrate, seeds and sample data.
 
 
+```
 rake develop
 Evan wrote a dependency checker
 karma test runner, auto-runs tests
@@ -59,4 +59,4 @@ Test logs in BE
 Request spec, change a video_response_controller.rb
 API Docs
 Hard to keep accurate.  Today, I changed VideoResponseSerializer, updated video_response API-Doc, but also needed to change video_response-survey API-Doc, because it also uses that serializer (nested)
-
+```

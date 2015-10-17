@@ -1,21 +1,12 @@
-The base class for all Xing serializers that produce
-Xing Hypermedia JSON resources.  In general, subclasses
-of Xing::Serializers::Base should:
+The base class for all Xing serializers that produce Xing Hypermedia JSON resources.  In general, subclasses of Xing::Serializers::Base should:
 
- * Define a links method that returns a hash of hypermedia links to
-   related resources
+ * Define a links method that returns a hash of hypermedia links to related resources
 
- * Specify the attributes (via the ActiveModel::Serializers 'attributes'
-   class method) that will be copied into the data: block
-   of the generated resource.
+ * Specify the attributes (via the ActiveModel::Serializers 'attributes' class method) that will be copied into the data: block of the generated resource.
 
- * Define methods for any attributes that do not exist as plain attributes
-   in the ActiveModel being serialized.  Note that this may (and often will) include
-   calling other serializers on related resources or other data, in order to
-   generate embedded resources.
+ * Define methods for any attributes that do not exist as plain attributes in the ActiveModel being serialized.  Note that this may (and often will) include calling other serializers on related resources or other data, in order to generate embedded resources.
 
-Xing serializers descend from ActiveModel::Serializer and are typically
-instantiated with an instance of an ActiveModel model in the usual way.
+Xing serializers descend from ActiveModel::Serializer and are typically instantiated with an instance of an ActiveModel model in the usual way.
 
 ```ruby
 class Base < ActiveModel::Serializer

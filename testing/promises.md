@@ -27,9 +27,6 @@
 
 ## A Little Commentary
 
-Notice how this makes clear that we do a series of small steps with
-the callbacks - there's a continual march of time down the page - as
-opposed to if we nest the callbacks (or the promise resolves), where
-the march of time is sorta-to-the-right and sorta-down.
+Notice how this makes clear that we do a series of small steps with the callbacks - there's a continual march of time down the page - as opposed to if we nest the callbacks (or the promise resolves), where the march of time is sorta-to-the-right and sorta-down.
 
 Promises are tricky. We should include a diagram of the happy/sad swimlanes.

@@ -6,32 +6,16 @@ Maybe some of these become part of a FAQ? They'll certainly get links to the app
 
 
 
-* `on-` and `bind-`  properties.  What they do, how to use them w/ usage
-  examples, and where they come from.  (Are they part of A1atscript? something
-  in `src/framework`?)
-* When making a `@Component`, `@Controller` etc. - I’m not sure what goes in
-  the annotation, and what goes in the object you declare outside the
-  annotation.
-* When things need to be part of a `@Module` and when they can just be declared
-  with other annotations.  (e.g. I notice that `@Components` often don’t have
-  an `@Module,` but still get imported elsewhere as if they are a module.  But
-  I see other `@Components` that do have an `@module.`  example:
-   `src/common/components/adminNav.js`)
-* Evan and Patricia discussed that xing-book should have a general “how to
-  construct a `@Component`”) flow.
-* `@View` (most Yoric components) vs `@Template` (much of
-  `src/common/components` ).  Which to use and why?
+* `on-` and `bind-`  properties.  What they do, how to use them w/ usage examples, and where they come from.  (Are they part of A1atscript? something in `src/framework`?)
+* When making a `@Component`, `@Controller` etc. - I’m not sure what goes in the annotation, and what goes in the object you declare outside the annotation.
+* When things need to be part of a `@Module` and when they can just be declared with other annotations.  (e.g. I notice that `@Components` often don’t have an `@Module,` but still get imported elsewhere as if they are a module.  But I see other `@Components` that do have an `@module.`  example:  `src/common/components/adminNav.js`)
+* Evan and Patricia discussed that xing-book should have a general “how to construct a `@Component`”) flow.
+* `@View` (most Yoric components) vs `@Template` (much of `src/common/components` ).  Which to use and why?
 * `@Module` vs `@ModuleAs`
-* ( `@View({ template: ‘thing’ })` -- why does this require a separate annotation
-  instead of something else?
-* `@DirectiveObject` vs `@component.` latter is necessary for
-  recursive directives?  Examples:  `NavBar` and `LocationList`
-* In general, a list of all a1atscript annotations and their functionality,
-  particularly as they relate to each other.
-* What rules do we use to arrange the frontend files? How does that interact
-  with the module loading configuration? Why must we repeat naming in the
-  frontend? e.g. Why is there src/app/consumers/signup/consumerSignupStates.js
-  as opposed to src/app/consumers/signup/states.js ?
+* ( `@View({ template: ‘thing’ })` -- why does this require a separate annotation instead of something else?
+* `@DirectiveObject` vs `@component.` latter is necessary for recursive directives?  Examples:  `NavBar` and `LocationList`
+* In general, a list of all a1atscript annotations and their functionality, particularly as they relate to each other.
+* What rules do we use to arrange the frontend files? How does that interact with the module loading configuration? Why must we repeat naming in the frontend? e.g. Why is there src/app/consumers/signup/consumerSignupStates.js as opposed to src/app/consumers/signup/states.js ?
 
 * Need docco on how to test things that depend on promises (e.g. save actions)
 * Wasn’t able to find docco on how to update a changed resource with Relayer. (README examples show only read actions for Relayer, not destructive actions).
