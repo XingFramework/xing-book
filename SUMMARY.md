@@ -3,6 +3,7 @@
 * [Introduction](README.md)
    * [The Xing Origin Story](the_xing_origin_story.md)
 * [Concepts](concepts.md)
+   * Hypermedia
    * [Fundamentals](concepts/fundamentals.md)
        * [REST](concepts/fundamentals/rest.md)
        * [HTTP](concepts/fundamentals/http.md)
@@ -12,7 +13,6 @@
        * [Mappers](concepts/backend/mappers.md)
    * [Frontend](concepts/frontend.md)
        * [Error Documents](concepts/frontend/error_documents.md)
-   * Hypermedia
 * [Framwork Guide](framework_guide.md)
    * [Relayer](framework_guide/relayer.md)
    * [A1Atscript](framework_guide/a1atscript.md)
