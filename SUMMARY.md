@@ -3,7 +3,7 @@
 * [Introduction](README.md)
    * [The Xing Origin Story](the_xing_origin_story.md)
 * [Concepts](concepts.md)
-   * Hypermedia
+   * [Hypermedia](hypermedia.md)
    * [Fundamentals](concepts/fundamentals.md)
        * [REST](concepts/fundamentals/rest.md)
        * [HTTP](concepts/fundamentals/http.md)
