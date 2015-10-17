@@ -17,3 +17,5 @@ _book
 
 
 .*.sw?
+.envrc
+.vimrc
