@@ -1,3 +1,7 @@
+# Caveat Lector
+
+Be aware that this section is much rougher, and contains a great deal more unvarnished opinion. If you're just learning Xing, you can (and probably should) skip this appendix.
+
 # Hypermedia
 
 Since Roy Fielding's seminal disertation, the concept of REST has been repeatedly misunderstood and misrepresented, to the degree that its adherents have found it necessary to use completely different terminology. Like early Christians, they use words that are hard for their enemies to pronounce as a way to identify each other.
@@ -25,3 +29,9 @@ This is the modern touchstone for the RESTful architectural style. Relayer attem
 A few things REST/hypemedia is not
 
 * Pretty URLs: while the user interface value of the browser address bar is arguable (and major browser vendors are erasing its value as time goes on...) the URLs that Xing primarily concerns itself with (i.e. the URLs the frontend and backend exchange) are invisible to the user, and therefore irrelevant to the user interface or experience. They should, from the point of view of the frontend, be opaque identifiers and nothing more.
+
+# An Architectural Style
+
+Key to REST is that it's an approach to building distributed applications. It provides a series of constraints which guide the development of software such that it can fulfill a number of goals. Xing attempts to provide a framework that supports this style, partly by making a number of the decisions that REST leaves up to the designer. For instance, Xing specializes JSON to provide a hypermedia media type, and it simplifies the use of HTTP verbs.
+
+

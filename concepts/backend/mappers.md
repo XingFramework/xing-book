@@ -4,6 +4,10 @@ The job of a mapper is to take an incoming request (e.g. the body of a PUT) and 
 
 Generally, you'll have (at least) one mapper per REST resource. Those mappers will be descendants of Xing::Mappers::Base.
 
+## Mapper Flow
+
+XXX and TODO: lay out the phases of mapping, and the methods that are called in each phase, along with their default implementations
+
 ### Subclasses must define:
 
 Method | Purpose
