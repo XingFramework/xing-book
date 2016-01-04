@@ -28,7 +28,7 @@ We'll need two controllers. The first is the `FleasController`, which is exactly
 
 The `FleaPagesController` is a little different from usual. Let's take a look:
 
-```
+```ruby
 class FleaPagesController < ApplicationController
   def index
     render json: FleaIndexSerializer.new(page_relation(1))
@@ -52,7 +52,7 @@ But what are those two extra serializers? Well...
 
 There are two extra serializers to write to complete the paged list. They're very simple:
 
-```
+```ruby
 class FleaIndexSerializer < Xing::Serializers::PagedIndex
   def self_link
     routes.fleas_path
