@@ -6,7 +6,7 @@ This is a common enough use case that Xing includes specialized serializers to s
 
 # The Overall Setup
 
-Normally, when you're building a resource, you built a controller with the normal Rails actions of`show`, `update`, `create`, `destroy` and `index.` In a certain kind of way, the index action is actually a different resource. After all, you access the other actions by making requests to a URL like `/fleas/1425326`, and `#index` is used to respond to queries for `/fleas`.
+Normally, when you're building a resource, you build a controller with the normal Rails actions of`show`, `update`, `create`, `destroy` and `index.` In a certain kind of way, the index action is actually a different resource. After all, you access the other actions by making requests to a URL like `/fleas/1425326`, and `#index` is used to respond to queries for `/fleas`.
 
 What we're going to do as we switch over to a paginated list is to have two controllers. One will be the indiviual item controller (e.g. `FleasController`) and one will be the list controller. The item controller is exactly the same as a usual controller as discussed in the general Xing workflow, except that we remove the `#index` action. The list controller will have just `#index` and `#show`.
 
@@ -50,7 +50,7 @@ But what are those two extra serializers? Well...
 
 # Serializers
 
-I know you were dreading having to write a whole new serializer, when you just finished the `FleaSerializer.` Never fear! These are easy.
+There are two extra serializers to write to complete the paged list. They're very simple:
 
 ```
 class FleaIndexSerializer < Xing::Serializers::PagedIndex
@@ -68,6 +68,8 @@ class FleaPageSerializer < Xing::Serializers::PagedList
     FleaSerializer
   end
 
+  # This whole method is optional
+  # In our example, we'll pass these option to the FleaSerializer to keep the list short
   def item_serializer_options
     { only: [:circus_trick, :weight] }
   end
