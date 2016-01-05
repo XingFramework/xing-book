@@ -55,7 +55,7 @@ There are two extra serializers to write to complete the paged list. They're ver
 ```ruby
 class FleaIndexSerializer < Xing::Serializers::PagedIndex
   def self_link
-    routes.fleas_path
+    routes.flea_pages_path
   end
 
   def template_link
