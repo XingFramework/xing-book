@@ -3,7 +3,7 @@
 * [Introduction](README.md)
    * [Summary](summary.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
-       * Technologies
+* Technologies
 * [Concepts](concepts.md)
    * [Other Resources](concepts/other_resources.md)
    * [Backend](concepts/backend.md)
