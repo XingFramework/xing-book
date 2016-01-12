@@ -1,8 +1,8 @@
 # Summary
 
 * [Introduction](README.md)
-   * [Technologies](technologies.md)
    * [Summary](summary.md)
+   * [Technologies](technologies.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
 * [Concepts](concepts.md)
    * [Other Resources](concepts/other_resources.md)
