@@ -4,7 +4,7 @@
 
 At the heart of Xing is a Hypermedia JSON format for sending and receiving data between a browser client and an API server. This is the basic building block upon which we've built Xing's Ruby on Rails backend and its AngularJS frontend. This chapter introduces the core concepts and structure of our data format.
 
-A full discussion of Hypermedia and REST are far beyond the scope of this document, but we provide a brief introduction here 
+A full discussion of Hypermedia and REST are far beyond the scope of this document, but we provide a brief introduction here and links to further reading below.
 
 ## Hypermedia
 
