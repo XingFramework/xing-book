@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+   * Summary
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
        * Summary
 * [Concepts](concepts.md)
