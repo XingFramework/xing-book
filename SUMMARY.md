@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
+       * Summary
 * [Concepts](concepts.md)
    * [Fundamentals](concepts/fundamentals.md)
        * [REST](concepts/fundamentals/rest.md)
@@ -26,3 +27,4 @@
 * [Pragmatic Advice](pragmatism.md)
    * [Debugging Tricky Javascript](pragmatism/js_debugging.md)
    * [Outstanding Questions](pragmatism/outstanding_questions.md)
+
