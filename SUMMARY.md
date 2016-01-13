@@ -18,7 +18,7 @@
    * [Relayer](framework_guide/relayer.md)
    * [A1Atscript](framework_guide/a1atscript.md)
 * [Testing](testing.md)
-   * [Promises](testing/promises.md)
+* [Promises](testing/promises.md)
 * [Work Flow](work_flow.md)
    * [Work Flow - Setup](work_flow/setup.md)
    * [Work Flow - Backend](work_flow/be.md)
