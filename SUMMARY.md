@@ -27,3 +27,5 @@
 * [Pragmatic Advice](pragmatism.md)
    * [Debugging Tricky Javascript](pragmatism/js_debugging.md)
    * [Outstanding Questions](pragmatism/outstanding_questions.md)
+* Tutorial
+
