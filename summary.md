@@ -4,7 +4,7 @@ The Xing Framework is a combined web development environment for building both a
 
 The Xing Framework provides integration and coordination of these two frameworks.  Specifically:
 
-## Xing Features: Why you should use us!
+## Features: Why you should use Xing for your next web application
 * **Development Support**. Tooling for building and launching the entire stack in development. With a single command, you can compile and boot your whole frontend and backend stack at once and open your app in a browser.
 * **API Language**.  A pre-defined, consistent, and hypermedia-enabled JSON API language.
 * **API Support**. Base classes in both AngularJS and Rails for consuming and producing hypermedia JSON resources in the Xing format.
@@ -21,5 +21,3 @@ The Xing Framework provides integration and coordination of these two frameworks
 * **Mobile Development**.  Xing supports multiple front-ends. In future versions of Xing, we hope to build complete support simultaneous building of browser, iOS, and Android apps via Cordova while allowing reuse of nearly all the AngularJS codebase across all three platforms.
 * **Angular2**. The Xing Framework was built
 * **CMS Tools**. An upcoming version of Xing will include modules for a set of default content management classes and resources, usable for managing editable content in most web projects.
-
-
