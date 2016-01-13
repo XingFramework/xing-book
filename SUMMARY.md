@@ -13,9 +13,9 @@
    * [Frontend](concepts/frontend.md)
        * [Error Documents](concepts/frontend/error_documents.md)
 * [Framework Guide](framework_guide.md)
+   * Server Architecture
    * [Relayer](framework_guide/relayer.md)
    * [A1Atscript](framework_guide/a1atscript.md)
-   * Server Architecture
 * [Testing](testing.md)
    * [Promises](testing/promises.md)
 * [Work Flow](work_flow.md)
