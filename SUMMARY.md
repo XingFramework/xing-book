@@ -4,7 +4,7 @@
    * [Summary](summary.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
 * [Concepts](concepts.md)
-   * [Other Resources](concepts/other_resources.md)
+   * [Other Materials](concepts/other_materials.md)
    * [Resources](resources.md)
    * [Backend](concepts/backend.md)
        * [Serializers](concepts/backend/serializers.md)
