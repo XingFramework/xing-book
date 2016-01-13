@@ -17,6 +17,7 @@
    * Creating The Application
    * Configuration
    * Running The Application
+   * Your First Resource: Projects
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
    * [Development Console](development_console.md)
