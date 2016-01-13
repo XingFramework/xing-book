@@ -1,11 +1,9 @@
 # Summary
 
 * [Introduction](README.md)
+   * [Summary](summary.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
 * [Concepts](concepts.md)
-   * [Fundamentals](concepts/fundamentals.md)
-       * [REST](concepts/fundamentals/rest.md)
-       * [HTTP](concepts/fundamentals/http.md)
    * [Other Resources](concepts/other_resources.md)
    * [Backend](concepts/backend.md)
        * [Serializers](concepts/backend/serializers.md)
@@ -26,3 +24,4 @@
 * [Pragmatic Advice](pragmatism.md)
    * [Debugging Tricky Javascript](pragmatism/js_debugging.md)
    * [Outstanding Questions](pragmatism/outstanding_questions.md)
+
