@@ -8,6 +8,7 @@ The Xing Framework provides integration and coordination of these two frameworks
 * **Development Support**. Tooling for building and launching the entire stack in development. With a single command, you can compile and boot your whole frontend and backend stack at once and open your app in a browser.
 * **API Language**.  A pre-defined, consistent, and hypermedia-enabled JSON API language.
 * **API Support**. Base classes in both AngularJS and Rails for consuming and producing hypermedia JSON resources in the Xing format.
+* **ES6 / ESNext**. Xing includes a complete build and transpilation environment so you can safely work in up-to-date versions of JavaScript. 
 * **Testing Support**.  Pre-structured testing environments for frontend unit tests (in [Jasmine](http://jasmine.github.io/)), backend unit tests (in [rSpec](http://rspec.info/)), and true end-to-end tests of the entire stack (in rSpec with [Capybara](https://github.com/jnicklas/capybara)).
 * Predefined, sensible default **file hierarchy**.
 * Predefined, sensible default **build architecture** (using [Grunt](http://gruntjs.com/)).
