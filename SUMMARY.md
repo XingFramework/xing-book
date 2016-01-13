@@ -4,7 +4,7 @@
    * [Summary](summary.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
 * [Concepts](concepts.md)
-   * [Other Materials](concepts/other_materials.md)
+   * [Other Materials](concepts/other_resources.md)
    * [Resources](resources.md)
    * [Backend](concepts/backend.md)
        * [Serializers](concepts/backend/serializers.md)
@@ -27,4 +27,3 @@
 * [Pragmatic Advice](pragmatism.md)
    * [Debugging Tricky Javascript](pragmatism/js_debugging.md)
    * [Outstanding Questions](pragmatism/outstanding_questions.md)
-
