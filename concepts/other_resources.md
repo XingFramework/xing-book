@@ -1,4 +1,4 @@
-# Other Reading
+# Other Materials
 
 Xing is the glue between frontend and backend applications. It's nothing to trifle with, but it relies on other projects to provide the actual frontend and backend.
 
