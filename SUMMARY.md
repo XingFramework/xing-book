@@ -18,6 +18,7 @@
    * Configuration
    * Running The Application
    * Your First Resource: Projects
+   * Projects on the Frontend
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
    * [Development Console](development_console.md)
