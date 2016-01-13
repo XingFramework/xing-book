@@ -119,7 +119,7 @@ Note that our controller descends from Xing::Controllers::Base. This comes from 
 
 For outgoing resources, the controller will render JSON that is output by its serializer (DogSerializer). We'll be looking at those shortly.
 ```ruby
-class DogsController < Xing::Controllers::Base
+class DogsController < ApplicationController
 
   # GET /dogs/:id
   def show
@@ -411,7 +411,7 @@ An update controller is probably about as complicated of a controller as you wil
 
 It uses Mapper to process the JSON and params to update the record. If it is a successful update, it then uses a Serializer to respond with the updated record in JSON format.
 ```ruby
-class DogsController < Xing::Controllers::Base
+class DogsController < ApplicationController
 
   # GET /dogs/:id
   def show
