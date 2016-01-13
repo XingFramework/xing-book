@@ -1,8 +1,8 @@
 # Mappers
 
-The job of a mapper is to take an incoming request (e.g. the body of a PUT) and transform the data therein to changes in the application (usually records in the database.)
+The job of a mapper is to take an incoming request (e.g. the body of a PUT or POST) and transform the data therein to changes in the application (usually records in the database.)
 
-Generally, you'll have (at least) one mapper per REST resource. Those mappers will be descendants of Xing::Mappers::Base.
+Generally, you'll have (at least) one mapper per REST resource. Those mappers will be descendants of ```Xing::Mappers::Base```.
 
 ### Subclasses must define:
 
@@ -30,108 +30,39 @@ save                 | if they need to save more than 1 AR record
 
 When updating records, pass the locator (e.g. DB id, url_slug, or other unique resource extracted from the resource path) as the second argument.
 
+## Example
 
 ```ruby
-class Xing::Mappers::Base
-  include Services::Locator
-  class MissingLinkException < Exception; end
+class ProjectMapper < Xing::Mappers::Base
 
-  def initialize(json, locator = nil)
-    @source_json = json
-    if @source_json.is_a? String
-      @source_hash = JSON.parse(json).with_indifferent_access
-    else
-      @source_hash = @source_json
-    end
-    @locator = locator
-  end
-  attr_accessor :locator, :locator_attribute_name, :error_data
-  attr_writer :record
-  attr_reader :links
+  # These aliases aren't strictly necessary.  By default 
+  # any Xing mapper has a class variable with getter and setter
+  # called 'record', which is assumed to be the ActiveRecord object
+  # that the mapper is mapping to.  But since this one maps Projects,
+  # we alias so that we can use the more readable #project and #project=
+  # methods.
+  alias project record
+  alias project record=
 
-  def self.locator_attribute_name
-   :id
-  end
-
-  # Default save - subclasses might override
-  def save
-    perform_mapping
-    unless self.errors[:data].present?
-      save_nested_models
-      self.record.save
-    end
-  end
-
-  # Default for finding an existing record - override this *or* define
-  # #record_class (e.g. `return Page`
-  def find_existing_record
-    @record = record_class.find(@locator)
-  end
-
-  # Default for building a new record - override this *or* define #record_class
-  # (e.g. `return Page`
-  def build_new_record
-    @record = record_class.new
-  end
-
-  def perform_mapping
-    data = unwrap_data(@source_hash)
-    @links = unwrap_links(@source_hash)
-    self.error_data = Hash.new { |hash, key| hash[key] = {} }
-
-    assign_values(data)
-    map_nested_models
-    build_errors
-  end
-
-  def unwrap_links(hash)
-    hash['links'].with_indifferent_access if hash['links']
-  end
-
-  def unwrap_data(hash)
-    return hash['data'] if hash['data'].is_a?(Array)
-    hash['data'].with_indifferent_access
-  end
-
-  def wrap_data(hash)
-    {
-      data: hash
-    }
-  end
-
-  def record
-    @record ||= if !locator.nil?
-                  find_existing_record
-                else
-                  build_new_record
-                end
+  def record_class
+    # this should be the actual ActiveRecord class we are mapping to
+    Project  
   end
 
   def assign_values(data_hash)
-    # Override in subclasses to assign needed values here
-    record  # force loading or creation of the underlying DB record
-    update_record
+  
+    # the assign_values method in the superclass assumes that
+    # attribute names in the data hash match attribute names
+    # in the activerecord class, so often you don't need to do anything
+    super
   end
-
-  # Do nothing if there are no nested models
-  # Override this method in subclass if necessary
+ 
   def map_nested_models
+    # if the project JSON resource embedded other nested resources,
+    # logic for extracting their data (to get put into related AR records,
+    # or wherever) would go here.
   end
 
-  def save_nested_models
-  end
-
-  def build_errors
-    self.add_ar_errors(self.record)
-  end
-
-  def errors
-    wrap_data(error_data)
-  end
-
-  def add_ar_errors(object)
-    object_errors = Xing::Services::ErrorConverter.new(object).convert
-    error_data.deep_merge!(object_errors)
-  end
 end
 ```
+
