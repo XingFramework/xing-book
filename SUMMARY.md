@@ -14,7 +14,7 @@
        * [Error Documents](concepts/frontend/error_documents.md)
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
-   * Development Console
+   * [Development Console](development_console.md)
    * [Relayer](framework_guide/relayer.md)
    * [A1Atscript](framework_guide/a1atscript.md)
 * [Testing](testing.md)
