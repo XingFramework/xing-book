@@ -15,6 +15,7 @@
 * [Framework Guide](framework_guide.md)
    * [Relayer](framework_guide/relayer.md)
    * [A1Atscript](framework_guide/a1atscript.md)
+   * Server Architecture
 * [Testing](testing.md)
    * [Promises](testing/promises.md)
 * [Work Flow](work_flow.md)
