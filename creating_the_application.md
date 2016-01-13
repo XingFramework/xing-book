@@ -8,5 +8,14 @@ We'll start by installing xing-framework. Make sure you're using a compatible ve
 
 ... bundles a lot of gems
 
+    $ gem install xing-framework
+    Fetching: xing-framework-0.2.0.gem (100%)
+    Welcome to the exciting new world of Xing web development!
+    Successfully installed xing-framework-0.2.0
+    1 gem installed
+    
+Let's create a new Xing project! Be aware that `xing new` will automatically generate directories, change into the dirs and run bundle.
+
+    $ xing new crowdfundr
 
 
