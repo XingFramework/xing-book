@@ -20,6 +20,6 @@ Xing organizes frontend javascript files into subdirectorie by feature, rather t
 * /frontend/src/app/items/items-show.tpl.html
 * /frontend/src/app/items/items-edit.tpl.html
 
-## A1Ascript
+## [A1Ascript](https://github.com/hannahhoward/a1atscript)
 
-Todo...
+Because Xing uses ES6, in Xing you can make use of TypeScript annotations.  Hannah Howard's module A1Atscript provides an Angular 2-like syntax for annotating components, states, controllers and so forth.
