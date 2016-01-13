@@ -14,7 +14,7 @@
        * [Error Documents](concepts/frontend/error_documents.md)
 * [Tutorial](tutorial.md)
    * [Prerequisites](prerequisites.md)
-   * Creating The Application
+   * [Creating The Application](creating_the_application.md)
    * Configuration
    * Running The Application
    * Your First Resource: Projects
