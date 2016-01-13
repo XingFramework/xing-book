@@ -12,7 +12,7 @@
        * [Paged Lists](concepts/backend/paged_lists.md)
    * [Frontend](concepts/frontend.md)
        * [Error Documents](concepts/frontend/error_documents.md)
-* Tutorial
+* [Tutorial](tutorial.md)
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
    * [Development Console](development_console.md)
