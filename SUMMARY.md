@@ -13,7 +13,7 @@
    * [Frontend](concepts/frontend.md)
        * [Error Documents](concepts/frontend/error_documents.md)
 * [Framework Guide](framework_guide.md)
-   * Server Architecture
+   * [Server Architecture](server_architecture.md)
    * [Relayer](framework_guide/relayer.md)
    * [A1Atscript](framework_guide/a1atscript.md)
 * [Testing](testing.md)
