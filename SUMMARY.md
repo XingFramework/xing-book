@@ -15,7 +15,7 @@
 * [Tutorial](tutorial.md)
    * [Prerequisites](prerequisites.md)
    * [Creating The Application](creating_the_application.md)
-   * Configuration
+   * [Configuration](configuration.md)
    * Running The Application
    * Your First Resource: Projects
    * Projects on the Frontend
