@@ -15,6 +15,7 @@
 * [Tutorial](tutorial.md)
    * Prerequisites
    * Creating The Application
+   * Configuration
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
    * [Development Console](development_console.md)
