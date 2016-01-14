@@ -5,8 +5,8 @@
 Copy the database.yml.example and secrets.yml.example file
 
     $ cd backend/
-    $ cp config/database.yml.example config/database.yml
-    $ cp config/secrets.yml.example config/secrets.yml
+    backend$ cp config/database.yml.example config/database.yml
+    backend$ cp config/secrets.yml.example config/secrets.yml
     
 Make any necessary edits to your database.yml and secrets.yml files.
 
