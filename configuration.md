@@ -59,3 +59,6 @@ Change the following files as follows:
 
     export var appName = "Crowdfundr";
 
+## Ruby and Gems configuration
+
+By default, Xing will create a .ruby-version file in the root of your application, as well as in frontend/ and backend/.  If you are using a different version than the default, you should edit all three files. In addition, if you are using a system like RVM that manages separate gemsets, you should create identical .ruby-gemset files in all three directories. 
