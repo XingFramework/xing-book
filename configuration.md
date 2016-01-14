@@ -4,15 +4,39 @@ A freshly generated bare Xing Framework project will contain some generic config
 
 ## Backend Config
 
-Copy the database.yml.example and secrets.yml.example file
+### YAML files
+
+The backend is mostly a standard Ruby on Rails 4.2 application, and so needs configuration in backend/config/database.yml and backend/config/secrets.yml.  It's bad practice to commit these files to your version control repository, so we list them in .gitignore and provide example files you can copy and edit:
 
     $ cd backend/
     backend$ cp config/database.yml.example config/database.yml
     backend$ cp config/secrets.yml.example config/secrets.yml
     
-Make any necessary edits to your database.yml and secrets.yml files.
+Make any necessary edits to your database.yml and secrets.yml files. Most of the secrets.yml file should be fine for development, until you need to test sending outgoing email. In database.yml you'll want to create a unique database for development and test.  Something like this should be sufficient:
 
-If you want the Ruby module for the application to match the name of the app, change the module and APP_MODULE.
+###### backend/config/database.yml
+```yaml 
+development: &development
+  adapter: postgresql
+  encoding: unicode
+  database: crowdfundr_dev 
+  pool: 5
+  host: 127.0.0.1
+
+test:
+  <<: *development
+  database: crowdfundr_test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: crowdfundr_dev
+  pool: 5
+  host: 127.0.0.1```
+
+### Application config
+
+If you want the Ruby module for the application to match the name of the app,  modify backend/config/application.rb to create a properly-named module (instead of XingApp) and set the constant APP_MODULE. 
 ######  backend/config/application.rb
 
     module Crowdfundr; end
