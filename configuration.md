@@ -8,7 +8,7 @@ Copy the database.yml.example and secrets.yml.example file
     $ cp config/database.yml.example config/database.yml
     $ cp config/secrets.yml.example config/secrets.yml
     
-Then make any necessary edits to your database.yml and secrets.yml files.
+Make any necessary edits to your database.yml and secrets.yml files.
 
 If you want the Ruby module for the application to match the name of the app, change the module and APP_MODULE.
 ######  backend/config/application.rb
