@@ -1,5 +1,7 @@
 # Configuration
 
+A freshly generated bare Xing Framework project will contain some generic configuration that you'll want to customize for your project.  Here we'll do the necessary customization for our Crowdfundr application. 
+
 ## Backend Config
 
 Copy the database.yml.example and secrets.yml.example file
