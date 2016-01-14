@@ -1,8 +1,7 @@
 # Running The Application
 
-After configuration, set up the database.
+After configuration, we will need to set up the database. While in the /backend dir:
 
-    $ cd backend
-    $ rake db:create
-    $ rake db:migrate
-    $ rake db:test:prepare
+    backend$ rake db:create
+    backend$ rake db:migrate
+    backend$ rake db:test:prepare
