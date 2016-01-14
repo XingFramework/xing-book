@@ -44,7 +44,10 @@ If you want the Ruby module for the application to match the name of the app,  m
 
 ## Frontend Config
 
-Change the following fields
+A couple of configuration files in the frontend are worth customizing as well, so that (for example) your compiled JavaScript application will have a name like Crowdfundr-0.0.1.js instead of XING-BASE-0.0.1.js.
+
+Change the following files as follows:
+
 ###### frontend/package.json
 
     "name": "Crowdfundr",
@@ -52,7 +55,6 @@ Change the following fields
     "author": "Your Name",
     "homepage": "http://crowdfundr.com"
    
-Change the appName 
 ###### frontend/src/common/config.js
 
     export var appName = "Crowdfundr";
