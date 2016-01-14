@@ -16,7 +16,7 @@
    * [Prerequisites](prerequisites.md)
    * [Creating The Application](creating_the_application.md)
    * [Configuration](configuration.md)
-   * Running The Application
+   * [Running The Application](running_the_application.md)
    * Your First Resource: Projects
    * Projects on the Frontend
 * [Framework Guide](framework_guide.md)
