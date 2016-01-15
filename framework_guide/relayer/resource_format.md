@@ -134,7 +134,7 @@ Example (comments key):
 
 3. Xing "Maps"
 
-A Xing "Map" is a javascript object where each key in the object is a resource. The object is itself embedded as a key inside of another resource. A Xing Map is a not a resource on its own -- it must be embedded.
+A Xing "Map" is a javascript object, embedded in a resource, where each key in the object is a resource. A Xing Map is a not a resource on its own -- it must be embedded as a property under another resource.
 
 Example (a blog post composed of different blocks of content, each content is a resource):
 
@@ -144,31 +144,42 @@ Example (a blog post composed of different blocks of content, each content is a 
         contents: {
             left_column: {
                 data: {
+                    body: "No, I'm not an American. I'm one of the 22 million black people who are the victims of Americanism. One of the 22 million black people who are the victims of democracy, nothing but disguised hypocrisy."
                 },
                 links: {
+                    self: "/blog_posts/3/contents/left_column"
                 }
             },
             right_column: {
                 data: {
+                    body: "In 1964, it's the ballot or the bullet."
                 },
                 links: {
+                    self: "/blog_posts/3/contents/right_column"
                 }
             },
             css: {
                 data: {
+                    body: "{ body { background: green; color: black; border: red; }"
                 },
                 links: {
+                    self: "/blog_posts/3/contents/css"
                 }
             }
         },
         published_at: "06/01/1970",
     },
     links: {
+        self: "/blog_posts/4",
+        author: "/authors/malcolmlittle"
     }
 }
 ```
+
 #### Why This Format?
 
-In order for relayer to work its magic, the API it talks to must provide a minimum level of information so that Relayer can consume the entire API from a single well known endpoint. The data format here was chosen because it is used in an upcoming Rails and AngularJS web framework we are also writing called Xing. While all of Xing is not yet released, if you are using Rails, the xing-backend gem will make it very easy to generate API's in the format expected by Relayer. It's also a great tool for building API backends in Rails.
+The Xing Hypermedia JSON format is tailor made to be:
+    a) simple to generate
+    b) 
 
 *** This is the format for the first version -- in time Relayer will support well-known formats like JSON API, JSON-LD, and HAL ***
