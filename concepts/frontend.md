@@ -2,6 +2,10 @@
 
 Xing is built on AngularJS, the well-supported SPA framework by Google.  We incorporated a ES6 build process, as well as ES-future decorators to speed the development process and improve code structure.
 
+## Relayer
+
+Xing provides a library called Relayer to automate communication with the backend API server. You simply define the relational structure of the backend's JSON resources, and Relayer talks to the API for you. No need to worry about urls, whether data is embedded or linked, or even how many API calls to make to get the information you want.
+
 ## ES6 / ESNext
 
 Xing uses current generation JavaScript, and includes an integrated build environment with [Traceur](https://github.com/google/traceur-compiler) to provide transpilation.
