@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-   * [Summary](summary.md)
+   * [Summary](overview.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
 * [Concepts](concepts.md)
    * [Other Materials](concepts/other_resources.md)
@@ -16,6 +16,11 @@
    * [Server Architecture](server_architecture.md)
    * [Development Console](development_console.md)
    * [Relayer](framework_guide/relayer.md)
+     * [Resource Format](framework_guide/relayer/resource_format.md)
+     * [Describing Resources](framework_guide/relayer/describing_resources.md)
+     * [Embedded Resources](framework_guide/relayer/embedded_resources.md)
+     * [Connecting to Angular](framework_guide/relayer/connecting_to_angular.md)
+     * [Using Resources](framework_guide/relayer/using_resources.md)
    * [A1Atscript](framework_guide/a1atscript.md)
 * [Testing](testing.md)
    * [Promises](testing/promises.md)
