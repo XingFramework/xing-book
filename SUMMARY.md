@@ -3,6 +3,7 @@
 * [Introduction](README.md)
    * [Summary](summary.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
+   * Super Fast Start
 * [Concepts](concepts.md)
    * [Other Materials](concepts/other_resources.md)
    * [Resources](resources.md)
