@@ -18,9 +18,9 @@
    * [Creating The Application](creating_the_application.md)
    * [Configuration](configuration.md)
    * [Running The Application](running_the_application.md)
+   * The Xing File Heirarchy
    * Your First Resource: Projects
    * Projects on the Frontend
-   * The Xing File Heirarchy
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
    * [Development Console](development_console.md)
