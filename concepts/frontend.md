@@ -16,7 +16,7 @@ Xing uses ui-router, the best currently available router for AngularJS 1.x.
 
 ## Modularization & File Architecture
 
-Xing organizes frontend javascript files into subdirectorie by feature, rather than by class type.  For example, in a ToDo app with 'items', you would put the module, state, controller, and templates together in a single directory, as follows:
+Xing organizes frontend javascript files into subdirectories by feature, rather than by class type.  For example, in a ToDo app with 'items', you would put the module, state, controller, and templates together in a single directory, as follows:
 
 * /frontend/src/app/items/items.js   # module
 * /frontend/src/app/items/itemsControllers.js
