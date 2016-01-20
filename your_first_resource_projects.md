@@ -16,3 +16,66 @@ Likewise, it's easy to fall into the trap of thinking a resource maps to a 'page
 
 With that in mind, we'll start by conceiving of a resource, and documenting its format.  By Xing Framework convention, documents describing our resources go in the API_DOC directory.
 
+### A Project
+
+Resources in Xing are a JSON object containing two keys: ```data```, which contains the actual contents of the resource, and ```links```, which identify URLs associated with the resource.  Every resource must contain a ```self``` link, identifying its own URL.  The frontend will use this URL whenever it needs to check for or fetch an updated version of the resource.
+
+Our description of a crowdfunding project will include (for now) the following fields and types:
+
+* Project Name
+* Project Description
+* Deadline
+* Fundraising Goal
+
+These files are documentation, not code, so the format is not strict. Write what is the clearest indication of meaning and use to you.
+
+Here's our documentation for an individual project:
+
+##### API_DOC/project
+    
+    // GET /project/{id} 
+    //
+    // A project represents a single fundraising goal: what it's
+    // for and how much money it wants. As yet, it has no related
+    // resources.
+    {
+      links: {
+        self: '/project/1'
+      },
+      data: {
+        name: 'The Xing Framework',
+        description: 'A block of text describing the project',
+        deadline: 'Wed Jan 20 14:15:17 PST 2016',
+        goal: 20000.00
+      }
+    }
+
+We're also going to need a resource representing the list of all available projects.  This one will be more complex, because the list will embed partial versions of the individual resources as well.
+
+##### API_DOC/projects
+
+    // GET /projects
+    //
+    // Represents the list of all projects in the system.  As yet
+    // it does not have a defined order.
+    {
+      links: {
+        self: '/projects'
+      },
+      
+      // The data in a /projects list resource is an array
+      // of other resources.
+      data: [
+        { links: { self: '/project/1'},
+          data:  { name: 'The Xing Framework' } 
+        },
+        { links: { self: '/project/2'},
+          data:  { name: 'The Xing Book' } 
+        },
+        { links: { self: '/project/3'},
+          data:  { name: 'The Xing Website' } 
+        }
+      ]
+    }
+
+Notice how we are embedding the /project/{:id} resources into the array in /projects. However, only a subset of the data is included.  This won't be a problem, however: the frontend's resource layer, however, knows how to follow that ```self:``` link in each resource to fetch the complete version of the resource when necessary.  In a Xing project, you can decide how much or how little of a related resource to embed -- usually to optimize the number of requests the frontend needs to make to retrieve important data.
