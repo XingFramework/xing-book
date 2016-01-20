@@ -4,7 +4,7 @@
 
 TODO GET Request spec
 
-## Model
+## Model and Migration
 
 TODO 
 
