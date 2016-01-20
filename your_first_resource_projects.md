@@ -45,10 +45,38 @@ Here's our documentation for an individual project:
       data: {
         name: 'The Xing Framework',
         description: 'A block of text describing the project',
-        deadline: 'Wed Jan 20 14:15:17 PST 2016',
+        deadline: '2020-08-15T15:52:01+00:00',
         goal: 20000.00
       }
     }
+
+Note the url template format /project/{id}, representing a URL with an interpolatable identifier.  This is analogous to the Rails format /project/:id, but is using the specific URI template format described in [RFC 6570](https://tools.ietf.org/html/rfc6570). We'll use the RFC 6570 format a lot in Xing, so it's worth familiarizing yourself with it. 
+
+Here we've documented the resource by giving an example of it. You could, if you preferred, document the format by specifying the format of each value without an example:
+
+##### API_DOC/project (alternate form)
+
+    // GET /project/{id} 
+    //
+    // A project represents a single fundraising goal: what it's
+    // for and how much money it wants. As yet, it has no related
+    // resources.
+    {
+      links: {
+        self: <RFC 6570: /project/{id}>
+      },
+      data: {
+        name: <String>,
+        description: <String>,
+        deadline: <String W3C DateTime>
+        goal: <Decimal number>
+      }
+    }
+    
+How you'd prefer to do that is up to you and your team.    
+    
+    
+### A List of Projects
 
 We're also going to need a resource representing the list of all available projects.  This one will be more complex, because the list will embed partial versions of the individual resources as well.
 
