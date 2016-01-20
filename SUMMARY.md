@@ -19,6 +19,7 @@
    * [Configuration](configuration.md)
    * [Running The Application](running_the_application.md)
    * [Your First Resource: Projects](your_first_resource_projects.md)
+       * Creating and updating projects
    * [Projects on the Backend](projects_on_the_backend.md)
        * [A readable GET resource](a_readable_get_resource.md)
        * [A writeable POST and PUT resource](a_writeable_post_and_put_resource.md)
