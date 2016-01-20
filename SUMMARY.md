@@ -20,7 +20,7 @@
    * [Running The Application](running_the_application.md)
    * [Your First Resource: Projects](your_first_resource_projects.md)
    * [Projects on the Backend](projects_on_the_backend.md)
-       * A readable GET resource
+       * [A readable GET resource](a_readable_get_resource.md)
        * A writeable POST and PUT resource
    * [Projects on the Frontend](projects_on_the_frontend.md)
 * [Framework Guide](framework_guide.md)
