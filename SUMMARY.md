@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-   * [Summary](summary.md)
+   * [Summary](overview.md)
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
    * [Super Fast Start](super_fast_start.md)
 * [Concepts](concepts.md)
