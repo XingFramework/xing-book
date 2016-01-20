@@ -14,6 +14,7 @@
    * [Frontend](concepts/frontend.md)
        * [Error Documents](concepts/frontend/error_documents.md)
 * [Tutorial](tutorial.md)
+   * Creating and updating projects
    * [Prerequisites](prerequisites.md)
    * [Creating The Application](creating_the_application.md)
    * [Configuration](configuration.md)
@@ -25,7 +26,6 @@
    * [Projects on the Frontend](projects_on_the_frontend.md)
        * [Displaying the project resources](displaying_the_project_resources.md)
        * [Adding a project detail page](adding_a_project_detail_page.md)
-* Creating and updating projects
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
    * [Development Console](development_console.md)
