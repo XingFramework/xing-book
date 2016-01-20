@@ -18,7 +18,7 @@
    * [Creating The Application](creating_the_application.md)
    * [Configuration](configuration.md)
    * [Running The Application](running_the_application.md)
-   * Your First Resource: Projects
+   * [Your First Resource: Projects](your_first_resource_projects.md)
    * Projects on the Frontend
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
