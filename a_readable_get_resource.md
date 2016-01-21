@@ -21,7 +21,7 @@ We'll use [FactoryGirl](https://github.com/thoughtbot/factory_girl) to manufactu
       end
 
       let! :resource_url do
-        "/project/#{project.id}"
+        "/projects/#{project.id}"
       end
 
       it 'returned JSON is correctly formatted' do
@@ -81,7 +81,40 @@ Let's fill out that factory, then, so our spec can run:
 With that file written, we should be able to run our spec and get a clean failure complaining about the route:
 
     $ rspec spec/requests/project_get_spec.rb 
-    
+    Failures:
+
+    1) GET /project returned JSON is correctly formatted
+     Failure/Error: json_get resource_url
+     ActionController::RoutingError:
+       No route matches [GET] "/project/1"
+       
+Exactly what we expect.  The app can't serve our request because Rails doesn't know how to route it.
+
+## Route and Controller
+
+Add this line to backend/config/routes.rb:
+
+    ```resources :projects, :only => :show```
+
+And create this controller file:
+
+##### backend/app/controllers/projects.rb
+
+    class ProjectsController < ApplicationController
+
+      # GET /projects/{id}
+      def show
+        project = Project.find(params[:id])
+        render :json => ProjectSerializer.new(project)
+      end
+
+    end
+
+NOTE to Rails users: That's typically all there is to an action in a Xing controller.  If you're using user-based authorization, you might have one more line to ensure the current user is permitted to see this resource.  But that's all. In Xing, the controller exists only to find the database row(s) necessary and pass them to a Serializer for output. (Or on write actions, a Mapper is used instead of a serializer) No logic goes there.  As a result, we don't usually even bother to test controllers in a Xing project ... there's no point!  
+
+With these two written, our request spec will get further before failing:
+
+
 
 ## Serializer
 
