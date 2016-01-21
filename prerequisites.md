@@ -47,7 +47,8 @@ If tmux is not available, Xing's development tools will still launch the process
 
 If you have tmux installed, it's worth understanding its common command structure (CTRL-b is the default command prefix, if you haven't changed tmux preferences) and knowing the following commands:
 
-* <prefix> CTRL-x  -- kill your session
+* <prefix> x  -- kill your current pane
+* <prefix> &  -- kill your current window
 * <prefix> <arrow keys> -- move between panes
 * <prefix> z -- zoom current pane (toggle between pane and fullscreen)
 * <prefix> [ -- enter history mode (arrow keys will now scrollback)
