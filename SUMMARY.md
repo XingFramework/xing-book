@@ -21,8 +21,8 @@
    * [Your First Resource: Projects](your_first_resource_projects.md)
        * [Projects on the Backend](projects_on_the_backend.md)
            * [A readable GET resource](a_readable_get_resource.md)
-           * [A writeable POST and PUT resource](a_writeable_post_and_put_resource.md)
            * A GET list resource
+           * [A writeable POST and PUT resource](a_writeable_post_and_put_resource.md)
        * [Projects on the Frontend](projects_on_the_frontend.md)
            * [Displaying the project resources](displaying_the_project_resources.md)
            * [Adding a project detail page](adding_a_project_detail_page.md)
