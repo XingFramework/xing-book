@@ -2,20 +2,21 @@
 
 ## Installing the Xing Framework rubygem
 
-We'll start by installing xing-framework. Make sure you're using a compatible version of Ruby (we prefer >= 2.2).  If you're using a Ruby manager with gemsets (like RVM), you probably want to [create a gemset now](https://rvm.io/gemsets/basics) and switch to it. If you're not using gemsets, don't worry about it.
+We'll start by installing xing-framework. Make sure you're using a compatible version of Ruby (we prefer >= 2.2).   
 
-If you are using rbenv, you will need to run `rbenv rehash` AFTER installing xing-framework.
+RVM USERS NOTE: If you use RVM's [gemset](https://rvm.io/gemsets/basics) feature, you can invoke xing new with the flag --with-gemset so xing will create .ruby-gemset files with the same name as your application. If you're doing that, you might also want to create the gemset before you even install the xing-framework gem, switch to it, and install xing-framework there so everything is in a single set. If you're not using gemsets, don't worry about it.
 
+RBENV USERS NOTE: If you are using rbenv, you will need to run `rbenv rehash` AFTER installing xing-framework.
 
 ## Generating the application
 
     $ gem install xing-framework
-    Fetching: xing-framework-0.2.0.gem (100%)
+    Fetching: xing-framework-0.2.3.gem (100%)
     Welcome to the exciting new world of Xing web development!
-    Successfully installed xing-framework-0.2.0
+    Successfully installed xing-framework-0.2.3
     1 gem installed
     
-Let's create a new Xing project! Be aware that `xing new` will automatically generate directories and bundle a lot of gems.
+Let's create a new Xing project! CAUTION: the `xing new` will automatically generate directories and bundle a lot of gems. If you're worried about a tool automatically installing gems on your system, you should read ahead or practice on an isolated system.
 
     $ xing new crowdfundr
 
