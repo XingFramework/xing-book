@@ -1,0 +1,2 @@
+# A GET list resource
+
