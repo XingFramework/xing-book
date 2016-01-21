@@ -86,7 +86,7 @@ With that file written, we should be able to run our spec and get a clean failur
     1) GET /project returned JSON is correctly formatted
      Failure/Error: json_get resource_url
      ActionController::RoutingError:
-       No route matches [GET] "/project/1"
+       No route matches [GET] "/projects/1"
        
 Exactly what we expect.  The app can't serve our request because Rails doesn't know how to route it.
 
@@ -112,20 +112,82 @@ And create this controller file:
 
 NOTE to Rails users: That's typically all there is to an action in a Xing controller.  If you're using user-based authorization, you might have one more line to ensure the current user is permitted to see this resource.  But that's all. In Xing, the controller exists only to find the database row(s) necessary and pass them to a Serializer for output. (Or on write actions, a Mapper is used instead of a serializer) No logic goes there.  As a result, we don't usually even bother to test controllers in a Xing project ... there's no point!  
 
-With these two written, our request spec will get further before failing:
+With these two written, our request spec will get further before failing because we have no Serializer:
 
     $ rspec spec/requests/project_get_spec.rb 
     Failures:
 
+    Failures:
+
     1) GET /projects/:id returned JSON is correctly formatted
      Failure/Error: json_get resource_url
-     ActionController::RoutingError:
-       No route matches [GET] "/project/1"
+     NameError:
+       uninitialized constant ProjectsController::ProjectSerializer
 
 ## Serializer
 
-TODO
+Serializers are the "views" of a Xing project. When producing a readable Xing resource, almost all of the work is done by the Serializer. If there's any interesting logic to be performed, say to transform the database records into a presentable format, or to perform any computations to add the results to the JSON resource, it would happen here.
 
-## Controller
+One of the nice aspects of putting the logic in the Serializer is that Serializers are lightweight and fast Ruby objects that don't depend on much of the Rails stack. Unlike Controllers and ActiveRecord models, tests on Serializers run very quickly so when we test Serializers in isolation we can afford to test them in great detail.
 
-TODO
+Let's start with a spec for the serializer. It will look a lot like the request spec, but will be testing just one class in isolation. In the serializer test, we will test the full structure of the JSON resource we wish to produce.
+
+##### backend/spec/serializers/project_serializer_spec.rb
+
+    require 'spec_helper'
+    
+    describe ProjectSerializer, :type => :serializer do
+    
+      let! :project do
+        FactoryGirl.create(:project,
+                           :name => "The Xing Framework",
+                           :description => "Cool new web framework!",
+                           :deadline => Date.today + 30.days,
+                           :goal => 15000.00
+                          )
+      end
+    
+      let :serializer do
+        ProjectSerializer.new(project)
+      end
+    
+      describe "as_json" do
+        let :json do serializer.to_json end
+    
+        it "should have the correct links" do
+          expect(json).to be_json_string("/projects/#{project.id}").at_path("links/self")
+        end
+    
+        it "should have the correct structure and content" do
+          expect(json).to be_json_string("The Xing Framework")     .at_path("data/name")
+          expect(json).to be_json_string("Cool new web framework!").at_path("data/description")
+          expect(json).to be_json_string(project.deadline.as_json) .at_path("data/deadline")
+          expect(json).to be_json_eql("15000.00")                  .at_path("data/goal")
+        end
+      end
+    end
+
+This should look a lot like the request spec, and there's a reason for that: in Xing, nearly all of the work of output happens in the Serializer. Most of the time, your models and controllers will be extremely lightweight. 
+
+The key difference is that instead of submitting an HTTP request to the entire Rails stack, we are just passing a project to an instance of the Serializer and calling ```#to_json```.   
+
+Of course ,that spec will fail because we haven't written ProjectSerializer. In this case, ProjectSerializer is trivially easy. Xing serializers inherit from [ActiveModel::Serializers](https://github.com/rails-api/active_model_serializers), so they gain all the default behavior of easily converting ActiveModel attributes to fields in the JSON Record.  Xing::Serializers::Base adds default behavior to wrap the data in a ```data: {}``` object and create a ```links: {}``` metadata object.  
+
+For the most part, you just need to subclass ```Xing::Serializers::Base```, list the attributes you want serialized, and add a ```#links``` method to define this resource's links.
+
+Future resources will get more interesting as we add behavior and nested resources.  But for now, all you need is this:
+
+##### backend/app/serializers/project_serializer.rb
+
+    class ProjectSerializer < Xing::Serializers::Base
+      attributes :name, :description, :deadline, :goal
+
+      def links
+        {
+          self: routes.project_path(object)
+        }
+      end
+    end
+
+The attributes method is simply the one inherited from ```ActiveModel::Serializers```, except that it wraps the contents in a data: {} object. In links, two interesting things are going on: object is always a reference to whatever was passed to the constructor of this serializer (see the first let: block in the spec).  routes is literally the Rails routing engine, which ```Xing::Serializers::Base``` makes available to you so you can use it to generate hypermedia links within your resource. 
+
