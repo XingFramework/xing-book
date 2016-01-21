@@ -56,14 +56,14 @@ Here we've documented the resource by giving an example of it. You could, if you
 
 ##### API_DOC/project (alternate form)
 
-    // GET /project/{id} 
+    // GET /projects/{id} 
     //
     // A project represents a single fundraising goal: what it's
     // for and how much money it wants. As yet, it has no related
     // resources.
     {
       links: {
-        self: <RFC 6570: /project/{id}>
+        self: <RFC 6570: /projects/{id}>
       },
       data: {
         name: <String>,
@@ -94,16 +94,16 @@ We're also going to need a resource representing the list of all available proje
       // The data in a /projects list resource is an array
       // of other resources.
       data: [
-        { links: { self: '/project/1'},
+        { links: { self: '/projects/1'},
           data:  { name: 'The Xing Framework' } 
         },
-        { links: { self: '/project/2'},
+        { links: { self: '/projects/2'},
           data:  { name: 'The Xing Book' } 
         },
-        { links: { self: '/project/3'},
+        { links: { self: '/projects/3'},
           data:  { name: 'The Xing Website' } 
         }
       ]
     }
 
-Notice how we are embedding the /project/{:id} resources into the array in /projects. However, only a subset of the data is included.  This won't be a problem, however: the frontend's resource layer, however, knows how to follow that ```self:``` link in each resource to fetch the complete version of the resource when necessary.  In a Xing project, you can decide how much or how little of a related resource to embed -- usually to optimize the number of requests the frontend needs to make to retrieve important data.
+Notice how we are embedding the /projects/{:id} resources into the array in /projects. However, only a subset of the data is included.  This won't be a problem, however: the frontend's resource layer, however, knows how to follow that ```self:``` link in each resource to fetch the complete version of the resource when necessary.  In a Xing project, you can decide how much or how little of a related resource to embed -- usually to optimize the number of requests the frontend needs to make to retrieve important data.
