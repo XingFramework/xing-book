@@ -1,6 +1,6 @@
 # A readable GET resource
 
-Lets start with just the individual ```/project/{id}``` resource.
+Lets start with just the individual ```/projects/{id}``` resource.
 
 ## Test first! (write a request spec)
 
@@ -12,7 +12,7 @@ We'll use [FactoryGirl](https://github.com/thoughtbot/factory_girl) to manufactu
 
     require 'spec_helper'
 
-    describe 'GET /project', :type => :request do
+    describe 'GET /projects/:id', :type => :request do
       let! :project do
         FactoryGirl.create(:project,
                            :name => "The Xing Framework",
@@ -98,7 +98,7 @@ Add this line to backend/config/routes.rb:
 
 And create this controller file:
 
-##### backend/app/controllers/projects.rb
+##### backend/app/controllers/projects_controller.rb
 
     class ProjectsController < ApplicationController
 
@@ -114,7 +114,13 @@ NOTE to Rails users: That's typically all there is to an action in a Xing contro
 
 With these two written, our request spec will get further before failing:
 
+    $ rspec spec/requests/project_get_spec.rb 
+    Failures:
 
+    1) GET /projects/:id returned JSON is correctly formatted
+     Failure/Error: json_get resource_url
+     ActionController::RoutingError:
+       No route matches [GET] "/project/1"
 
 ## Serializer
 
