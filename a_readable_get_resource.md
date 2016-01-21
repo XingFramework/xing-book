@@ -6,7 +6,7 @@ Lets start with just the individual ```/projects/{id}``` resource.
 
 We're going to start by writing a spec.  (You do write your specs first ... right?) We'll start with an integration-level spec that tests that the entire backend produces JSON as desired when given the proper HTTP request, and use that as a framework to guide our unit tests and code.
 
-We'll use [FactoryGirl](https://github.com/thoughtbot/factory_girl) to manufacture a Project, and submit an HTTP request to to the proper URL, and inspect the returned JSON.
+We'll use [FactoryGirl](https://github.com/thoughtbot/factory_girl) to manufacture a Project, then submit an HTTP request to to the proper URL and inspect the returned JSON.
 
 ##### ```backend/spec/requests/project_get_spec.rb```
 
@@ -59,7 +59,7 @@ Let's use Rails' model generator to quickly make us a Project model.
     $ cd backend
     backend$ bundle exec rails generate model project name:string description:text deadline:datetime goal:decimal
     
-That'll generate a model, spec, and empty factory file.  There will be no behavior in the Project model (at least not yet), so there's nothing to test in the backend/spec/models/project_spec.rb. We can leave those files alone for the time being.  
+That'll generate a model, spec, and empty factory file.  There will be no behavior in the Project model (at least not yet), so there's nothing to test in the model spec file at ```backend/spec/models/project_spec.rb```. We can leave those files alone for the time being.  
 
 This would be a good time to migrate the database to populate our new model:
 
