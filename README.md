@@ -4,3 +4,4 @@ We're so excited you decided to try the Xing framework. In this book, we'll intr
 
 The goal of Xing is simple: to make advanced web development as easy as possible. Are you ready to get started?
 
+![](xing_logo_light_background.png)
