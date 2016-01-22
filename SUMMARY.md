@@ -40,6 +40,7 @@
        * [Using Resources](framework_guide/relayer/using_resources.md)
    * [A1Atscript](framework_guide/a1atscript.md)
    * Backend
+   * Frontend
 * [Testing](testing.md)
    * [Promises](testing/promises.md)
 * [Work Flow](work_flow.md)
