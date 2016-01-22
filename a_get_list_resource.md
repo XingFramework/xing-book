@@ -59,6 +59,8 @@ Now when we run our integration spec, as before we'll fail because we haven't wr
 
 ## Serializer
 
+### Serializer Spec
+
 As usual, we'll start with a spec.  What output do we want from this list resource?
 
 ##### ```backend/spec/serializers/project_list_serializer_spec.r```
@@ -128,6 +130,8 @@ As usual, we'll start with a spec.  What output do we want from this list resour
 
 We're being very thorough about this test: confirming not only that the correct data exists, but that the data we don't want (other parts of the project resource) also aren't present. For those, we are checking both that the path where they might exist isn't present (e.g. "data/1/data/description") and for some also that the text doesn't exist anywhere in the JSON (e.g. ```expect(json).not_to be_json_string("A Book!")```, specified without ```.at_path()```). This is probably overkill in practice, it's included here to demonstrate available practices.
 
+### The Serializer Itself
+
 In Xing, a resource list serializer is slightly more complex than an individual resource serializer. It creates an array, and then delegates the individual items in that array to a second serializer. Sometimes you'll need to write that second serializer, sometimes you can use one you've already written. 
 
 Let's start with a simple version of the list serializer.
@@ -165,4 +169,27 @@ With the serializer above, our spec will run but still fail:
            Expected no JSON path "data/0/data/description"
          # ./spec/serializers/project_list_serializer_spec.rb:40:in `block (3 levels) in <top (required)>'
 
-The failure is because our delegated item serializer in ```ProjectSerializer``` is emitting the entire structure of the project, but we specified that only the name and self link should be included.  Fortunately there's an easy solution: any subclass of ```ActiveModel::Serializers``` (which includes all Xing serializers) supports options that filter which attributes are emitted. In a Xing list serializer, 
+The failure is because our delegated item serializer in ```ProjectSerializer``` is emitting the entire structure of the project, but we specified that only the name and self link should be included. 
+
+### Filtering The Item Serializer
+
+Fortunately there's an easy solution: any subclass of ```ActiveModel::Serializers``` (including all Xing serializers) can accept an options Hash that filters which attributes are emitted.  You can specify either ```{:only => [:list, :of: attributes]}``` or ```{:except => [:list, :of, :attributes]}``` when you instantiate the serializer.
+
+In a Xing list serializer, if you define a method ```item_serializer_options```, it will get passed to the serializer for each individual item in the list.  So, limiting the fields for the items in /projects is simple.  Add these three lines to your list serializer:
+
+
+##### ```backend/app/serializers/project_list_serializer.rb```  
+
+    def item_serializer_options
+      { only: :name }
+    end
+    
+With that method added, our specs will pass.
+
+    backend$ rspec spec/requests/ spec/serializers/
+    .......
+    
+    Finished in 0.38943 seconds (files took 1.6 seconds to load)
+    7 examples, 0 failures
+
+
