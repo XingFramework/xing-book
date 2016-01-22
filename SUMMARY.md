@@ -39,7 +39,7 @@
        * [Connecting to Angular](framework_guide/relayer/connecting_to_angular.md)
        * [Using Resources](framework_guide/relayer/using_resources.md)
    * [Backend](backend.md)
-       * Serializers
+       * [Serializers](framework_guide/backend/serializers.md)
        * List Serializers
        * Ordered List Serializers
        * Mappers
