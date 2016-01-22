@@ -40,7 +40,7 @@
        * [Using Resources](framework_guide/relayer/using_resources.md)
    * [Backend](backend.md)
        * [Serializers](framework_guide/backend/serializers.md)
-       * List Serializers
+       * [List Serializers](framework_guide/backend/list_serializers.md)
        * Ordered List Serializers
        * Mappers
        * [Sample Data](framework_guide/backend/sample_data.md)
