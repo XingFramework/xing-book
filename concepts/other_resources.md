@@ -1,8 +1,8 @@
-# Other Materials
+# Components and Outside Reading
 
-Xing is the glue between frontend and backend applications. It's nothing to trifle with, but it relies on other projects to provide the actual frontend and backend.
+Xing is the glue between frontend and backend applications. It's nothing to trifle with, but it relies on other projects and frameworks to provide the actual frontend and backend.
 
-## Backend
+## Backend: Ruby on Rails
 
 Xing uses the venerable [Ruby on Rails](http://rubyonrails.org/) HTTP framework as its default backend target. There's a huge amount of documentation and guides about Rails freely available on the internet. We recommend:
 
@@ -12,7 +12,7 @@ Xing uses the venerable [Ruby on Rails](http://rubyonrails.org/) HTTP framework 
 
 Be aware that Xing adds a number of components to the Rails backend.  Specifically, Mappers and Serializers almost entirely replace traditional Rails views, and Xing Controllers are much simpler and less variable than traditional controllers are.
 
-## Frontend
+## Frontend: AngularJS
 
 At the time of writing, there's much less of a unified solution to building front end browser applications than the Rails approach to the backend. Xing, therefore, makes a number of selections from the technology field for its frontend.
 
