@@ -40,6 +40,7 @@
        * [Using Resources](framework_guide/relayer/using_resources.md)
    * [Backend](backend.md)
        * Serializers
+       * List Serializers
    * [Frontend](frontend.md)
        * [A1Atscript](framework_guide/a1atscript.md)
 * [Testing](testing.md)
