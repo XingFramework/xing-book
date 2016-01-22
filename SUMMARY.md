@@ -5,7 +5,7 @@
    * [The Xing Origin Story](introduction/the_xing_origin_story.md)
    * [Super Fast Start](super_fast_start.md)
 * [Concepts](concepts.md)
-   * [Other Materials](concepts/other_resources.md)
+   * [Tools We Use](concepts/tools_we_use.md)
    * [Resources](resources.md)
    * [Backend](concepts/backend.md)
        * [Serializers](concepts/backend/serializers.md)
