@@ -1,4 +1,4 @@
-# Components and Outside Reading
+# Tools We Use
 
 Xing is the glue between frontend and backend applications. It's nothing to trifle with, but it relies on other projects and frameworks to provide the actual frontend and backend.
 
@@ -23,3 +23,14 @@ Xing asumes the use of [UI Router](https://github.com/angular-ui/ui-router/wiki)
 To reduce the amount of boilerplate Javascript related to the above, Xing uses [A1Atscript](https://github.com/hannahhoward/a1atscript), a contender in the overall attempt to address the transition to Angular 2.
 
 We use [Compass](http://compass-style.org/) to compile [Sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html) for stylesheets. Granted, this adds a Ruby dependency to the frontend. We're currently evaluating other options related to this issue.
+
+## Other components
+
+A number of other modules and tools out there are key to the function of Xing projects.  Here are some of the most important:
+
+* Build system: [Grunt](http://gruntjs.com/)
+* Transpiler: [Traceur](https://github.com/google/traceur-compiler)
+* Backend Testing: [RSpec](http://rspec.info/), [json_spec](https://github.com/collectiveidea/json_spec)
+* Frontend Testing: [Jasmine](http://jasmine.github.io/)
+* E2E Testing Tools: [Capybara](https://github.com/jnicklas/capybara), [Selenium](http://www.seleniumhq.org/), [rspec-steps](https://github.com/LRDesign/rspec-steps)
+* Backend Components: [ActiveModel::Serializers](https://github.com/rails-api/active_model_serializers)
