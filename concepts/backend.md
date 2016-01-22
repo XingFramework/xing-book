@@ -20,13 +20,10 @@ The Xing backend is responsible for moving data in and out of a database, and pr
 
 ## Architecture of the backend
 
-The xing backend uses 'Serializers' to convert database data to JSON format for transmission, and 'Mappers' to consume JSON data and make writes to the database.  These are classes that live in backend/app, parallel to Rails' models and controllers. 
+The xing backend uses 'Serializers' to convert database data to JSON format for transmission, and 'Mappers' to consume JSON data and make writes to the database.  These are classes that live in ```backend/app```, parallel to Rails' models and controllers. 
 
-![](Xing-backend-architecture.png)
+![](xing-backend-architecture.png)
 
-In the diagram above, arrows show the direction of data flow: incoming JSON 
+In the diagram above, arrows show the direction of data flow: incoming JSON is passed through a Rails controller to a Mapper, which extracts the relevant information to one or more ActiveRecord objects.  The AR objects then save the information to the database.  On read operations, the flow is reversed; models query the database and are passed to a Serializer, which is then rendered by the controller into JSON.  
 
-Nearly all of the interesting logic in a Xing application happens in these classes - generally the models and controllers are thin.
-
-
-
+Nearly all of the interesting logic in a Xing application happens in the mapper and serializerclasses - generally the models and controllers are thin.
