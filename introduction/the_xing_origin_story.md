@@ -1,6 +1,6 @@
 # The Xing Origin Story
 
-All the creators of Xing work (or have worked) at Logical Reality Design, a small web development agency in California. Our company is scrappy and a bit quirky, and we're full of people who are passionate about the art of coding. We've been doing web development for seventeen years, and we used Ruby on Rails as our primary tool for the last seven. 
+All the creators of Xing work (or have worked) at [Logical Reality Design](https://LRDesign.com), a small web development agency in Pasadena, California. Our company is scrappy and a bit quirky, and we're full of people who are passionate about the art of coding. We've been doing web development for two decades, and we used Ruby on Rails as our primary tool since 2006. 
 
 ## Moving Beyond Rails
 
