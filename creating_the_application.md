@@ -11,9 +11,9 @@ RBENV USERS NOTE: If you are using rbenv, you will need to run `rbenv rehash` AF
 ## Generating the application
 
     $ gem install xing-framework
-    Fetching: xing-framework-0.2.3.gem (100%)
+    Fetching: xing-framework-0.2.6.gem (100%)
     Welcome to the exciting new world of Xing web development!
-    Successfully installed xing-framework-0.2.3
+    Successfully installed xing-framework-0.2.6
     1 gem installed
     
 Let's create a new Xing project! CAUTION: the `xing new` will automatically generate directories and bundle a lot of gems. If you're worried about a tool automatically installing gems on your system, you should read ahead or practice on an isolated system.
