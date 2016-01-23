@@ -44,8 +44,10 @@ If you want the Ruby module for the application to match the app name,  modify b
 
 ######  backend/config/application.rb
 
-    module Crowdfundr; end
-    APP_MODULE = Crowdfundr
+```ruby
+module Crowdfundr; end
+APP_MODULE = Crowdfundr
+```
 
 ## Frontend Config
 
