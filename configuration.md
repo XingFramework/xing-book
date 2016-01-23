@@ -14,6 +14,7 @@ in your own projects you may want to edit the *.example versions to provide usef
 The defaults should be suitable for basic development, but go ahead and examine your database.yml and secrets.yml files and make any necessary edits. Defaults look like the following:
 
 ###### backend/config/database.yml
+
 ```yaml 
 development: &development
   adapter: postgresql
