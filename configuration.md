@@ -1,6 +1,6 @@
 # Configuration
 
-A freshly generated bare Xing Framework project will contain some generic configuration that you may want to customize for your project.  Here we'll do the necessary customization for our Crowdfundr application. 
+A freshly generated bare Xing Framework project will contain some generic configuration that you may want to customize for your project. However, the default configuration will probably work for you. If you're in a hurry, you can skip this page.
 
 ## Backend Config
 
