@@ -28,7 +28,7 @@
 * [Framework Guide](framework_guide.md)
    * [Server Architecture](server_architecture.md)
    * [Development Console](development_console.md)
-   * [Data Format](framework_guide/relayer/data_format.md)
+   * [Data Format](framework_guide/data_format.md)
    * [Relayer](framework_guide/relayer.md)
        * [Describing Resources](framework_guide/relayer/describing_resources.md)
        * [Embedded Resources](framework_guide/relayer/embedded_resources.md)
