@@ -55,14 +55,18 @@ Change the following files as follows:
 
 ###### frontend/package.json
 
-    "name": "Crowdfundr",
-    "version": "0.0.1",
-    "author": "Your Name",
-    "homepage": "http://crowdfundr.com"
+```json
+"name": "Crowdfundr",
+"version": "0.0.1",
+"author": "Your Name",
+"homepage": "http://crowdfundr.com"
+```
    
 ###### frontend/src/common/config.js
 
-    export var appName = "Crowdfundr";
+```javascript
+export var appName = "Crowdfundr";
+```
 
 ## Ruby and Gems configuration
 
