@@ -31,7 +31,8 @@ production:
   encoding: unicode
   database: crowdfundr_dev
   pool: 5
-  host: 127.0.0.1```
+  host: 127.0.0.1
+```
 
 ### Application config
 
