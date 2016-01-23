@@ -19,6 +19,9 @@ RBENV USERS NOTE: If you are using rbenv, you will need to run `rbenv rehash` AF
 Let's create a new Xing project! CAUTION: the `xing new` will automatically generate directories and bundle a lot of gems. If you're worried about a tool automatically installing gems on your system, you should read ahead or practice on an isolated system.
 
     $ xing new crowdfundr
+    
+    # OR if using rvm with gemsets:
+    $ xing new crowdfundr --with-gemsets
 
 This command should take a few minutes to run.  It will generate a blank application in a subdirectory called ```crowdfundr```, change to it, and proceed to install the rubygems and npm modules necessary to support Xing development.
 
