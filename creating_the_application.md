@@ -28,6 +28,8 @@ This command should take a few minutes to run.  It will generate a blank applica
 ## Your empty application
 
 Let's take a quick look at the files that were created.
+    
+    $ cd crowdfundr
 
     $ ls -la
     total 120
