@@ -1,6 +1,6 @@
 # Creating The Application
 
-## Code
+## Getting the Code (optional)
 
 If you follow the instructions below, you will create an application from scratch.  If you'd prefer to simply check out the code, clone the tutorial repository and checkout the first tag:
 
