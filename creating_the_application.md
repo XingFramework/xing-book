@@ -1,5 +1,14 @@
 # Creating The Application
 
+## Code
+
+If you follow the instructions below, you will create an application from scratch.  If you'd prefer to simply check out the code, clone the tutorial repository and checkout the first tag:
+
+```
+$ git clone git@github.com:XingFramework/crowdfundr_demo_tutorial.git
+$ git checkout 01_generated_application
+```
+
 ## Installing the Xing Framework rubygem
 
 We'll start by installing xing-framework. Make sure you're using a compatible version of Ruby (we prefer >= 2.2).   
