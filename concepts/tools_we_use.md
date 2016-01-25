@@ -18,7 +18,7 @@ The frontend lacks a unified solution that compares to Rails for the backend. Th
 * [AngularJS 1.4](https://docs.angularjs.org/guide) is the foundation for our tools. AngularJS is well supported, with good tools and documentation.
 * [UI Router](https://github.com/angular-ui/ui-router/wiki) is used for application state management. The [API reference](http://angular-ui.github.io/ui-router/site/#/api/ui.router) is reasonably light and complete. There are some best practices that bear documentation, however.
 * [A1Atscript](https://github.com/hannahhoward/a1atscript) reduces the amount of boilerplate Javascript and will ease the transition to AngularJS 2.
-* [Compass](http://compass-style.org/) compiles [Sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html) for Xing stylesheets. Granted, this adds a Ruby dependency to the frontend, and we're evaluating alternatives.
+* [Compass](http://compass-style.org/) to compile [Sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html) for Xing stylesheets. Granted, this adds a Ruby dependency to the frontend, and we're evaluating alternatives.
 
 ## Other components
 
