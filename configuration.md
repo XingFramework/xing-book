@@ -24,7 +24,7 @@ development: &development
   host: 127.0.0.1
 
 test:
-  &lt;<: *development
+  &lt;&lt;: *development
   database: crowdfundr_test
 
 production:
