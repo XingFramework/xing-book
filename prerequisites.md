@@ -35,26 +35,7 @@ Xing will, by default, assume your app will be using Redis and [Sidekiq](http://
 
 ### [tmux](https://tmux.github.io/) (terminal multiplexer)
 
-tmux is not strictly required, but is highly recommended.  If present, the Xing development launcher will build a five-pane interface simultaneously showing the console output from all five processes a Xing application needs:
-
-* Assets server
-* Rails/backend server
-* Grunt watch / JavaScript build / Jasmine frontend tests
-* Compass watch / CSS build
-* Redis / Sidekiq
-
-If tmux is not available, Xing's development tools will still launch the processes for you, but their output will be interleaved in a single console.
-
-If you have tmux installed, it's worth understanding its common command structure (CTRL-b is the default command prefix, if you haven't changed tmux preferences) and knowing the following commands:
-
-* <prefix> x  -- kill your current pane
-* <prefix> &  -- kill your current window
-* <prefix> <arrow keys> -- move between panes
-* <prefix> z -- zoom current pane (toggle between pane and fullscreen)
-* <prefix> [ -- enter history mode (arrow keys will now scrollback)
-* <prefix> n -- next window (particularly useful if your screen is too small for tmux to show all five panes at once)
-
-A few minutes with the tmux documentation and/or a tutorial will go a long way to helping you get more out of Xing's developer console.
+tmux is not strictly required, but is highly recommended.  If present, the developer's console will be much more powerful for you. We'll discuss it a bit later. 
 
 
 
