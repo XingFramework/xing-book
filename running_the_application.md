@@ -46,6 +46,8 @@ Here are a few commands to get you around the basics.
 
 A few minutes with the tmux documentation and/or a tutorial will go a long way to helping you get more out of Xing's developer console.
 
-### A useful tmux config line
+### A handy tmux config tip
 
-All of Xing's core developers have the following line in a ```~/.tmux.conf``` file. If you have it, 
+All of Xing's core developers have the following line in a ```~/.tmux.conf``` file. If you have it, ```[prefix] CTRL-x``` will prompt you to terminate your entire Xing session:
+
+```bind-key C-x confirm-before -p "kill-session? (y/n)" kill-session```
