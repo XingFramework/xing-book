@@ -40,7 +40,6 @@
        * [List Serializers](framework_guide/backend/list_serializers.md)
        * [Ordered List Serializers](framework_guide/backend/ordered_list_serializers.md)
        * [Mappers](concepts/backend/mappers.md)
-       * [Mappers](framework_guide/backend/mappers.md)
        * [Paged Lists](concepts/backend/paged_lists.md)
        * [Sample Data](framework_guide/backend/sample_data.md)
    * [Frontend](frontend.md)
