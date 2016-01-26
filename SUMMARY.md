@@ -6,7 +6,7 @@
    * [Super Fast Start](super_fast_start.md)
 * [Concepts](concepts.md)
    * [Hypermedia and REST](hypermedia_and_rest.md)
-   * [Resources](resources.md)
+   * [HTTP Resources](resources.md)
    * [Backend](concepts/backend.md)
    * [Frontend](concepts/frontend.md)
    * [Tools We Use](concepts/tools_we_use.md)
