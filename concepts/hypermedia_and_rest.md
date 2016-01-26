@@ -1,2 +1,0 @@
-# Hypermedia and REST
-
