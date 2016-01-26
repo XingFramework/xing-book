@@ -1,6 +1,7 @@
 # The Xing Backend
 
 The Xing backend moves data in and out of a database and provides functionality that can't be done in the end-user's device, like authentication, authorization, integration with external APIs, and data processing.
+
 Xing serves actual HTTP responses from a specialized Ruby on Rails application. We provide tools to be used with Rails in a ruby gem called *xing-backend*.
 
 ## Architecture
