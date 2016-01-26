@@ -8,7 +8,7 @@ Xing incorporates an ES6 build process and includes ES-future decorators to spee
 
 ![](xing-frontend-architecture.png)
 
-In the frontend, user navigation and application state is managed by [UI-Router states](https://github.com/angular-ui/ui-router), which map application functionality onto URLs. Each state is associated with a Controller, which renders a template.
+User navigation and application state is managed by [UI-Router states](https://github.com/angular-ui/ui-router), which map application functionality onto URLs. Each state is associated with a Controller, which renders a template.
 
 Xing also supports a Components architecture, which is a derivative of Angular 1.X directives but which behaves as much as possible like AngularJS2 Components. 
 
