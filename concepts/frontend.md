@@ -1,20 +1,18 @@
 # The Xing Frontend
 
-Xing is built on AngularJS, the well-supported SPA framework by Google.  We incorporated a ES6 build process, as well as ES-future decorators to speed the development process and improve code structure.
+The Xing frontend provides all of the user experience - all user interaction, templates, styling, etc. It's a fully fledged MVC application written in JavaScript that uses the JSON transport layer as its data source.
 
-## The job of the frontend
+Xing incorporates an ES6 build process and includes ES-future decorators to speed the development process and improve code structure.
 
-The frontend provides all of the user experience - all user interaction, templates, styling, etc. It's a fully fledged MVC application written in JavaScript that uses the JSON transport layer as its data source.
-
-### Frontend Architecture
+## Architecture
 
 ![](xing-frontend-architecture.png)
 
 In the frontend, user navigation and application state is managed by [UI-Router states](https://github.com/angular-ui/ui-router), which map application functionality onto URLs. Each state is associated with a Controller, which renders a template.
 
-Xing also supports a Components architecture, which is a derivative of Angular 1.X directives but which behaves as much as possible like Angular 2 Components. 
+Xing also supports a Components architecture, which is a derivative of Angular 1.X directives but which behaves as much as possible like AngularJS2 Components. 
 
-Both Components and Controllers load and save resources through the resource layer, which uses simple resource descriptors to interact with Xing Hypermedia JSON resources.
+Both Components and Controllers load and save resources through the resource layer, which uses simple resource descriptors to interact with Xing hypermedia JSON resources.
 
 ## Technological aspects of the Xing Frontend
 
