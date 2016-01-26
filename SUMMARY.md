@@ -37,7 +37,6 @@
        * [Using Resources](framework_guide/relayer/using_resources.md)
    * [Backend](backend.md)
        * [Serializers](concepts/backend/serializers.md)
-       * [Serializers](framework_guide/backend/serializers.md)
        * [List Serializers](framework_guide/backend/list_serializers.md)
        * [Ordered List Serializers](framework_guide/backend/ordered_list_serializers.md)
        * [Mappers](concepts/backend/mappers.md)
