@@ -9,7 +9,6 @@
    * [Resources](resources.md)
    * [Backend](concepts/backend.md)
    * [Frontend](concepts/frontend.md)
-   * [Hypermedia and REST](concepts/hypermedia_and_rest.md)
 * [Tutorial](tutorial.md)
    * [Prerequisites](prerequisites.md)
    * [Creating The Application](creating_the_application.md)
