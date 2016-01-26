@@ -1,6 +1,6 @@
 # The Xing Frontend
 
-The Xing frontend provides all of the user experience - all user interaction, templates, styling, etc. It's a fully fledged MVC application written in JavaScript that uses the JSON transport layer as its data source.
+The Xing frontend provides all of the user experience&mdash;all user interaction, templates, and styling. It's a fully fledged MVC application written in JavaScript that uses the JSON transport layer as its data source.
 
 Xing incorporates an ES6 build process and includes ES-future decorators to speed the development process and improve code structure.
 
