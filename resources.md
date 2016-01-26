@@ -1,4 +1,4 @@
-# Resources
+# HTTP Resources
 
 Xing transmits data using JSON resources. Every resource in Xing contains two keys: ```links``` and ```data```. ```links``` provides hypermedia links between resources, and ```data``` contains the actual data of the resource itself. 
 
