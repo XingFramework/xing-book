@@ -2,30 +2,54 @@
 
 Xing transmits data using JSON resources. Every resource in Xing contains two keys: ```links``` and ```data```. ```links``` provides hypermedia links between resources, and ```data``` contains the actual data of the resource itself. 
 
-You should document the format of your particular resources in /API_DOC.
+When creating a resource in a Xing application, we recommend documenting the format of your particular resources in ```/API_DOC``` for later reference.
 
 ## Examples
 
-### A plain resource
+### Resource
 
-This resource describes a project, with only a couple of attributes.
+This resource describes a simple project, with only a few attributes.
 
 ```JSON
+# GET /projects/:slug
+
 {
   links: {
-    self: '/projects/3',
-    tickets: '/projects/3/tickets'
+    self: '/projects/:id',
+    tickets: '/projects/:id/tickets'
   }, 
   data: {
-    name: "Webappalizer",
-    description: "Like Uber, but for bad startup ideas",
-    deadline: "Jan 1 16:30:00 PST 2028"
+    name: <string>,
+    description: <string>,
+    deadline: <datetime>
   }
 }
 ```
 
-### A resource with nested contents
+### Nested Resource
 
 A resource can contain other resources as nested items.  When they do, the nested resources should have fully-fledged resource structure, complete with their own links.
 
-Todo...
+```JSON
+#GET /projects/:id
+
+{
+  links: {
+    self: '/projects/:id
+  },
+  data: {
+    name: <string>,
+    description: <string>,
+    deadline: <datetime>,
+    tickets: {
+      links: {
+        self: '/tickets/:id/'
+      },
+      data: {
+        title: <string>,
+        description: <string>
+      }
+    }
+  }
+}
+```
