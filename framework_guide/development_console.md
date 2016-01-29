@@ -18,4 +18,4 @@ It's highly recommended that you install tmux. If tmux is present on your system
 
 Here's a screenshot of the Xing console in action, showing the logs of all five processes. We recommend that you spend a few minutes with the tmux help guides to learn to navigate between panes and pages, use scrollback features, and zoom panes to full screen.
 
-![](xing console panel.png)
+![](/images/xing-console-panel.png)

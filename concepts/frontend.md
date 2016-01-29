@@ -6,11 +6,11 @@ Xing incorporates an ES6 build process and includes ES-future decorators to spee
 
 ## Architecture
 
-![](xing-frontend-architecture.png)
+![](/images/xing-frontend-architecture.png)
 
 User navigation and application state is managed by [UI-Router states](https://github.com/angular-ui/ui-router), which map application functionality onto URLs. Each state is associated with a Controller, which renders a template.
 
-Xing also supports a Components architecture, which is a derivative of AngularJS 1.X directives but which behaves as much as possible like AngularJS2 Components. 
+Xing also supports a Components architecture, which is a derivative of AngularJS 1.X directives but which behaves as much as possible like AngularJS2 Components.
 
 Both Components and Controllers load and save resources through the resource layer, which uses simple resource descriptors to interact with Xing hypermedia JSON resources.
 
@@ -20,7 +20,7 @@ The Xing frontend differs from classic AngularJS in a number of key ways:
 
 ### [Relayer](https://github.com/XingFramework/Relayer)
 
-Xing provides a library called [Relayer](https://github.com/XingFramework/Relayer) to automate communication with the backend API server. Relayer provides implicit support of the Xing hypermedia JSON data format, making it trivial to talk to a Xing backend. 
+Xing provides a library called [Relayer](https://github.com/XingFramework/Relayer) to automate communication with the backend API server. Relayer provides implicit support of the Xing hypermedia JSON data format, making it trivial to talk to a Xing backend.
 
 To use Relayer, simply define the relational structure of the backend's JSON resources, and Relayer talks to the API for you. No need to worry about URLs, whether data is embedded or linked, or even how many API calls to make to get the information you want.
 
@@ -30,7 +30,7 @@ Xing uses current generation JavaScript, and includes an integrated build enviro
 
 ### UI-Router
 
-Xing uses [ui-router](https://github.com/angular-ui/ui-router), the best currently available router for AngularJS 1.x. 
+Xing uses [ui-router](https://github.com/angular-ui/ui-router), the best currently available router for AngularJS 1.x.
 
 ### Modularization & File Architecture
 
