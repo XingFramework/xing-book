@@ -3,15 +3,14 @@
 After configuration, we will need to set up the database. Xing provides a rake task to initialize this:
 
     $ rake initialize
-
+    
 Rake initialize is equivalent to creating, migrating, and seeding your development database.  If you prefer to do it by hand, all of Rails' standard rake tasks are available if you are inside the ```backend/``` directory.
 
     $ cd backend
-    backend$ rake db:create
-    backend$ rake db:migrate
-    backend$ rake db:seed
-    backend$ rake db:test:prepare
+    backend$ rake db:create db:migrate db:seed db:test:prepare
 
+_Note: there's no need to do both! If you run `rake initialize` it will do everything that the above, more traditional, Rails command would do_
+    
 ## Meet The Xing Developer's Console
 
 Boot a Xing project in development requires five different processes: three servers and two build watchers. Xing ships with a launcher toolkit that will start all five of these simultaneously and open your app in a browser.
@@ -32,9 +31,9 @@ The launcher will start up all five of these, opening them all in different pane
 
 If tmux is not available, Xing's development tools will still launch the processes for you, but their output will be interleaved in a single console.
 
-## Navigating the Console with tmux
+## Navigating the Console with tmux 
 
-If you have tmux installed, it's worth understanding its common command structure.  Most tmux commands are of the form [prefix] [keystroke], and CTRL-b is the default command prefix, if you haven't changed tmux preferences.
+If you have tmux installed, it's worth understanding its common command structure.  Most tmux commands are of the form [prefix] [keystroke], and CTRL-b is the default command prefix, if you haven't changed tmux preferences. 
 Here are a few commands to get you around the basics.
 
 * [prefix] x  - kill your current pane

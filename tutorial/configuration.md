@@ -6,20 +6,21 @@ A freshly generated bare Xing Framework project will contain some generic config
 
 ### YAML files
 
-The backend is mostly a standard Ruby on Rails 4.2 application, and so needs configuration in backend/config/database.yml and backend/config/secrets.yml.  It's bad practice to commit these files to your version control repository, so Xing templates those files for you but also lists them in .gitignore.  
+The backend is mostly a standard Ruby on Rails 4.2 application, and so needs configuration in backend/config/database.yml and backend/config/secrets.yml.  It's bad practice to commit these files to your version control repository, so Xing templates those files for you but also lists them in .gitignore.
 
 So that future developers who clone the project have an easy source to work from, Xing also templates the two files backend/config/database.yml.example and backend/config/secrets.yml.example. These files should be kept in version control, so
 in your own projects you may want to edit the *.example versions to provide useful but safe defaults as a starting point for the rest of your team.
-    
+
 The defaults should be suitable for basic development, but go ahead and examine your database.yml and secrets.yml files and make any necessary edits. Defaults look like the following:
 
 ###### backend/config/database.yml
 
-```yaml 
+```yaml
 development: &development
   adapter: postgresql
   encoding: unicode
-  database: crowdfundr_dev 
+  database: crowdfundr_dev
+  # username: postgres
   pool: 5
   host: 127.0.0.1
 
@@ -31,17 +32,20 @@ production:
   adapter: postgresql
   encoding: unicode
   database: crowdfundr_dev
+  # username: postgres
   pool: 5
   host: 127.0.0.1
 ```
 
+You'll notice the two lines that read `# username: postgres`. Depending on how you've installed Postgres, either you'll be connecting to it as your login username (in which case, leave it commented) or else you connect as `postgres` (in which case uncomment those lines.) If you aren't sure, leave it alone, but if you have problems in the setup process, try uncommenting them.
+
 ### Application config
 
-A few places in the application use generic names you might want to customize to reflect the actual name of your app. 
+A few places in the application use generic names you might want to customize to reflect the actual name of your app.
 
 ## Ruby application module
 
-If you want the Ruby module for the application to match the app name,  modify backend/config/application.rb to create a properly-named module (instead of XingApp) and set the constant APP_MODULE. 
+If you want the Ruby module for the application to match the app name,  modify backend/config/application.rb to create a properly-named module (instead of XingApp) and set the constant APP_MODULE.
 
 ######  backend/config/application.rb
 
@@ -61,10 +65,11 @@ Change the following files as follows:
 ```json
 "name": "Crowdfundr",
 "version": "0.0.1",
+"repository": "git@github.com:Crowdfundr/crowdfundr",
 "author": "Your Name",
 "homepage": "http://crowdfundr.com"
 ```
-   
+
 ###### frontend/src/common/config.js
 
 ```javascript
@@ -73,4 +78,4 @@ export var appName = "Crowdfundr";
 
 ## Ruby and Gems configuration
 
-By default, Xing will create a .ruby-version file in the root of your application, as well as in frontend/ and backend/.  If you are using a different version than the default, you should edit all three files. In addition, if you are using a system like RVM that manages separate gemsets, you should create identical .ruby-gemset files in all three directories. 
+By default, Xing will create a .ruby-version file in the root of your application, as well as in frontend/ and backend/.  If you are using a different version than the default, you should edit all three files. In addition, if you are using a system like RVM that manages separate gemsets, you should create identical .ruby-gemset files in all three directories.

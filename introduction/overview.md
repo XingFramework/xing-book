@@ -7,7 +7,7 @@ The Xing Framework is a web development environment for building both a server b
 * **API Protocol**.  A predefined, consistent, and hypermedia-enabled JSON-based protocol.
 * **API Support**. Base classes in AngularJS and Rails for consuming and producing hypermedia JSON resources in the Xing format.
 * **ES6/ESNext**. A complete build and transpilation environment so you can safely work in up-to-date versions of JavaScript.
-* **AngularJS2 Ready**. Uses AngularJS-2-like TypeScript annotations via  [A1Atscript](https://github.com/hannahhoward/a1atscript), easing future conversion.
+* **Angular 2 Ready**. Uses Angular-2-like TypeScript annotations via  [A1Atscript](https://github.com/hannahhoward/a1atscript), easing future conversion.
 * **Testing Support**.  Prestructured testing environments for front-end unit tests ([Jasmine](http://jasmine.github.io/)), back-end unit tests ([rSpec](http://rspec.info/)), and true end-to-end tests of the entire stack (rSpec with [Capybara](https://github.com/jnicklas/capybara)).
 * Predefined, sensible default **file hierarchy**.
 * Predefined, sensible default **build architecture** ([Grunt](http://gruntjs.com/)).
@@ -19,4 +19,4 @@ The Xing Framework is a web development environment for building both a server b
 * **CMS Tools.** Modules for default content management classes and resources, usable for managing editable content in most web projects.
 * **Code generation.** Cross-environment, cross-language code generation tools.
 * **Mobile Development.**  Xing supports multiple frontends. Future versions may support simultaneous building of browser, iOS, and Android apps via Cordova and enable reuse of the AngularJS codebase across all three platforms. 
-* **Built Futureproof.** New SPA frameworks will be integrated as they become prominent, including AngularJS2.
+* **Built Futureproof.** New SPA frameworks will be integrated as they become prominent, including Angular 2.
