@@ -10,7 +10,7 @@ Xing makes every attempt to be a true [HATEOAS](https://en.wikipedia.org/wiki/HA
 
 ## REST
 
-REST (as originally intended, in the Ray Fielding sense) is about "properly" using HTTP to transfer data between client and server. Correctly structured RESTful resources implement the HTTP specification faithfully and as a result gain many benefits, including consistency, predictability of behavior, and *cacheability*.
+REST (as originally intended, in the Roy Fielding sense) is about "properly" using HTTP to transfer data between client and server. Correctly structured RESTful resources implement the HTTP specification faithfully and as a result gain many benefits, including consistency, predictability of behavior, and *cacheability*.
 
 ## Further Reading
 
