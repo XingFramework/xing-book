@@ -6,7 +6,7 @@ Xing incorporates an ES6 build process and includes ES-future decorators to spee
 
 ## Architecture
 
-![](xing-frontend-architecture.png)
+![](/images/xing-frontend-architecture.png)
 
 User navigation and application state is managed by [UI-Router states](https://github.com/angular-ui/ui-router), which map application functionality onto URLs. Each state is associated with a Controller, which renders a template.
 
@@ -27,7 +27,6 @@ To use Relayer, simply define the relational structure of the backend's JSON res
 ### ES6 / ESNext
 
 Xing uses current generation JavaScript, and includes an integrated build environment with [Traceur](https://github.com/google/traceur-compiler) and [Grunt](https://gruntjs.io) to provide transpilation.
-
 ### [A1Atscript](https://github.com/hannahhoward/a1atscript)
 
 Because Xing uses ES6, Xing can make use of TypeScript annotations.  Hannah Howard's module [A1Atscript](https://github.com/hannahhoward/a1atscript) provides an Angular 2-like syntax for annotating components, states, controllers and so forth.
@@ -45,3 +44,4 @@ Xing organizes front-end JavaScript files into subdirectories by feature, rather
 * /frontend/src/app/items/itemsStates.js
 * /frontend/src/app/items/items-show.tpl.html
 * /frontend/src/app/items/items-edit.tpl.html
+
