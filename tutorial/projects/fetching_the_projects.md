@@ -23,15 +23,25 @@ RL.Describe(Resources, (desc) => {
 });
 ```
 
-This says there is an array of other objects available, called `'projects'`.  It doesn't say what the URL is: it's something of a coincidence that the backend serves that resource at `'/projects'` 
-
+This says there is an array of other objects available, called `'projects'`, and that each item in that list is described by the `Project` class.  It doesn't say what the URL is: it's something of a coincidence that the backend serves that resource at `'/projects'`.  It could have the URL `/list-of-projects` or anything else; the frontend doesn't really care because it's going to look the URL up in `/resources`.   
 
 ```javascript
 ```
 
 ## Describing a Project
 
+Now we need to tell the frontend what a project looks like.  Create a file called `frontend/src/common/resources/Project.js` and paste in this code:
+
 ```javascript
+import RL from "relayer";
+
+export default class Project extends RL.Resource{}
+RL.Describe(Project, (desc) => {
+  desc.property("name", "");
+  desc.property("description", "");
+  desc.property("deadline", "");
+  desc.property("goal", "");
+});
 ```
 
 TODO  No new state - we'll add it to the homepage show state. Introduction to the homepage show state here.
