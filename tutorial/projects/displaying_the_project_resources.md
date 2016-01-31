@@ -1,9 +1,5 @@
-# Displaying a list of resources
+# Fetching the projects via JSON
 
-We're going to build several things in this section:
-* Instructions for the AngularJS frontend for communicating with the backend via Hypermedia JSON.
-* An application State using ui-router; this is similar conceptually to a "page" that the user might view.
-* A table on that state that outputs the list of projects supplied by the back-end.
 
 ## Resource definition with Relayer
 
