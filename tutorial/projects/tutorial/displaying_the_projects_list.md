@@ -6,6 +6,8 @@ Now that we can load our projects, we'd like to show them to the user somewhere.
 
 Xing applications use UI-router to describe the user interface as a tree of states. States are a convenient way to organize both functionality and appearance and styling.  The default state tree of a new Xing project looks like this:
 
+![](images/xing-default-state-tree.png)
+
 You're not tied to this structure at all: you can write your application's states however you like. This is just a set of defaults Xing gives you to get you started. States have a full name created from their position in the tree, separated by dots, for example `root.homepage`, or `root.inner.sessions`.  
 
 We'll talk more about states in a bit, but for now you just need to know that the first "page" you see when viewing Crowdfundr in a browser is the `root.homepage.show` state.
@@ -76,6 +78,68 @@ export class HomepageShowState {
 The `@Resolve` function uses the `resources` object - the same one we were working on with `resources.js`.  It tells Angular to fetch a resource named 'projects' based on the URL provided by the back-end.  Because the function itself is named 'projects', it will create an object also called 'projects' and make it available to the controller for this state.  (Again, it's a convenient coincidence that it's called `projects` in both cases.  So let's review which is which: the `@Resolve` function called `projects` creates a `projects` object we can refer to in the controller.  The other function of the same name in `resources.**projects()**.load()` refers to the HTTP JSON resource of that name we set up in `resources.js`.  Clear?  great! Still confusing?  Don't worry about it for now, it'll make more sense with experience.)
 
 The other thing we did in this snippet is add a `controllerAs` specification to our state.  All this does is give our controller an explicit name so we can refer to its data and functions by name in the template.  H[ere's a nice introduction to this syntax convention](https://toddmotto.com/digging-into-angulars-controller-as-syntax/) if you're curious.
+
+### Loading the projects over the network
+
+That's all we need to load the projects list whenever a user visits the homepage. 
+
+We haven't displayed them yet, so if you fire up `rake develop` you'll see the same homepage as before.  But if you're feeling intrepid, open the network tab of your browser's developer tools, and reload the page. You should see a whole bunch of requests to the backend, including `GET /resources` and `GET /projects`, the JSON requests that happen because of that `resources.projects().load()` command.
+
+## Getting our projects into the controller
+
+Now that we've loaded the projects, displaying them takes two steps. First, they must be stored in the controller so that they are accessible to our HTML template. 
+
+Open the controller file for this state at `frontend/src/app/homepage/homepageControllers.js` and replace the entire contents with the following:
+
+(TODO: the homepage controllers in the default application still use the older controller function style instead of classes.  Hence I'm asking the tutorial user to completely overwrite the file.)
+
+#### `frontend/src/app/homepage/homepageControllers.js`
+
+```javascript
+import {Controller} from 'a1atscript';
+
+@Controller('HomepageShowCtrl', ['projects'])
+export class HomepageShowController {
+  constructor(projects) {
+    this.projects = projects;
+  }
+}
+
+@Controller('HomepageCtrl', [])
+export class HomepageController {
+}
+```
+
+This creates two controllers: one for the parent homepage state (which does nothing in particular), and one for the homepage show state.  In that controller, the `['projects']` argument to the annotation specifies that the projects object is a dependency to be injected into this controller. This is the same `projects` object created by our `@Resolve` function back in the state descriptor. (We could inject other objects here as well, like various angular tools, or other resolves from other ancestor states, etc.) If you're not familiar with [dependency injection in AngularJS](https://docs.angularjs.org/guide/di), we strongly recommend you spend some time learning about it: you'll use it everywhere in Xing applications.  
+
+All our dependencies get passed to the controller's constructor function.  Here we only do one thing with it: we store it as a property of the controller.  That's what will let us refer to it in the template.
+
+## Displaying the projects on the page
+
+The file `frontend/src/app/homepage/homepage-show.tpl.html` contains the HTML template for the root.homepage.show state. We're just going to make a table with one row for each project in our projects list.  While we're at it, let's update the headline of our homepage to reflect the name of our application, Crowdfundr.  Open that file and replace the contents with this:
+
+#### `frontend/src/app/homepage/homepage-show.tpl.html`
+
+```html
+<h1>Crowdfundr</h1>
+<p>Below you can see the list of projects available to be funded!</p>
+
+<table id='projects'>
+
+  <tr>
+    <th>Project Name</th>
+  </tr>
+  <tr ng-repeat="project in HomepageShowCtrl.projects">
+    <td>{{project.name}}</td>
+  </tr>
+</table>
+```
+
+## That's it!
+
+If we haven't led you astray, you should be able to run the application now and see the list of projects on your homepage.  They'll have random names as generated by your sample data script in the `backend` part of the app, so yours should be similar but not exactly like this screenshot.
+
+
 
 
 
