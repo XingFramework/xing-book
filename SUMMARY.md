@@ -46,7 +46,7 @@
        * [Sample Data](framework_guide/backend/sample_data.md)
    * [Frontend](framework_guide/frontend.md)
        * [A1Atscript](framework_guide/a1atscript.md)
-       * States vs Components
+       * [States vs Components](framework_guide/states_vs_components.md)
        * [Styling and CSS](framework_guide/styling_and_css.md)
 * [Testing](testing.md)
    * [Promises](testing/promises.md)
