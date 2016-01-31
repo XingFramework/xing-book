@@ -118,7 +118,6 @@ NOTE to Rails users: That's typically all there is to an action in a Xing contro
 With these two written, our request spec will get further before failing because we have no Serializer:
 
     $ rspec spec/requests/project_get_spec.rb 
-    Failures:
 
     Failures:
 
