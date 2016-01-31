@@ -6,7 +6,7 @@ Now that we can load our projects, we'd like to show them to the user somewhere.
 
 Xing applications use UI-router to describe the user interface as a tree of states. States are a convenient way to organize both functionality and appearance and styling.  The default state tree of a new Xing project looks like this:
 
-![](images/xing-default-state-tree.png)
+![](/images/xing-default-state-tree.png)
 
 You're not tied to this structure at all: you can write your application's states however you like. This is just a set of defaults Xing gives you to get you started. States have a full name created from their position in the tree, separated by dots, for example `root.homepage`, or `root.inner.sessions`.  
 
