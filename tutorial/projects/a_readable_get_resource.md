@@ -133,7 +133,7 @@ Serializers are how we produce the JSON for a resource in Xing. When producing a
 
 One of the nice aspects of putting the logic in the Serializer is that Serializers are lightweight and fast Ruby objects that don't depend on much of the Rails stack. Unlike Controllers and ActiveRecord models, tests on Serializers run very quickly so when we test Serializers in isolation we can afford to test them in great detail.
 
-Let's start with a spec for the serializer. It will look a lot like the request spec, but will be testing just one class in isolation. In the serializer test, we will test the full structure of the JSON resource we wish to produce.
+Let's start with a test for the serializer. It will look a lot like the request spec, but will be testing just one class in isolation. In the serializer test, we will test the full structure of the JSON resource we wish to produce.
 
 
 ##### backend/spec/serializers/project_serializer_spec.rb
@@ -175,9 +175,9 @@ This should look a lot like the request spec, and there's a reason for that: in 
 
 The key difference is that instead of submitting an HTTP request to the entire Rails stack, we are just passing a project to an instance of the Serializer and calling ```#to_json```.   
 
-Also, unlike the request spec, here we test the outputted JSON in much greater detail. This is a pattern used by the creators of Xing, but it's up to you if you want to follow it.
+Also, unlike the request spec, here we test the outputted JSON in much greater detail. This is a pattern used by the creators of Xing-- light testing of JSON in the request spec with full testing in the serializer spec. It's up to you if you want to follow it.
 
-Of course ,that spec will fail because we haven't written ProjectSerializer. In this case, ProjectSerializer is trivially easy. Xing uses the [active_model_serializers](https://github.com/rails-api/active_model_serializers) gem, and Xing serializers originally inherit from ActiveModel::Serializer. So Xing serialziers gain all the default behavior of easily converting ActiveModel attributes to fields in the JSON Record.  Xing::Serializers::Base adds default behavior to wrap the data in a ```data: {}``` object and create a ```links: {}``` metadata object.  
+Of course ,that test will fail because we haven't written ProjectSerializer. In this case, ProjectSerializer is trivially easy. Xing uses the [active_model_serializers](https://github.com/rails-api/active_model_serializers) gem, and Xing serializers originally inherit from ActiveModel::Serializer. So Xing serialziers gain all the default behavior of easily converting ActiveModel attributes to fields in the JSON Record.  Xing::Serializers::Base adds default behavior to wrap the data in a ```data: {}``` object and create a ```links: {}``` metadata object.  
 
 For the most part, you just need to subclass ```Xing::Serializers::Base```, list the attributes you want serialized, and add a ```#links``` method to define this resource's links.
 
@@ -195,9 +195,9 @@ Future resources will get more interesting as we add behavior and nested resourc
       end
     end
 
-The attributes method is simply the one inherited from ```ActiveModel::Serializers```, except that it wraps the contents in a data: {} object. In links, two interesting things are going on: object is always a reference to whatever was passed to the constructor of this serializer (see the first let: block in the spec).  routes is literally the Rails routing engine, which ```Xing::Serializers::Base``` makes available to you so you can use it to generate hypermedia links within your resource. 
+The attributes method is simply the one inherited from ```ActiveModel::Serializers```, except that it wraps the contents in a data: {} object. In links, two interesting things are going on: object is always a reference to whatever was passed to the constructor of this serializer (see the first let: block in the test). Routes is literally the Rails routing engine, which ```Xing::Serializers::Base``` makes available to you so you can use it to generate hypermedia links within your resource. 
 
-When you run this spec, it probably still won't quite work. You may see an error like this one:
+When you run the test, it probably still won't quite work. You may see an error like this one:
 
 ```
 backend$ rspec spec/serializers/project_serializer_spec
@@ -252,4 +252,4 @@ Finished in 0.33558 seconds (files took 1.8 seconds to load)
 4 examples, 0 failures
 ```
 
-Attentive readers have noticed that we didn't run the entire spec suite: just serializers and requests.  That's because end-to-end (E2E) tests also live in backend/ for technical reasons, and they can't execute successfully yet since we haven't built an AngularJS frontend.  If you try to run them, you'll get failures, but that's entirely expected at this point.
+Attentive readers have noticed that we didn't run the entire test suite: just serializers and requests.  That's because end-to-end (E2E) tests also live in backend/ for technical reasons, and they can't execute successfully yet since we haven't built an AngularJS frontend.  If you try to run them, you'll get failures, but that's entirely expected at this point.
