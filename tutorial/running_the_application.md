@@ -1,13 +1,13 @@
 # Running The Application
 
-After configuration, we will need to set up the database. Xing provides a rake task to initialize this:
+After configuration, we will need to set up the database. Xing provides a rake task to initialize your database:
 
     $ rake initialize
     
 Rake initialize is equivalent to creating, migrating, and seeding your development database.  If you prefer to do it by hand, all of Rails' standard rake tasks are available if you are inside the ```backend/``` directory.
 
     $ cd backend
-    backend$ rake db:create db:migrate db:seed db:test:prepare
+    backend$ rake db:create db:migrate db:seed
 
 _Note: there's no need to do both! If you run `rake initialize` it will do everything that the above, more traditional, Rails command would do_
     
