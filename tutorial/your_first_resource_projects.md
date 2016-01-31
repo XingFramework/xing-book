@@ -109,4 +109,4 @@ We're also going to need a resource representing the list of all available proje
 
 Notice how we are embedding the /projects/{:id} resources into the array in /projects. However, only a subset of the data is included.  This won't be a problem, however: the frontend's resource layer, however, knows how to follow that ```self:``` link in each resource to fetch the complete version of the resource when necessary.  In a Xing project, you can decide how much or how little of a related resource to embed -- usually to optimize the number of requests the frontend needs to make to retrieve important data.
 
-A list resource in Xing aslo includes a "template" link in the link section. You'll recognize here that is has the same [RFC 6570](https://tools.ietf.org/html/rfc6570) template we used to document the individual project resource. We'll return to the purpose of this link later.
+A list resource in Xing aslo includes a "template" link in the "links" section. You'll recognize here that is has the same [RFC 6570](https://tools.ietf.org/html/rfc6570) template we used above to document the individual project resource. We'll return to the purpose of this link later.
