@@ -40,5 +40,15 @@ Like a Rails application, Xing frontend applications come with a pre-built direc
 
 The two directories here that you will be concerned with are ``src/`` and ``test/``. ``src/`` contains all of the source files for your frontend, including code, html, stylesheets, and static assets. ``test/`` is for your frontend tests.
 
+Let's take a closer look at the ``src/`` directory:
 
-Let's dive in!
+    src/
+        app/
+        common/
+        styles/
+        assets/
+        index.html
+
+In Xing, you put the code for your frontend application in two folders: ``src/app/`` and ``src/common/``. ``app/`` is for the top level user interface of your application, while ``common/`` is for services and small reusable interface components. The distinction between the two will become clearer as we write the our frontend application.
+
+Now that we've gotten a quick tour of the ``frontend/`` directory, let's dive in!
