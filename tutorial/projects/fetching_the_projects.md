@@ -43,7 +43,11 @@ RL.Describe(Project, (desc) => {
 });
 ```
 
-This is pretty straightforward: we create a JavaScript class `Project` that is a Relayer resource. It has four properties we should recognize from our backend work: name, description, deadline, goal.  
+This is pretty straightforward: we create a JavaScript class `Project` that is represents the project resource we'll get from the backend. It has four properties we should recognize from our backend work: name, description, deadline, goal.  
+
+***Wait, what is RL? ***
+
+RL is Relayer, a library provided by Xing to help your frontend talk to your backend. You can read more information about Relayer in the framework guide.
 
 ## Wrapping Up
 
