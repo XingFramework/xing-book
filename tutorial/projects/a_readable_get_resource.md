@@ -50,9 +50,9 @@ In the expectation:
 * json_get is a Xing helper that makes a GET request for the specified URL, while setting the correct HTTP headers to specify a JSON response.
 * be_json_string is a Xing matcher that looks for a properly-quoted  string in the JSON response, optionally at a specified location if you attach .at_path().  This is an extension of the matchers in the (excellent) [json_spec](https://github.com/collectiveidea/json_spec) gem.
 
-Note that we didn't test for every value in the JSON part of the spec. The level of detail you want to test is up to you.  Our practice (the authors of Xing) is to check the overall success of the response and spot-check a bit of the data in the request spec, and then test the full detail of the JSON   
+Note that we didn't test for every value in the JSON part of the spec. The level of detail you want to test is up to you.  Our practice (the authors of Xing) is to check the overall success of the response and spot-check a bit of the data in the request spec. Later, we'll introduce a different type of test where we typically inspect the full JSON.
 
-If you run this spec, it'll error out because the Rails app has no routes for '/project/{id}', no Project model, no database table, no Factory, etc.  Cool, a failing spec is what we want at this point. 
+If you run this test, it'll error out because the Rails app has no routes for '/project/{id}', no Project model, no database table, no Factory, etc.  Cool, a failing test is what we want at this point. 
 
 ## Model and Migration
 
@@ -61,16 +61,15 @@ Let's use Rails' model generator to quickly make us a Project model.
     $ cd backend
     backend$ bundle exec rails generate model project name:string description:text deadline:datetime goal:decimal
     
-That'll generate a model, spec, and empty factory file.  There will be no behavior in the Project model (at least not yet), so there's nothing to test in the model spec file at ```backend/spec/models/project_spec.rb```. We can leave those files alone for the time being.  
+That'll generate a model, test, and empty factory file.  There will be no behavior in the Project model (at least not yet), so there's nothing to test in the model spec file at ```backend/spec/models/project_spec.rb```. We can leave those files alone for the time being.  
 
 This would be a good time to migrate the database (and the test database) to populate our new model:
 
     backend$ bundle exec rake db:migrate
-    backend$ bundle exec rake db:test:prepare
 
-TODO: manually preparing the test database should not be necessary in a contemporary Rails project, and a pull request has been submitted to xing-application-base to remove the necessity.  The second command above should be removed from the tutorial once that PR has been merged and a new version of xing-framework released.
+***Note: When you start 'rake develop', it will run migrations once automatically. So if you write a migration and then run rake develop, you've already run 'rake db:migrate'***
 
-Let's fill out that factory, then, so our spec can run.  Open that file and replace the auto-generated contents with:
+Let's fill out that factory, then, so our test can run.  Open that file and replace the auto-generated contents with:
 
 ##### backend/spec/factories/projects.rb
 
@@ -130,11 +129,12 @@ With these two written, our request spec will get further before failing because
 
 ## Serializer
 
-Serializers are the "views" of the Rails half of a Xing project. When producing a readable Xing resource, almost all of the work is done by the Serializer. If there's any interesting logic to be performed, say to transform the database records into a presentable format, or to perform any computations to add the results to the JSON resource, it would happen here.
+Serializers are how we produce the JSON for a resource in Xing. When producing a readable Xing resource, the Serializer does almost all of the work. If we have to perform some interesting logic to produce our resource, say to transform the database records into a presentable format, or to perform any computations to add the results to the JSON resource, we put it in the Serializer.
 
 One of the nice aspects of putting the logic in the Serializer is that Serializers are lightweight and fast Ruby objects that don't depend on much of the Rails stack. Unlike Controllers and ActiveRecord models, tests on Serializers run very quickly so when we test Serializers in isolation we can afford to test them in great detail.
 
 Let's start with a spec for the serializer. It will look a lot like the request spec, but will be testing just one class in isolation. In the serializer test, we will test the full structure of the JSON resource we wish to produce.
+
 
 ##### backend/spec/serializers/project_serializer_spec.rb
 
@@ -175,7 +175,9 @@ This should look a lot like the request spec, and there's a reason for that: in 
 
 The key difference is that instead of submitting an HTTP request to the entire Rails stack, we are just passing a project to an instance of the Serializer and calling ```#to_json```.   
 
-Of course ,that spec will fail because we haven't written ProjectSerializer. In this case, ProjectSerializer is trivially easy. Xing serializers inherit from [ActiveModel::Serializers](https://github.com/rails-api/active_model_serializers), so they gain all the default behavior of easily converting ActiveModel attributes to fields in the JSON Record.  Xing::Serializers::Base adds default behavior to wrap the data in a ```data: {}``` object and create a ```links: {}``` metadata object.  
+Also, unlike the request spec, here we test the outputted JSON in much greater detail. This is a pattern used by the creators of Xing, but it's up to you if you want to follow it.
+
+Of course ,that spec will fail because we haven't written ProjectSerializer. In this case, ProjectSerializer is trivially easy. Xing uses the [active_model_serializers](https://github.com/rails-api/active_model_serializers) gem, and Xing serializers originally inherit from ActiveModel::Serializer. So Xing serialziers gain all the default behavior of easily converting ActiveModel attributes to fields in the JSON Record.  Xing::Serializers::Base adds default behavior to wrap the data in a ```data: {}``` object and create a ```links: {}``` metadata object.  
 
 For the most part, you just need to subclass ```Xing::Serializers::Base```, list the attributes you want serialized, and add a ```#links``` method to define this resource's links.
 
