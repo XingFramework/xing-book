@@ -4,7 +4,7 @@ We're not going to build the resources for creating and editing our projects jus
 
 But we'd like to have some projects in our database when we get there. Fortunately the Xing includes a standard pattern for creating rake tasks that generate sample data: synthetic, randomized data you can use to view and demo your application as if the database were already populated by users.
 
-There's more on how sample data tasks work [later on in the Framework guide](framework_guide/backend/sample_data.md). For now, just create the following file:
+There's more on how sample data tasks work [later on in the Framework guide](/framework_guide/backend/sample_data.md). For now, just create the following file:
 
 ##### ```backend/db/sample_data/projects.rake```
 
