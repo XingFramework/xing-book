@@ -24,6 +24,7 @@
            * [Fetching the projects](tutorial/projects/fetching_the_projects.md)
            * [Displaying the projects list](tutorial/projects/tutorial/displaying_the_projects_list.md)
            * [Adding a project detail page](tutorial/projects/adding_a_project_detail_page.md)
+           * Styling the projects list
        * [Creating and updating projects](tutorial/projects/creating_and_updating_projects_md.md)
            * [Backend: Mappers](tutorial/projects/backend_mappers.md)
            * [Frontend: Forms](tutorial/projects/frontend_forms.md)
