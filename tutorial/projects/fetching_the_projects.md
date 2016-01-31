@@ -29,7 +29,7 @@ This says there is an array of other objects available, called `'projects'`, and
 
 Now we need to tell the frontend what a project looks like.  Create a file called `frontend/src/common/resources/Project.js` and paste in this code:
 
-##### `frontend/src/common/resources/Project.js`
+#### `frontend/src/common/resources/Project.js`
 
 ```javascript
 import RL from "relayer";
@@ -53,9 +53,40 @@ The top-level resources list referred to the Project class, but so far we haven'
 import Project from 'resources/Project.js'
 ```
 
-For clarity,
+For clarity, the whole file should now look like this:
+
+#### `frontend/src/common/resources.js`
 
 ```javascript
+import RL from "relayer";
+import {Module, Config, applyAnnotation} from "a1atscript";
+import {backendUrl} from 'config';
+// import other resources from src/common/resources here
+import Project from 'resources/Project.js'
+
+class Resources extends RL.Resource {
+}
+
+RL.Describe(Resources, (desc) => {
+  // put top level links to resources here
+  desc.hasList('projects', Project, [])
+});
+
+// sets up default API as 'resources' service
+function setupResources(relayerProvider) {
+  relayerProvider.createApi("resources", Resources, backendUrl+"resources")
+}
+
+// this is a syntax for applying an annotation without an ES7 Decorator
+applyAnnotation(setupResources, Config, "relayerProvider");
+
+var resourcesModule = new Module('xing.resources', [setupResources,
+  RL]);
+
+export default resourcesModule;
 ```
+
+That's all we need: our frontend can now talk to our backend and load projects via JSON.
+
 
 
