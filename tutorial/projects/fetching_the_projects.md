@@ -47,7 +47,7 @@ This is pretty straightforward: we create a JavaScript class `Project` that is r
 
 ***Wait, what is RL? ***
 
-RL is Relayer, a library provided by Xing to help your frontend talk to your backend. You can read more information about Relayer in the framework guide.
+RL is Relayer, a library provided by Xing to help your frontend talk to your backend. You can read more information about Relayer in [the framework guide](../../framework_guide/relayer.md).
 
 ## Wrapping Up
 
