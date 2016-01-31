@@ -9,4 +9,8 @@ We're going to build several things in this section:
 * An application State using ui-router; this is similar conceptually to a "page" that the user might view.
 * A table on that state that outputs the list of projects supplied by the back-end.
 
+## Getting Oriented
+
+If you've only worked in Rails before, teh ``frontend/`` directory will look very unfamiliar:
+
 Let's dive in!
