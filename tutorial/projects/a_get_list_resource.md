@@ -118,70 +118,73 @@ Now when we run our integration spec, as before we'll fail because we haven't wr
 
 As usual, we'll start with a spec.  What output do we want from this list resource?
 
-##### ```backend/spec/serializers/project_list_serializer_spec.r```
+##### ```backend/spec/serializers/project_list_serializer_spec.rb```
 
-    require 'spec_helper'
-    
-    describe ProjectSerializer, :type => :serializer do
-    
-      let! :project_1 do
-        FactoryGirl.create(:project,
-                           :name => "The Xing Framework",
-                           :description => "Cool new web framework!"
-                          )
-      end
-    
-      let! :project_2 do
-        FactoryGirl.create(:project,
-                           :name => "The Xing Book",
-                           :description => "A book!"
-                          )
-      end
-    
-      let! :project_3 do
-        FactoryGirl.create(:project,
-                           :name => "The Xing Screencasts",
-                           :description => "Screencasts!"
-                          )
-      end
-    
-      let :serializer do
-        ProjectListSerializer.new([project_1, project_2, project_3])
-      end
-    
-      describe "as_json" do
-        let :json do serializer.to_json end
-    
-        it "should have the correct links" do
-          expect(json).to be_json_string("/projects").at_path("links/self")
-        end
-    
-        it "should have the correct structure and content" do
-          expect(json).to be_json_string("/projects/#{project_1.id}").at_path("data/0/links/self")
-          expect(json).to be_json_string("The Xing Framework")       .at_path("data/0/data/name")
-          expect(json).not_to have_json_path("data/0/data/description")
-          expect(json).not_to have_json_path("data/0/data/deadline")
-          expect(json).not_to have_json_path("data/0/data/goal")
-    
-          expect(json).to be_json_string("/projects/#{project_2.id}").at_path("data/1/links/self")
-          expect(json).to be_json_string("The Xing Book")            .at_path("data/1/data/name")
-          expect(json).not_to have_json_path("data/1/data/description")
-          expect(json).not_to have_json_path("data/1/data/deadline")
-          expect(json).not_to have_json_path("data/1/data/goal")
-    
-          expect(json).to be_json_string("/projects/#{project_3.id}").at_path("data/2/links/self")
-          expect(json).to be_json_string("The Xing Screencasts")     .at_path("data/2/data/name")
-          expect(json).not_to have_json_path("data/2/data/description")
-          expect(json).not_to have_json_path("data/2/data/deadline")
-          expect(json).not_to have_json_path("data/2/data/goal")
-    
-          # the project descriptions do not appear anywhere in this resource
-          expect(json).not_to be_json_string("Cool new web framework!")
-          expect(json).not_to be_json_string("A Book!")
-          expect(json).not_to be_json_string("Screencasts")
-        end
-      end
+```ruby
+require 'spec_helper'
+
+describe ProjectSerializer, :type => :serializer do
+
+  let! :project_1 do
+    FactoryGirl.create(:project,
+                       :name => "The Xing Framework",
+                       :description => "Cool new web framework!"
+                      )
+  end
+
+  let! :project_2 do
+    FactoryGirl.create(:project,
+                       :name => "The Xing Book",
+                       :description => "A book!"
+                      )
+  end
+
+  let! :project_3 do
+    FactoryGirl.create(:project,
+                       :name => "The Xing Screencasts",
+                       :description => "Screencasts!"
+                      )
+  end
+
+  let :serializer do
+    ProjectListSerializer.new([project_1, project_2, project_3])
+  end
+
+  describe "as_json" do
+    let :json do serializer.to_json end
+
+    it "should have the correct links" do
+      expect(json).to be_json_string("/projects").at_path("links/self")
     end
+
+    it "should have the correct structure and content" do
+      expect(json).to be_json_string("/projects/#{project_1.id}").at_path("data/0/links/self")
+      expect(json).to be_json_string("The Xing Framework")       .at_path("data/0/data/name")
+      expect(json).not_to have_json_path("data/0/data/description")
+      expect(json).not_to have_json_path("data/0/data/deadline")
+      expect(json).not_to have_json_path("data/0/data/goal")
+
+      expect(json).to be_json_string("/projects/#{project_2.id}").at_path("data/1/links/self")
+      expect(json).to be_json_string("The Xing Book")            .at_path("data/1/data/name")
+      expect(json).not_to have_json_path("data/1/data/description")
+      expect(json).not_to have_json_path("data/1/data/deadline")
+      expect(json).not_to have_json_path("data/1/data/goal")
+
+      expect(json).to be_json_string("/projects/#{project_3.id}").at_path("data/2/links/self")
+      expect(json).to be_json_string("The Xing Screencasts")     .at_path("data/2/data/name")
+      expect(json).not_to have_json_path("data/2/data/description")
+      expect(json).not_to have_json_path("data/2/data/deadline")
+      expect(json).not_to have_json_path("data/2/data/goal")
+
+      # the project descriptions do not appear anywhere in this resource
+      expect(json).not_to be_json_string("Cool new web framework!")
+      expect(json).not_to be_json_string("A Book!")
+      expect(json).not_to be_json_string("Screencasts")
+    end
+  end
+end
+```
+   
 
 We're being very thorough about this test: confirming not only that the correct data exists, but that the data we don't want (other parts of the project resource) also aren't present. For those, we are checking both that the path where they might exist isn't present (e.g. "data/1/data/description") and for some also that the text doesn't exist anywhere in the JSON (e.g. ```expect(json).not_to be_json_string("A Book!")```, specified without ```.at_path()```). This is probably overkill in practice, it's included here to demonstrate available practices.
 
@@ -193,20 +196,21 @@ Let's start with a simple version of the list serializer.
 
 ##### ```backend/app/serializers/project_list_serializer.rb```
 
-    class ProjectListSerializer < Xing::Serializers::List
-    
-      def links
-        {
-          self:     routes.projects_path,
-          template: routes.project_path_rfc6570
-        }
-      end
-    
-      def item_serializer_class
-        ProjectSerializer
-      end
-    
-    end
+```ruby
+class ProjectListSerializer < Xing::Serializers::List
+
+  def links
+    {
+      self:     routes.projects_path,
+      template: routes.project_path_rfc6570
+    }
+  end
+
+  def item_serializer_class
+    ProjectSerializer
+  end
+end
+```
 
 There are three new things worth noting here.  First, we subclass ```Xing::Serializers::List``` instead of ```Xing::Serializers::Base```.  This version of the serializer class expects to be initialized with an Array (or other Enumerable) of items, and to serialize each of those with a secondary delegated serializer.  To specify which class is used to serialize the individual items in the array, define the method * ```#item_serializer_class``` and have it return said class. Here we simply delegate to the ```ProjectSerializer``` we already created. 
 
