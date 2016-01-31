@@ -65,9 +65,9 @@ This would be a good time to migrate the database to populate our new model:
 
     backend$ bundle exec rake db:migrate
 
-Let's fill out that factory, then, so our spec can run:
+Let's fill out that factory, then, so our spec can run.  Open that file and replace the auto-generated contents with:
 
-##### backend/spec/factories/project_factory.rb
+##### backend/spec/factories/projects.rb
 
     FactoryGirl.define do
       factory :project do
