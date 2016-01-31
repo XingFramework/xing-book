@@ -239,9 +239,11 @@ In a Xing list serializer, if you define a method ```item_serializer_options```,
 
 ##### ```backend/app/serializers/project_list_serializer.rb```  
 
-    def item_serializer_options
-      { only: :name }
-    end
+```ruby
+def item_serializer_options
+  { only: :name }
+end
+```
     
 With that method added, our specs will pass.
 
