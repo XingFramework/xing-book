@@ -88,6 +88,7 @@ We're also going to need a resource representing the list of all available proje
     // it does not have a defined order.
     {
       links: {
+        template: '/projects/{id}'
         self: '/projects'
       },
       
@@ -107,3 +108,5 @@ We're also going to need a resource representing the list of all available proje
     }
 
 Notice how we are embedding the /projects/{:id} resources into the array in /projects. However, only a subset of the data is included.  This won't be a problem, however: the frontend's resource layer, however, knows how to follow that ```self:``` link in each resource to fetch the complete version of the resource when necessary.  In a Xing project, you can decide how much or how little of a related resource to embed -- usually to optimize the number of requests the frontend needs to make to retrieve important data.
+
+***A list resource in Xing includes an additional link called "template" that is an [RFC 6570](https://tools.ietf.org/html/rfc6570) URI Template for individual elements in the list. We'll return to what this template link is and how to generate it later***
