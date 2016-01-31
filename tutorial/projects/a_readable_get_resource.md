@@ -128,7 +128,7 @@ With these two written, our request spec will get further before failing because
 
 ## Serializer
 
-Serializers are the "views" of a Xing project. When producing a readable Xing resource, almost all of the work is done by the Serializer. If there's any interesting logic to be performed, say to transform the database records into a presentable format, or to perform any computations to add the results to the JSON resource, it would happen here.
+Serializers are the "views" of the Rails half of a Xing project. When producing a readable Xing resource, almost all of the work is done by the Serializer. If there's any interesting logic to be performed, say to transform the database records into a presentable format, or to perform any computations to add the results to the JSON resource, it would happen here.
 
 One of the nice aspects of putting the logic in the Serializer is that Serializers are lightweight and fast Ruby objects that don't depend on much of the Rails stack. Unlike Controllers and ActiveRecord models, tests on Serializers run very quickly so when we test Serializers in isolation we can afford to test them in great detail.
 
@@ -164,7 +164,7 @@ Let's start with a spec for the serializer. It will look a lot like the request 
           expect(json).to be_json_string("The Xing Framework")     .at_path("data/name")
           expect(json).to be_json_string("Cool new web framework!").at_path("data/description")
           expect(json).to be_json_string(project.deadline.as_json) .at_path("data/deadline")
-          expect(json).to be_json_eql("15000.00")                  .at_path("data/goal")
+          expect(json).to be_json_string("15000.00")                  .at_path("data/goal")
         end
       end
     end
@@ -193,3 +193,59 @@ Future resources will get more interesting as we add behavior and nested resourc
 
 The attributes method is simply the one inherited from ```ActiveModel::Serializers```, except that it wraps the contents in a data: {} object. In links, two interesting things are going on: object is always a reference to whatever was passed to the constructor of this serializer (see the first let: block in the spec).  routes is literally the Rails routing engine, which ```Xing::Serializers::Base``` makes available to you so you can use it to generate hypermedia links within your resource. 
 
+When you run this spec, it probably still won't quite work. You may see an error like this one:
+
+```
+backend$ rspec spec/serializers/project_serializer_spec
+
+Failures:
+
+  1) ProjectSerializer as_json should have the correct structure and content
+     Failure/Error: expect(json).to be_json_string("15000.00")               .at_path("data/goal")
+       Expected equivalent JSON at path "data/goal"
+       Diff:
+       @@ -1,2 +1,2 @@
+       -"15000.00"
+       +"15000.0"
+       
+     # ./spec/serializers/project_serializer_spec.rb:29:in `block (3 levels) in <top (required)>'
+
+```
+
+What's going on here?  The problem is that we have a decimal number (stored in decimal datatype in our SQL database and represented as a BigDecimal in Ruby. Unfortunately JSON doesn't have a decimal data type, only Number, which is represented by a floating point and so [isn't suitable for representing monetary amounts like our funding goal](http://spin.atomicobject.com/2014/08/14/currency-rounding-errors/).  So the default serializer attempts to represent our decimal number as a string. However, it can't know exactly how many decimal points we care about for this particular number, and is defaulting to just one decimal point: 15000.0 isn't quite the same as the 15000.00 that we expected.
+
+The solution is to give our serializer more information on how to serialize this particular attribute.  If you create a method with the same name as your attribute, your serializer will output the result of that method instead of the raw attribute. So let's change our serializer to say this:
+
+```ruby
+class ProjectSerializer < Xing::Serializers::Base
+  attributes :name, :description, :deadline, :goal
+
+  def goal
+    sprintf("%.2f", object.goal)
+  end
+
+  def links
+    {
+      self: routes.project_path(object)
+    }
+  end
+end
+```
+
+Now we've used the ```sprintf``` method to force Ruby to format our fundraising goal using two decimal points, and our both our serializer and request specs should pass:
+
+```
+backend$ rspec spec/serializers/ spec/requests/
+
+Rails API server started on 127.0.0.1:54179
+Setting up static app:
+  serving files from ../frontend/bin
+  using http://localhost:54179/ for API
+  logging to /Users/evan/Development/Xing/apps/crowdfundr/backend/log/test_static.log
+....
+
+Finished in 0.33558 seconds (files took 1.8 seconds to load)
+4 examples, 0 failures
+```
+
+Attentive readers have noticed that we didn't run the entire spec suite: just serializers and requests.  That's because end-to-end (E2E) tests also live in backend/ for technical reasons, and they can't execute successfully yet since we haven't built an AngularJS frontend.  If you try to run them, you'll get failures, but that's entirely expected at this point.
