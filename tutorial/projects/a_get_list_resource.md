@@ -11,7 +11,7 @@ The test for our list resource looks much like the one for our singular resource
 ```ruby
 require 'spec_helper'
 
-describe 'GET /project', :type => :request do
+describe 'GET /projects', :type => :request do
   let! :project_1 do
     FactoryGirl.create(:project,
                        :name => "The Xing Framework",
@@ -123,7 +123,7 @@ As usual, we'll start with a spec.  What output do we want from this list resour
 ```ruby
 require 'spec_helper'
 
-describe ProjectSerializer, :type => :serializer do
+describe ProjectListSerializer, :type => :serializer do
 
   let! :project_1 do
     FactoryGirl.create(:project,
