@@ -25,9 +25,11 @@ Let's create a new Xing project! CAUTION: the `xing new` will automatically gene
     $ xing new crowdfundr
     
     # OR if using rvm with gemsets:
-    $ xing new crowdfundr --with-gemsets
+    $ xing new --with-gemset crowdfundr
 
 This command should take a few minutes to run.  It will generate a blank application in a subdirectory called ```crowdfundr```, change to it, and proceed to install the rubygems and npm modules necessary to support Xing development.
+
+*** When you run xing new, you'll be asked whether you want to add a Code of Conduct to your project. If you don't want one, just say no. If you're curious why you might want to add a Code of Conduct to your project, you can read more about them [here](http://contributor-covenant.org/).***
 
 ## Your empty application
 
