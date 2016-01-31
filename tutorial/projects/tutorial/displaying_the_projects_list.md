@@ -29,6 +29,7 @@ export class HomepageState extends TrackAdminState {
   constructor() {
     super();
     this.controller = 'HomepageCtrl';
+    this.controllerAs = 'homepage';
     this.templateUrl = 'homepage/homepage.tpl.html';
     this.abstract = true;
     this.url = 'home';
@@ -40,6 +41,7 @@ export class HomepageShowState {
   constructor() {
     this.url = '';
     this.controller = 'HomepageShowCtrl';
+    this.controllerAs = 'homepageShow';
     this.templateUrl = 'homepage/homepage-show.tpl.html';
   }
 }
@@ -63,7 +65,7 @@ export class HomepageShowState {
   constructor() {
     this.url = '';
     this.controller = 'HomepageShowCtrl';
-    this.controllerAs = 'HomepageShowCtrl';
+    this.controllerAs = 'homepageShow';
     this.templateUrl = 'homepage/homepage-show.tpl.html';
   }
 
@@ -77,8 +79,6 @@ export class HomepageShowState {
 
 The `@Resolve` function uses the `resources` object - the same one we were working on with `resources.js`.  It tells Angular to fetch a resource named 'projects' based on the URL provided by the back-end.  Because the function itself is named 'projects', it will create an object also called 'projects' and make it available to the controller for this state.  (Again, it's a convenient coincidence that it's called `projects` in both cases.  So let's review which is which: the `@Resolve` function called `projects` creates a `projects` object we can refer to in the controller.  The other function of the same name in `resources.**projects()**.load()` refers to the HTTP JSON resource of that name we set up in `resources.js`.  Clear?  great! Still confusing?  Don't worry about it for now, it'll make more sense with experience.)
 
-The other thing we did in this snippet is add a `controllerAs` specification to our state.  All this does is give our controller an explicit name so we can refer to its data and functions by name in the template.  H[ere's a nice introduction to this syntax convention](https://toddmotto.com/digging-into-angulars-controller-as-syntax/) if you're curious.
-
 ### Loading the projects over the network
 
 That's all we need to load the projects list whenever a user visits the homepage. 
@@ -89,28 +89,38 @@ We haven't displayed them yet, so if you fire up `rake develop` you'll see the s
 
 Now that we've loaded the projects, displaying them takes two steps. First, they must be stored in the controller so that they are accessible to our HTML template. 
 
-Open the controller file for this state at `frontend/src/app/homepage/homepageControllers.js` and replace the entire contents with the following:
-
-(TODO: the homepage controllers in the default application still use the older controller function style instead of classes.  Hence I'm asking the tutorial user to completely overwrite the file.)
+Open the controller file. You'll see the following:
 
 #### `frontend/src/app/homepage/homepageControllers.js`
 
 ```javascript
 import {Controller} from 'a1atscript';
 
+@Controller('HomepageShowCtrl', [])
+export class HomepageShowController {
+  constructor() {}
+}
+
+@Controller('HomepageCtrl', [])
+export class HomepageController {
+  constructor() {}
+}
+```
+
+Change `HomepageShowController` to the following:
+
+```javascript
 @Controller('HomepageShowCtrl', ['projects'])
 export class HomepageShowController {
   constructor(projects) {
     this.projects = projects;
   }
 }
-
-@Controller('HomepageCtrl', [])
-export class HomepageController {
-}
 ```
 
-This creates two controllers: one for the parent homepage state (which does nothing in particular), and one for the homepage show state.  In that controller, the `['projects']` argument to the annotation specifies that the projects object is a dependency to be injected into this controller. This is the same `projects` object created by our `@Resolve` function back in the state descriptor. (We could inject other objects here as well, like various angular tools, or other resolves from other ancestor states, etc.) If you're not familiar with [dependency injection in AngularJS](https://docs.angularjs.org/guide/di), we strongly recommend you spend some time learning about it: you'll use it everywhere in Xing applications.  
+Let's look at the changees we made here.
+
+First, we added the `['projects']` argument to the annotation. This specifies that the projects object is a dependency to be injected into this controller. This is the same `projects` object created by our `@Resolve` function back in the state descriptor. (We could inject other objects here as well, like various angular tools, or other resolves from other ancestor states, etc.) If you're not familiar with [dependency injection in AngularJS](https://docs.angularjs.org/guide/di), we strongly recommend you spend some time learning about it: you'll use it everywhere in Xing applications.  
 
 All our dependencies get passed to the controller's constructor function.  Here we only do one thing with it: we store it as a property of the controller.  That's what will let us refer to it in the template.
 
@@ -129,7 +139,7 @@ The file `frontend/src/app/homepage/homepage-show.tpl.html` contains the HTML te
   <tr>
     <th>Project Name</th>
   </tr>
-  <tr ng-repeat="project in HomepageShowCtrl.projects">
+  <tr ng-repeat="project in homepageShow.projects">
     <td>{{project.name}}</td>
   </tr>
 </table>
