@@ -21,7 +21,7 @@
            * [A GET list resource](tutorial/projects/a_get_list_resource.md)
            * [Sample Data](tutorial/projects/sample_data.md)
        * [Projects on the Frontend](tutorial/projects/projects_on_the_frontend.md)
-           * [Displaying the project resources](tutorial/projects/displaying_the_project_resources.md)
+           * [Fetching the projects](tutorial/projects/displaying_the_project_resources.md)
            * [Adding a project detail page](tutorial/projects/adding_a_project_detail_page.md)
        * [Creating and updating projects](tutorial/projects/creating_and_updating_projects_md.md)
            * [Backend: Mappers](tutorial/projects/backend_mappers.md)
@@ -54,3 +54,4 @@
 * [Pragmatic Advice](pragmatism.md)
    * [Debugging Tricky Javascript](pragmatism/js_debugging.md)
    * [Outstanding Questions](pragmatism/outstanding_questions.md)
+
