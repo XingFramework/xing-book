@@ -35,5 +35,9 @@ If you've only worked in Rails before, the ``frontend/`` directory will look ver
     drwxrwxr-x+  7 hannah  rvm     238 Jan 31 08:43 src
     drwxrwxr-x+  6 hannah  rvm     204 Jan 31 08:43 test
     drwxrwxr-x+  3 hannah  rvm     102 Jan 31 08:43 test-help
-    
+
+Like a Rails application, Xing frontends come with a pre-built directory structure so you know where to put stuff.
+
+The two directories here that you will be concerned with are ``src/`` and ``test``.
+
 Let's dive in!
