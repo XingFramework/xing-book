@@ -90,11 +90,13 @@ And add this method to the controller, to handle the list resource.
 
 ##### backend/app/controllers/projects_controller.rb
 
-    # GET /projects
-    def index
-      projects =  projects = Project.all.order('created_at ASC')
-      render :json => ProjectListSerializer.new(projects)
-    end
+```ruby
+# GET /projects
+def index
+  projects =  projects = Project.all.order('created_at ASC')
+  render :json => ProjectListSerializer.new(projects)
+end
+```
 
 **IMPORTANT NOTE on coding conventions:** Rails conventions encourage us to think of 'index' and 'show' as two aspects of a single resource. For example, Rails routing helpers generate both with a single 'resources' call, and we put both actions in the same controller. Because those conventions are well established, we'll tend to structure our Rails code that way.  However, in Xing we tend to look at things from an HTTP perspective: ```/projects/1``` and ```/projects``` are two different resources. They have different URLs, different data formats, different contents - one is the data about a project, where the other is a list of available projects. Each of these two resources can (in principle) respect multiple HTTP verbs like GET, PUT, DELETE and so forth. So in most of Xing we will treat the two as different resources: they'll have different descriptions in ```API_DOC/```, each will get its own entry and file in the frontend, etc. If Xing were starting over with a "replacement" for Rails, we would probably have separate ```project_controller.rb``` and ```projects_list_controller.rb```, each one handling the multiple HTTP verbs for its particular resource.  However, because Rails' existing conventions and helpers provide so much convenience, we will stick with those conventions in ```backend/``` to a large extent.
 
