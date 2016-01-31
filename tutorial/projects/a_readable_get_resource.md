@@ -61,9 +61,12 @@ Let's use Rails' model generator to quickly make us a Project model.
     
 That'll generate a model, spec, and empty factory file.  There will be no behavior in the Project model (at least not yet), so there's nothing to test in the model spec file at ```backend/spec/models/project_spec.rb```. We can leave those files alone for the time being.  
 
-This would be a good time to migrate the database to populate our new model:
+This would be a good time to migrate the database (and the test database) to populate our new model:
 
     backend$ bundle exec rake db:migrate
+    backend$ bundle exec rake db:test:prepare
+
+TODO: manually preparing the test database should not be necessary in a contemporary Rails project, and a pull request has been submitted to xing-application-base to remove the necessity.  The second command above should be removed from the tutorial once that PR has been merged and a new version of xing-framework released.
 
 Let's fill out that factory, then, so our spec can run.  Open that file and replace the auto-generated contents with:
 
