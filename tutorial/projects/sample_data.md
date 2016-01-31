@@ -38,7 +38,6 @@ namespace :db do
 end
 ```
 
-
 Then go to your command line (still in the backend/ subdirectory) and run this command:
 
     backend$ bundle exec rake db:sample_data:load
