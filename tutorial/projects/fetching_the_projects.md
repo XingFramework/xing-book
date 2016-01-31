@@ -50,7 +50,7 @@ This is pretty straightforward: we create a JavaScript class `Project` that is a
 The top-level resources list referred to the Project class, but so far we haven't included that class file anywhere.  For the resources list to work, we need to add one import line at the top.  Go back to resources.js and add this line right after the other imports:
 
 ```javascript
-import Project from 'resources/Project.js'
+import Project from 'resources/Project.js';
 ```
 
 For clarity, the whole file should now look like this:
@@ -62,7 +62,7 @@ import RL from "relayer";
 import {Module, Config, applyAnnotation} from "a1atscript";
 import {backendUrl} from 'config';
 // import other resources from src/common/resources here
-import Project from 'resources/Project.js'
+import Project from 'resources/Project.js';
 
 class Resources extends RL.Resource {
 }
