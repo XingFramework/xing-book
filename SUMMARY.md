@@ -47,6 +47,7 @@
    * [Frontend](framework_guide/frontend.md)
        * [A1Atscript](framework_guide/a1atscript.md)
        * States vs Components
+       * Styling and CSS
 * [Testing](testing.md)
    * [Promises](testing/promises.md)
 * [Work Flow](work_flow.md)
