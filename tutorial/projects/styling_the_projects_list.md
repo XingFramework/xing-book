@@ -55,3 +55,6 @@ Uncomment the line for `$main_background_color` and change it to white, so it re
 ```scss
 $main_background_color: white
 ```
+
+Change other constants to see what kind of results you get.
+
