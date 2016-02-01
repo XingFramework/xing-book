@@ -1,16 +1,10 @@
 # Styling the projects list
 
-Let's make some improvements to the appears of the Projects list.
+Let's improve the appearance of the Projects list.
 
 Xing gives you some basic tools to make styling your applications easier. You'll write your styles using [SASS](http://sass-lang.com/) and we provide some default mixins to get you started. We don't include a CSS Framework by default, other than Compass. 
 
-Styles for a Xing application live in ``frontend/src/styles``. The styles directory looks like this:
-
-    styles
-        partials
-        states
-        _constants.sass
-        main.sass
+Styles for a Xing application live in ``frontend/src/styles``.
 
 ## Changing Style Constants
 
