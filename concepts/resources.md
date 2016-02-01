@@ -13,7 +13,7 @@ The code blocks below are examples of API documentation for a Xing project, but 
 This resource describes a simple project, with only a few attributes.
 
 ```JSON
-# GET /projects/:slug
+# GET /projects/:id
 
 {
   links: {
