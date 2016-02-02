@@ -127,7 +127,22 @@ export class ProjectState {
 }
 ```
 
+To load our project, we utilize our resources API as well as a special object provided by UI-Router called `$stateParams`. At any given time, `$stateParams` describes the parameters given to the current state in the URL. So recall when we described the url for the project state, we said it was `/project/:id`. So if the current frontend URL becomes `/projects/5` we'll enter the project state, and $stateParams will be `{ id: '5' }`. So 
 
+```javascript
+  return resources.project($stateParams).load();
+```
+
+is equivalent to:
+```javascript
+  return resources.project({id: '5'}).load();
+```
+
+We've named our project detail state's parameter the same as the 'project' link template. $stateParams allow us to fill in the link template, which produces a final request to `/projects/5` on the backend.
+
+## A Simple Frontend Test
+
+Up to this point, we
 
 ## Controller
 
