@@ -33,6 +33,8 @@ This file doesn't do much by itself: only imports the code from `projectControll
 
 Now let's add a new state to our UI-Router state tree, representing the project detail user interface.
 
+`frontend/src/app/projects/projectsStates.js`
+
 ```JavaScript
 import {State, Resolve, Inject} from "stateInjector";
 
@@ -51,9 +53,11 @@ This should look fairly familiar from the previous states we worked on: it adds 
 
 We'll explain where that ID comes from in a bit.
 
+Right now, our state isn't loading a 
+
 ## Controller
 
-TODO
+Let's make a controller for our new State
 
 ## Template
 
