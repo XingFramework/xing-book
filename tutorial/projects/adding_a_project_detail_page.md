@@ -37,7 +37,7 @@ Now let's add a new state to our UI-Router state tree, representing the project 
 import {State, Resolve, Inject} from "stateInjector";
 
 @State("root.inner.project")
-export class ExperiencesState {
+export class ProjectState {
   constructor() {
     this.url = "/project/:id";
     this.templateUrl = "project/project.tpl.html";
