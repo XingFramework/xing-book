@@ -70,7 +70,7 @@ In the `frontend/src/styles/` directory, you'll see a `states/` folder. Files in
 
 ```
 
-You'll see that styles in this file are under css selectors with an id of the state name. Xing adds some extra magic to UI-router such that when a state is active, a css selector with the id of the state name is present on the page. That way, you can right styles for when this id is present, and your styles will only get applied inside that states template.
+You'll see that styles in this file are nestend under css selectors with an id of the state name. Xing adds some extra magic to UI-router such that when a state is active, a css selector with the id of the state name is present on the page. That way, you can right styles for when this id is present, and your styles will only get applied inside that states template.
 
 Let's go ahead and add some styling to our list:
 
@@ -91,9 +91,31 @@ Let's go ahead and add some styling to our list:
 
 There that looks better!
 
-***Note: in order for our state css magic to work, when you add a `ui-view` tag your html, you'll want to also add the directive `xng-state-attrs` as an attribute on the `ui-view`:***
+### Aside: how organizing your css by router state works
+
+UI-Router works by rendering one template for each level of your state tree.  Each template that's not the leaf of the branch should have a `<ui-view>` tag somewhere in it.  When the next level is rendered, the next template "down" in the tree will get plugged in as the contents of the `<ui-view>` tag from the level above.  
+
+If you poke through the files in this project inside `frontend/src/app`, you'll find `root.tpl.html`, `homepage/homepage.tpl.html` and `homepage/homepage-show.tpl.html`.  These correspond to the three levels of the route `root.homepage.show`, and the first two have `<ui-view>` tags, where the next one in the chain gets rendered.
+
+As a convenience, Xing provides the Angular directive `xng-state-attrs`.  If this directive is used as an attribute on each `<ui-view>`, that `ui-view` will be decorated with an id and a class indicating which part of the state tree is being rendered. If we ignore the other components of the page, the rendered homepage's HTML looks like this:
 
 ```html
-<ui-view xng-state-attrs>
+<ui-view class='root' id='root'>
+  <ui-view class='homepage' id='root_homepage'>
+    <ui-view class='show' id='root_homepage_show'>
+      Visible homepage contents here
+    </ui-view>
+  </ui-view>
 </ui-view>
 ```
+
+These classes and IDs turn out to be a powerful way to organize your style rules.  By convention, Xing projects put all the rules for a state in their own file.  But if you were to put them all in one file, you can see how grouping by the state tree can be really useful.  For example, the login page is root.inner.sessions,  the password reset request page is root.inner.passwordRequest, and the password reset page is root.inner.passwords. These three interfaces likely have similar styling, so you could group most of the styles under #root_inner, and specific rules under the sub-states:
+
+```scss
+#root_inner
+  // CSS rules common to all three pages, including form formatting
+  
+#root_inner_sessions, #root_inner_passwords
+  // CSS rules common to just these two interfaces
+```
+
