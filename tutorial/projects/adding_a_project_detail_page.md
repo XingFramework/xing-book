@@ -83,16 +83,48 @@ RL.Describe(Resources, (desc) => {
 });
 ```
 
-Like 
+If our "project" resource were a direct link to a single project we could just add one line:
+
 ```javascript
 RL.Describe(Resources, (desc) => {
   // put top level links to resources here
   desc.hasList('projects', Project, [])
+  desc.hasOne('project', Project);
+});
+```
 
+In order to tell frontend that the project resource is a link template, we add one additional line:
+
+```javascript
+RL.Describe(Resources, (desc) => {
+  // put top level links to resources here
+  desc.hasList('projects', Project, [])
   var project = desc.hasOne('project', Project);
   project.templated = true;
-
 });
+```
+
+Whenever you call Relayer methods to describe a resource, the method returns an object you can use to further customize the description. In this case, we took the return value of our "hasOne" and told Relayer this resource is templated. 
+
+In order to load actually load an individual project, we need to pass parameters to complete the template. Let's return to the  project detail state and add a resolve to load the individual project:
+
+```javascript
+import {State, Resolve, Inject} from "stateInjector";
+
+@State("root.inner.project")
+export class ProjectState {
+  constructor() {
+    this.url = "/project/:id";
+    this.templateUrl = "project/project.tpl.html";
+    this.controller = "ProjectCtrl";
+    this.controllerAs = "project";
+  }
+  
+  @Resolve('resources', '$stateParams')
+  project(resources, $stateParams) {
+    return resources.project($stateParams).load();
+  }
+}
 ```
 
 
