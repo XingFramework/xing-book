@@ -53,7 +53,9 @@ This should look fairly familiar from the previous states we worked on: it adds 
 
 We'll explain where that ID comes from in a bit.
 
-Right now, our state isn't loading a 
+##Project Resource
+
+Like our homepage state, our project detail state needs to load a project from the backend. But before we can do that, we have to tell our frontend application how to access a single project on the backend. Let's return to our 
 
 ## Controller
 
