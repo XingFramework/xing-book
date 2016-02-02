@@ -44,7 +44,7 @@ export class ProjectState {
     this.url = "/project/:id";
     this.templateUrl = "project/project.tpl.html";
     this.controller = "ProjectCtrl";
-    this.controllerAs = "ProjectCtrl";
+    this.controllerAs = "project";
   }
 }
 ```
@@ -55,7 +55,7 @@ We'll explain where that ID comes from in a bit.
 
 ##Project Resource
 
-Like our homepage state, our project detail state needs to load a project from the backend. But before we can do that, we have to tell our frontend application how to access a single project on the backend. Let's return to our 
+Like our homepage state, our project detail state needs to load a project from the backend. But before do that, we have to tell our frontend application how to access a single project on the backend. Let's return to our 
 
 ## Controller
 
