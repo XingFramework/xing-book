@@ -55,7 +55,47 @@ We'll explain where that ID comes from in a bit.
 
 ##Project Resource
 
-Like our homepage state, our project detail state needs to load a project from the backend. But before do that, we have to tell our frontend application how to access a single project on the backend. Let's return to our 
+Like our homepage state, our project detail state needs to load a project from the backend. But before do that, we have to tell our frontend application how to access a single project on the backend. Remember our frontend finds all its resources initially by requesting `/resources` from the backend. When the backend responds to request at `/resources` response will look something like this:
+
+`JSON response to GET /resources`
+
+```javascript
+{
+    data: {
+    },
+    links: {
+      ...
+      projects: "/projects"
+      project: "/projects/{id}"
+      ...
+    }
+}
+```
+
+The backend will provide a 'project' resource link. However, instead of providing a direct link to get a specific project, the backend provides a link template for getting ANY project. The link template is in the RFC6570 URI template format we described earlier.
+
+So how does the frontend use this link? Let's return back to `frontend/src/common/resources.js` where our top level resource description right now looks like this:
+
+```javascript
+RL.Describe(Resources, (desc) => {
+  // put top level links to resources here
+  desc.hasList('projects', Project, [])
+});
+```
+
+Like 
+```javascript
+RL.Describe(Resources, (desc) => {
+  // put top level links to resources here
+  desc.hasList('projects', Project, [])
+
+  var project = desc.hasOne('project', Project);
+  project.templated = true;
+
+});
+```
+
+
 
 ## Controller
 
