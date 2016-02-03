@@ -49,6 +49,7 @@
        * [A1Atscript](framework_guide/a1atscript.md)
        * [States vs Components](framework_guide/states_vs_components.md)
        * [Styling and CSS](framework_guide/styling_and_css.md)
+   * Where to Report Issues
 * [Testing](testing.md)
    * [Promises](testing/promises.md)
 * [Work Flow](work_flow.md)
