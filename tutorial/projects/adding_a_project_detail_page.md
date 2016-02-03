@@ -206,4 +206,10 @@ Like the homepage controller, the constructor here just saves the project from t
  
 ## Template
 
-Finally, let's make a template to display our project
+Finally, let's make a template to display our project:
+
+`frontend/src/app/projects/project.tpl.html`
+
+```html
+<h2>project
+```
