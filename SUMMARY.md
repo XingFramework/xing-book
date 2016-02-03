@@ -30,6 +30,7 @@
            * [Backend: Mappers](tutorial/projects/backend_mappers.md)
            * [Frontend: Forms](tutorial/projects/frontend_forms.md)
 * [Framework Guide](framework_guide.md)
+   * Where to Report Issues
    * [Server Architecture](framework_guide/server_architecture.md)
    * [Development Console](framework_guide/development_console.md)
    * [Data Format](framework_guide/data_format.md)
@@ -49,7 +50,6 @@
        * [A1Atscript](framework_guide/a1atscript.md)
        * [States vs Components](framework_guide/states_vs_components.md)
        * [Styling and CSS](framework_guide/styling_and_css.md)
-   * Where to Report Issues
 * [Testing](testing.md)
    * [Promises](testing/promises.md)
 * [Work Flow](work_flow.md)
