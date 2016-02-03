@@ -336,7 +336,7 @@ Our projects module is now part of our application. Now lets provide a way to ge
   </tr>
   <tr ng-repeat="project in homepageShow.projects">
     <td>{{project.name}}</td>
-    <td><a ui-sref="root.inner.project({id: project.shortLink})">View</a></td>
+    <td><a ui-sref="root.inner.project(project.uriParams)">View</a></td>
   </tr>
 </table>
 ```
