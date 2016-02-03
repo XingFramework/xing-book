@@ -143,16 +143,42 @@ We've named our project detail state's parameter the same as the 'project' link 
 
 ## A Simple Frontend Test
 
-Up to this point, we haven't done any testing in our frontend application. However, this resolve function contains enough logic for a simple test. So let's write one:
+Up to this point, we haven't done any testing in our frontend application. However, this resolve function contains enough logic for a simple test. In our `frontend/test` directory, add a `projects` folder, then make a `projectsStates.js` file and put the following test in it:
 
 `frontend/test/projects/projectsStates.js`
 
 ```javascript
+import {ProjectState} from "../../src/app/projects/projectsStates.js";
 
+describe("ProjectState", function() {
+  var projectState,
+    mockResources,
+    mockProjectResource,
+    mockStateParams;
 
+  beforeEach(function() {
+    mockStateParams = {
+      id: '5'
+    }
+
+    mockProjectResource = jasmine.createSpyObj('project resource', ['load']);
+
+    mockResources = {
+      project: jasmine.createSpy('project').and.returnValue(mockProjectResource)
+    }
+
+    projectState = new ProjectState();
+  });
+
+  it("should resolve a project", function() {
+    projectState.project(mockResources, mockStateParams);
+    expect(mockResources.project).toHaveBeenCalledWith({id: '5'})
+  });
+});
 ```
 
-
+Since this is our first experience writing tests on the frontend, let's a spend a few minutes looking at what's going on here. Our goal is to test that when a project is resolved in the project state, the state parameters will be passed to the resource API to load a project. You'll notice however, in this test, angular, UI-router, and $stateParams are no where in site. 
+If we setup a test that used all of these libraries, it'd be much closer to an integration test. The creators of Xing learned through experience that testing states this way is highly failure prone. Instead, we use write some simple javascript "mock" objects that behave like the actual objects that will be used by the project state. This makes our test a true unit test, meaning it tests only the logic of the class we're testing (ProjectState). One awesome side effect of testing this way is that tests run extremely quickly -- so quickly that when rake develop is running, frontend tests run automatically every time you make a change.
 ## Controller
 
 Let's make a controller for our new State
