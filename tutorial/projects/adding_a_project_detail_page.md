@@ -336,11 +336,32 @@ Our projects module is now part of our application. Now lets provide a way to ge
   </tr>
   <tr ng-repeat="project in homepageShow.projects">
     <td>{{project.name}}</td>
-    <td><a ui-sref="root.inner.project(project.uriParams)">View</a></td>
+    <td><a ui-sref="root.inner.project(id: project.shortLink)">View</a></td>
   </tr>
 </table>
 ```
 
 We've added a second column to our table with a link to view a project in detail. However, instead of an `href` tag, our link has a `ui-sref` tag, a  UI-Router tag that tells the application to transition to a new state when the link is clicked. We pass ui-sref the name of the state as well as parameters for that state. Then UI-Router handle transitioning the state as well as updating the url.
 
-In this case, we're transitioning to `root.inner.project`, our project detail state. However, recall that the project detail state needs an "id" parameter in order to load a project from the server. Here we use a special method `.uriParams` on the project to get the id parameter. What is 
+In this case, we're transitioning to `root.inner.project`, our project detail state. However, recall that the project detail state needs an "id" parameter in order to load a project from the server. Here we use a special method `shortLink` on the project to get the id parameter. What does the method do? In our project detail state, we used a parameter in combination with URI template to produce a regular URL. `shortLink` does this in reverse -- it uses a URI template in combination with a real URL to extract a shorthand version of the URL. Recall that our projects list resource looks something like this:
+
+```javascript
+{
+  links: {
+    self: `/projects`,
+    template: `/projects/{id}`
+  },
+  data: [
+    ...
+    {
+      links: {
+        self: "/projects/5"
+      },
+      data: {
+        name: "My Project"
+      }
+    },
+    ...
+  ]
+}
+```
