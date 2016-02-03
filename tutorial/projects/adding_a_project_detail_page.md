@@ -370,6 +370,66 @@ When we call `shortLink` on a project in a list, the project's `self` link is ma
 
 If everything has gone well so far, we've completed setting up a detail page for projects, and you can now get to a project detail from the projects list.
 
-## Wrapping up - Stylesheet, Cleanup, A Relayer Improvement
+## Wrapping up - Stylesheets And Formatting
 
-Our 
+Our project detail page looks a little dry. Let's go ahead an add a stylesheet for it.
+
+`frontend/src/styles/state/_root_inner_project.sass`
+
+```scss
+#root_inner_project
+  line-height: 2em
+  dt
+    font-weight: bold
+```
+
+Since this is a new sass file, we need to import it in `frontend/src/styles/main.sass`. Add the line:
+
+    @import "states/root_inner_project"
+
+at the bottom of the file.
+
+Now our styles are looking better, but the display of the project deadline looks pretty terrible. We can solve this by adding a method to our controller for project detail to create a formated date:
+
+`frontend/src/app/projects/projectsControllers.js`
+
+```javascript
+import {Controller} from 'a1atscript';
+
+@Controller('ProjectCtrl', ['project'])
+export class ProjectController {
+  constructor(project) {
+    this.project = project;
+  }
+  
+  get formattedDeadline() {
+    return new Date(this.project.deadline).toDateString();
+  }
+}
+```
+
+Then we'll update the template to use the formatted date:
+
+`frontend/src/app/projects/project.tpl.html`
+
+```javascript
+<h1>{{project.project.name}}</h1>
+
+<dl>
+  <dt>Description</dt>
+  <dd>{{project.project.description}}</dd>
+
+  <dt>Deadline</dt>
+  <dd>{{project.formattedDeadline}}</dd>
+
+  <dt>Goal</dt>
+  <dd>{{project.project.goal}}</dd>
+</dl>
+
+<a ui-sref="root.homepage.show">Go Back</a>
+
+```
+
+Note here we also added another `ui-sref` link at the bottom of the page to go back to the homepage.
+
+This brings us to the end of our introduction to the frontend. We now have a working app that displays projects. So far, we've focused on reading data from the backend and displaying it on screen. In next section, we'll learn writing data to the backend, and creating and updating resources in Xing.
