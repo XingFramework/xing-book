@@ -320,4 +320,24 @@ var app = new Module(appName, [
 ]);
 ```
 
-Our projects module is now part of our application. Now lets provide a way to get from our 
+Our projects module is now part of our application. Now lets provide a way to get from the projects list to the project detail page. Let's go back to our projects template and make some changes:
+
+`frontend/src/app/homepage/homepage-show.tpl.html`
+
+```javascript
+<h1>Crowdfundr</h1>
+<p>Below you can see the list of projects available to be funded!</p>
+
+<table id='projects'>
+
+  <tr>
+    <th>Project Name</th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="project in homepageShow.projects">
+    <td>{{project.name}}</td>
+    <td><a ui-sref="root.inner.project({id: project.shortLink})">View</a></td>
+  </tr>
+</table>
+```
+
