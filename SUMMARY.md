@@ -10,7 +10,7 @@
    * [Backend](concepts/backend.md)
    * [Frontend](concepts/frontend.md)
    * [Tools We Use](concepts/tools_we_use.md)
-   * [Decoupled Code](decoupled_code.md)
+   * [Decoupled Code](conceptsdecoupled_code.md)
 * [Tutorial](tutorial.md)
    * [Prerequisites](tutorial/prerequisites.md)
    * [Creating The Application](tutorial/creating_the_application.md)
