@@ -367,3 +367,8 @@ In this case, we're transitioning to `root.inner.project`, our project detail st
 ```
 
 When we call `shortLink` on a project in a list, the project's `self` link is matched up against the `template` link for the list, to extract a shortened version of the URL. In the example above, `/projects/5` is compared against `/project/{id}` to extract a shorthand of `5` to refer to the project.
+
+If everything has gone well so far, we've completed setting up a detail page for projects, and you can now get to a project detail from the projects list.
+
+## Wrapping up - Stylesheet, Cleanup, A Relayer Improvement
+
