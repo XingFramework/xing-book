@@ -341,3 +341,4 @@ Our projects module is now part of our application. Now lets provide a way to ge
 </table>
 ```
 
+We've added a second column to our table with a link to view a project in detail. However, instead of an `href` tag, our link has a `ui-sref` tag, 
