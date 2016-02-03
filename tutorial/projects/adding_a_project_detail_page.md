@@ -115,7 +115,7 @@ import {State, Resolve, Inject} from "stateInjector";
 export class ProjectState {
   constructor() {
     this.url = "/project/:id";
-    this.templateUrl = "project/project.tpl.html";
+    this.templateUrl = "projects/project.tpl.html";
     this.controller = "ProjectCtrl";
     this.controllerAs = "project";
   }
@@ -206,4 +206,4 @@ Like the homepage controller, the constructor here just saves the project from t
  
 ## Template
 
-TODO
+Finally, let's make a template to display our project
