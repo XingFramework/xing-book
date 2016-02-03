@@ -98,7 +98,7 @@ Exactly what we expect.  The app can't serve our request because Rails doesn't k
 
 Add this line to backend/config/routes.rb:
 
-    ```resources :projects, :only => :show```
+    resources :projects, :only => :show
 
 And create this controller file:
 
