@@ -211,5 +211,9 @@ Finally, let's make a template to display our project:
 `frontend/src/app/projects/project.tpl.html`
 
 ```html
-<h2>project
+<h1>{{project.project.name}}</h1>
+
+<table>
+  
+</table
 ```
