@@ -30,7 +30,7 @@
            * [Backend: Mappers](tutorial/projects/backend_mappers.md)
            * [Frontend: Forms](tutorial/projects/frontend_forms.md)
 * [Framework Guide](framework_guide.md)
-   * Where to Report Issues
+   * [Where to Report Issues](framework_guide/where_to_report_issues.md)
    * [Server Architecture](framework_guide/server_architecture.md)
    * [Development Console](framework_guide/development_console.md)
    * [Data Format](framework_guide/data_format.md)
