@@ -177,8 +177,14 @@ describe("ProjectState", function() {
 });
 ```
 
-Since this is our first experience writing tests on the frontend, let's a spend a few minutes looking at what's going on here. Our goal is to test that when a project is resolved in the project state, the state parameters will be passed to the resource API to load a project. You'll notice however, in this test, angular, UI-router, and $stateParams are no where in site. 
-If we setup a test that used all of these libraries, it'd be much closer to an integration test. The creators of Xing learned through experience that testing states this way is highly failure prone. Instead, we use write some simple javascript "mock" objects that behave like the actual objects that will be used by the project state. This makes our test a true unit test, meaning it tests only the logic of the class we're testing (ProjectState). One awesome side effect of testing this way is that tests run extremely quickly -- so quickly that when rake develop is running, frontend tests run automatically every time you make a change.
+Since this is our first experience writing tests on the frontend, let's a spend a few minutes looking at what's going on here. Frontend tests in Xing use the Jasmine test framework. You can read more about Jasmine [here](http://jasmine.github.io/). Our goal in this test is to verify that when the project detail state resolves a project, the state parameters will be passed to the resource API. You'll notice however, in this test, angular, UI-router, and $stateParams are no where in sight. 
+
+If we setup a test that used all of these libraries, it'd be much closer to an integration test. The creators of Xing learned through experience that testing states this way is highly failure prone. Instead, we use write some simple javascript "mock" objects that behave like the actual objects that will be used by the project state. 
+
+Using simple mock objects makes our test a true unit test, meaning it tests only the logic of the class we're testing (ProjectState) and very little else. One great side effect of testing this way is that tests run extremely quickly -- so quickly that when rake develop is running, frontend tests run automatically every time you make a change.
+
+Now that you're familiar with Xing frontend concepts and the way we test our code, we'll write tests first any time we're going to write logic that is complex enough to merit testing.
+
 ## Controller
 
 Let's make a controller for our new State
