@@ -12,4 +12,4 @@ We are working on a permanent solution and architecture for problem reporting an
   * [xing-framework-sass](https://github.com/XingFramework/xing-framework-sass/issues) Sass stylesheet build system for Xing frontend.
   * Many others, see the GitHub org.
 
-At present, the latter gem is primarily just the new application generator, but because of the name we will use it as the clearinghouse for framework issues.
+At present, the xing-framework rubygem is primarily just the new application generator, but because of the name we will use it as the clearinghouse for framework issues.
