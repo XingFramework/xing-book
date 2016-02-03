@@ -212,8 +212,112 @@ Finally, let's make a template to display our project:
 
 ```html
 <h1>{{project.project.name}}</h1>
+<h1>{{project.project.name}}</h1>
 
-<table>
-  
-</table
+<dl>
+  <dt>Description</dt>
+  <dd>{{project.project.description}}</dd>
+
+  <dt>Deadline</dt>
+  <dd>{{project.project.deadline}}</dd>
+
+  <dt>Goal</dt>
+  <dd>{{project.project.goal}}</dd>
+</dl>
+
 ```
+
+## Hooking up the projects
+
+Our projects module is done, but we need to import it into our app and hook up the homepage so we can get from the projects list to an individual project.
+
+First, we import our Projects module in `frontend/src/app/app.js`. This file describes the "top level" module for our application. Everything that goes into a Xing frontend gets imported into the app.js and put in the top level module.
+
+Take a look at the file right now:
+
+`frontend/src/app/app.js`:
+
+```javascript
+import {appName} from 'config';
+import {} from 'build/templates-app.js';
+import {} from 'build/templates-common.js';
+
+import { Module, Injector } from "a1atscript";
+import SessionLinks from 'components/sessionLinks/sessionLinks.js';
+
+import {
+  Fallback,
+  Toast,
+  ResponsiveMenu,
+  UnimplementedDirective,
+  StateAttrs,
+  uiRouteLogger,
+  stateFallback,
+  ExampleForm
+} from 'xing-frontend-utils';
+
+import appConfig from './appConfig.js';
+
+import Auth from './auth/auth.js';
+import Homepage from './homepage/homepage.js';
+
+import * as RootStates from './rootStates.js';
+import RootCtrl from './rootController.js';
+
+import Resources from "common/resources.js";
+
+var app = new Module(appName, [
+  'templates-app', 'templates-common', 'ui.router',
+  'picardy.fontawesome',
+  StateAttrs,
+  uiRouteLogger,
+  stateFallback,
+  Homepage,
+  Auth,
+  Fallback,
+  ResponsiveMenu,
+  UnimplementedDirective,
+  ExampleForm,
+  SessionLinks,
+  Toast,
+  appConfig,
+  RootStates,
+  RootCtrl,
+  Resources
+]);
+
+var injector = new Injector(appName);
+injector.instantiate(app);
+```
+
+Essentially, app.js imports all of the other modules in the app, then instantiates the top level application module. Let's import our Projects module below the other imports:
+
+```javascript
+import Projects from "./projects/projects.js";
+```
+
+And add it to the app module:
+```javascript
+var app = new Module(appName, [
+  'templates-app', 'templates-common', 'ui.router',
+  'picardy.fontawesome',
+  StateAttrs,
+  uiRouteLogger,
+  stateFallback,
+  Homepage,
+  Auth,
+  Fallback,
+  ResponsiveMenu,
+  UnimplementedDirective,
+  ExampleForm,
+  SessionLinks,
+  Toast,
+  appConfig,
+  RootStates,
+  RootCtrl,
+  Resources,
+  Projects
+]);
+```
+
+Our projects module is now part of our application. Now lets provide a way to get from our 
