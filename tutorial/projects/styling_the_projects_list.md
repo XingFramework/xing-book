@@ -82,6 +82,7 @@ Let's go ahead and add some styling to our list:
     border-collapse: collapse
     th, td
       padding-left: 5px
+      padding-right: 5px
       border: 1px solid #ccc
     th
       font-weight: bold
