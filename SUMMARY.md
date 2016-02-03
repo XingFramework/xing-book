@@ -56,7 +56,7 @@
    * [Backend](work_flow/be.md)
    * [Frontend](work_flow/fe.md)
    * [Add Vendor Files](work_flow/vendor.md)
+* [Versioning](versioning.md)
 * [Pragmatic Advice](pragmatism.md)
    * [Debugging Tricky Javascript](pragmatism/js_debugging.md)
    * [Outstanding Questions](pragmatism/outstanding_questions.md)
-
