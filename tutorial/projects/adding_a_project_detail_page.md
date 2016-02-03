@@ -341,4 +341,6 @@ Our projects module is now part of our application. Now lets provide a way to ge
 </table>
 ```
 
-We've added a second column to our table with a link to view a project in detail. However, instead of an `href` tag, our link has a `ui-sref` tag, 
+We've added a second column to our table with a link to view a project in detail. However, instead of an `href` tag, our link has a `ui-sref` tag, a  UI-Router tag that tells the application to transition to a new state when the link is clicked. We pass ui-sref the name of the state as well as parameters for that state. Then UI-Router handle transitioning the state as well as updating the url.
+
+In this case, we're transitioning to `root.inner.project`, our project detail state. However, recall that the project detail state needs an "id" parameter in order to load a project from the server. Here we use a special method `.uriParams` on the project to get the id parameter. What is 
