@@ -134,6 +134,7 @@ To load our project, we utilize our resources API as well as a special object pr
 ```
 
 is equivalent to:
+
 ```javascript
   return resources.project({id: '5'}).load();
 ```
@@ -142,7 +143,15 @@ We've named our project detail state's parameter the same as the 'project' link 
 
 ## A Simple Frontend Test
 
-Up to this point, we
+Up to this point, we haven't done any testing in our frontend application. However, this resolve function contains enough logic for a simple test. So let's write one:
+
+`frontend/test/projects/projectsStates.js`
+
+```javascript
+
+
+```
+
 
 ## Controller
 
