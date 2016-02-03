@@ -1,9 +1,5 @@
 # Creating The Application
 
-## Getting the Code (optional)
-
-TODO:  Once a canonical repository has been created with a completed version of the app, instructions for cloning the repo and checking out the tag for this page go here.
-
 ## Installing the Xing Framework rubygem
 
 We'll start by installing xing-framework. Make sure you're using a compatible version of Ruby (we prefer >= 2.2).   
