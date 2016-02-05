@@ -89,7 +89,7 @@ Angular 2 introduces an entirely new syntax for working with directives. The mos
 ```javascript
 @Component({
   selector: "awesome",
-  properties: [ "apple" ],
+  properties: { apple: "apple" },
   services: ["ExampleService"]
 })
 @View({
@@ -120,7 +120,7 @@ The component object will be made available in the template based on its selecto
 
 Use your component like this:
 ```html
-<awesome apple="stringLiteral"></awesome> <!-- amesome.apple == 'stringLiteral' -->
+<awesome apple="stringLiteral"></awesome> <!-- awesome.apple == 'stringLiteral' -->
 <awesome bind-apple="'stringLiteral'.length"></awesome> <!-- awesome.apple == 13 -->
 ```
 
