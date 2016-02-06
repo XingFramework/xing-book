@@ -33,7 +33,7 @@ This file doesn't do much by itself: only imports the code from `projectControll
 
 Now let's add a new state to our UI-Router state tree, representing the project detail user interface.
 
-`frontend/src/app/projects/projectsStates.js`
+`frontend/src/app/projects/projectStates.js`
 
 ```JavaScript
 import {State, Resolve, Inject} from "stateInjector";
@@ -143,12 +143,12 @@ We've named our project detail state's parameter the same as the 'project' link 
 
 ## A Simple Frontend Test
 
-Up to this point, we haven't done any testing in our frontend application. However, this resolve function contains enough logic for a simple test. In our `frontend/test` directory, add a `projects` folder, then make a `projectsStates.js` file and put the following test in it:
+Up to this point, we haven't done any testing in our frontend application. However, this resolve function contains enough logic for a simple test. In our `frontend/test` directory, add a `projects` folder, then make a `projectStates.js` file and put the following test in it:
 
-`frontend/test/projects/projectsStates.js`
+`frontend/test/projects/projectStates.js`
 
 ```javascript
-import {ProjectState} from "../../src/app/projects/projectsStates.js";
+import {ProjectState} from "../../src/app/projects/projectStates.js";
 
 describe("ProjectState", function() {
   var projectState,
@@ -189,7 +189,7 @@ Now that you're familiar with Xing frontend concepts and the way we test our cod
 
 Let's make a controller for our new State:
 
-`frontend/src/app/projects/projectsController.js`
+`frontend/src/app/projects/projectController.js`
 
 ```javascript
 import {Controller} from 'a1atscript';
