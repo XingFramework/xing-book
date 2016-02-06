@@ -10,9 +10,9 @@ The project detail page, however, is likely get pretty large over time, with a l
 
 Because of this, we're going to want to put the project detail interface files into their own subdirectory, with a dedicated module to group the JavaScript files together.
 
-Create a directory `frontend/src/app/project/` and in it place a file `project.js` with the following content:
+Create a directory `frontend/src/app/projects/` and in it place a file `project.js` with the following content:
 
-##### `frontend/src/app/project/project.js`
+##### `frontend/src/app/projects/project.js`
 
 ```JavaScript
 import {Module} from 'a1atscript';
