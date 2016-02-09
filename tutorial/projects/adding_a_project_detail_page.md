@@ -16,18 +16,18 @@ Create a directory `frontend/src/app/projects/` and in it place a file `project.
 
 ```JavaScript
 import {Module} from 'a1atscript';
-import * as ProjectControllers from './projectControllers.js';
-import * as ProjectStates from './projectStates.js';
+import * as ProjectsControllers from './projectsControllers.js';
+import * as ProjectsStates from './projectsStates.js';
 
 var Project = new Module('project', [
-  ProjectControllers,
-  ProjectStates
+  ProjectsControllers,
+  ProjectsStates
 ]);
 
 export default Project;
 ```
 
-This file doesn't do much by itself: only imports the code from `projectControllers` and `projectStates` (which we haven't written yet), and groups them into an ES6 module called `Project`. By doing so, our top-level application file will only have to import that one `Project` module instead of each individual file. As we expand the capabilities of the project interface, we'll update this file to collect all the sub-modules. 
+This file doesn't do much by itself: only imports the code from `projectsControllers` and `projectsStates` (which we haven't written yet), and groups them into an ES6 module called `Project`. By doing so, our top-level application file will only have to import that one `Project` module instead of each individual file. As we expand the capabilities of the project interface, we'll update this file to collect all the sub-modules. 
 
 ## State
 
