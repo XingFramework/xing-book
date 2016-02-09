@@ -294,7 +294,7 @@ injector.instantiate(app);
 Essentially, app.js imports all of the other modules in the app, then instantiates the top level application module. Let's import our Projects module below the other imports:
 
 ```javascript
-import Projects from "./projects/projects.js";
+import Projects from "./projects/project.js";
 ```
 
 And add it to the app module:
