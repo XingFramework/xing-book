@@ -143,15 +143,15 @@ We've named our project detail state's parameter the same as the 'project' link 
 
 ## A Simple Frontend Test
 
-Up to this point, we haven't done any testing in our frontend application. However, this resolve function contains enough logic for a simple test. In our `frontend/test` directory, add a `projects` folder, then make a `projectStates.js` file and put the following test in it:
+Up to this point, we haven't done any testing in our frontend application. However, this resolve function contains enough logic for a simple test. In our `frontend/test` directory, add a `projects` folder, then make a `projectsStates.js` file and put the following test in it:
 
-`frontend/test/projects/projectStates.js`
+`frontend/test/projects/projectsStates.js`
 
 ```javascript
-import {ProjectState} from "../../src/app/projects/projectStates.js";
+import {ProjectsState} from "../../src/app/projects/projectsStates.js";
 
-describe("ProjectState", function() {
-  var projectState,
+describe("ProjectsState", function() {
+  var projectsState,
     mockResources,
     mockProjectResource,
     mockStateParams;
@@ -167,14 +167,15 @@ describe("ProjectState", function() {
       project: jasmine.createSpy('project').and.returnValue(mockProjectResource)
     }
 
-    projectState = new ProjectState();
+    projectsState = new ProjectsState();
   });
 
   it("should resolve a project", function() {
-    projectState.project(mockResources, mockStateParams);
+    projectsState.project(mockResources, mockStateParams);
     expect(mockResources.project).toHaveBeenCalledWith({id: '5'})
   });
 });
+
 ```
 
 Since this is our first experience writing tests on the frontend, let's a spend a few minutes looking at what's going on here. Frontend tests in Xing use the Jasmine test framework. You can read more about Jasmine [here](http://jasmine.github.io/). Our goal in this test is to verify that when the project detail state resolves a project, the state parameters will be passed to the resource API. You'll notice however, in this test, angular, UI-router, and $stateParams are no where in sight. 
