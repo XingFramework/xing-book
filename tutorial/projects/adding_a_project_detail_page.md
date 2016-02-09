@@ -190,13 +190,13 @@ Now that you're familiar with Xing frontend concepts and the way we test our cod
 
 Let's make a controller for our new State:
 
-`frontend/src/app/projects/projectController.js`
+`frontend/src/app/projects/projectsController.js`
 
 ```javascript
 import {Controller} from 'a1atscript';
 
-@Controller('ProjectCtrl', ['project'])
-export class ProjectController {
+@Controller('ProjectsCtrl', ['project'])
+export class ProjectsController {
   constructor(project) {
     this.project = project;
   }
