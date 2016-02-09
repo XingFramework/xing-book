@@ -43,7 +43,7 @@ export class ProjectsState {
   constructor() {
     this.url = "/project/:id";
     this.templateUrl = "projects/project.tpl.html";
-    this.controller = "ProjectCtrl";
+    this.controller = "ProjectsCtrl";
     this.controllerAs = "project";
   }
 }
