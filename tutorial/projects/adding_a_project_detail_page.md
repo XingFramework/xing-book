@@ -33,13 +33,13 @@ This file doesn't do much by itself: only imports the code from `projectsControl
 
 Now let's add a new state to our UI-Router state tree, representing the project detail user interface.
 
-`frontend/src/app/projects/projectStates.js`
+`frontend/src/app/projects/projectsStates.js`
 
 ```JavaScript
 import {State, Resolve, Inject} from "stateInjector";
 
 @State("root.inner.project")
-export class ProjectState {
+export class ProjectsState {
   constructor() {
     this.url = "/project/:id";
     this.templateUrl = "project/project.tpl.html";
