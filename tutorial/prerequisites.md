@@ -25,9 +25,11 @@ In the application generation process, Xing will create .ruby-version files with
 
 A current version of npm is required.
 
-### [postgresql](http://www.postgresql.org/) 
+### [postgresql](http://www.postgresql.org/) with HSTORE
 
 By default, Xing projects use a PostgreSQL database as their primary data storage. However, Xing should be compatible with any database that can be used by Ruby on Rails.
+
+Xing's default database migrations expect the HSTORE column type to be available, so you should make sure your distribution of postgresql has that extension available.  How do to that is system-dependent.  If you're on a mac and installed PostgreSQL with homebrew, it should already be there. If you're on Ubuntu, you'll need the postgresql-contrib package, installable with `sudo apt-get install postgresql-contrib`.
 
 ### [Redis](http://redis.io/)
 
