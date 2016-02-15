@@ -2,7 +2,7 @@
 
 Feeling Lucky? Want to get going without reading anything?
 
-1. Check that [prerequisites](/prerequisites.md) are installed.
+1. Check that [prerequisites](/tutorial/prerequisites.md) are installed.
 2. ```$ gem install xing-framework --pre```
 3. ```$ xing new my_application_name```
 4. ```$ cd my_application_name```
