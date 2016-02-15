@@ -13,5 +13,5 @@ Congratulations, your Xing app is running!
 
 Didn't work? Almost certainly our fault. [File a ticket!](https://github.com/XingFramework/xing-framework/issues)
 
-NOTES: `rake initialize` is just a convenience to create a PostgreSQL database and migrate it with a users table.  If you aren't ready to create a DB or want to use something other that PostgreSQL, simply skip step 5. 
+NOTES: `rake initialize` is just a convenience to create a PostgreSQL database and migrate it with a users table.  If you aren't ready to create a DB or want to use something other than PostgreSQL, simply skip step 5. 
 
